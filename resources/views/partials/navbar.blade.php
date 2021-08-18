@@ -9,20 +9,20 @@
             <!-- ============================================================== -->
             <div class="navbar-brand">
                 <!-- Logo icon -->
-                <a href="index.html">
+                <a href="{{ route('dashboard') }}">
                     <b class="logo-icon">
                         <!-- Dark Logo icon -->
-                        <img src="../assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+                        <img src="{{ asset('assets/images/logo-icon.png') }}" alt="homepage" class="dark-logo" />
                         <!-- Light Logo icon -->
-                        <img src="../assets/images/logo-icon.png" alt="homepage" class="light-logo" />
+                        <img src="{{ asset('assets/images/logo-icon.png') }}" alt="homepage" class="light-logo" />
                     </b>
                     <!--End Logo icon -->
                     <!-- Logo text -->
                     <span class="logo-text">
                         <!-- dark Logo text -->
-                        <img src="../assets/images/logo-text.png" alt="homepage" class="dark-logo" />
+                        <img src="{{ asset('assets/images/logo-text.png') }}" alt="homepage" class="dark-logo" />
                         <!-- Light Logo text -->
-                        <img src="../assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
+                        <img src="{{ asset('assets/images/logo-light-text.png') }}" class="light-logo" alt="homepage" />
                     </span>
                 </a>
             </div>
@@ -130,7 +130,7 @@
                         <i data-feather="settings" class="svg-icon"></i>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="# ">Action</a>
                         <a class="dropdown-item" href="#">Another action</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Something else here</a>
@@ -174,7 +174,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
-                        <img src="../assets/images/users/profile-pic.jpg" alt="user" class="rounded-circle"
+                        <img src="{{ asset('assets/images/users/profile-pic.jpg') }}" alt="user" class="rounded-circle"
                             width="40">
                         <span class="ml-2 d-none d-lg-inline-block"><span>Hello,</span> <span
                                 class="text-dark">{{auth()->user()->name}}</span> <i data-feather="chevron-down"
