@@ -1,5 +1,14 @@
+@section('hero')
+<section id="hero" class="d-flex align-items-center">
+    <div class="container text-center position-relative" data-aos="fade-in" data-aos-delay="200">
+        <h1>HIMPUNAN MAHASISWA PERTAMBANGAN</h1>
+        <h2>UNIVERSITAS MULAWARMAN</h2>
+        <a href="#about" class="btn-get-started scrollto">Get Started</a>
+    </div>
+</section>
+@endsection
+
 <x-guest-layout>
-    
         <!-- ======= Clients Section ======= -->
         <section id="clients" class="clients">
             <div class="container">
