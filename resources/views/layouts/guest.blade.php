@@ -4,7 +4,7 @@
 
 <head>
     
-    @include('user.partials.head')
+    @include('partials.head')
     <!-- =======================================================
     * Template Name: Bethany - v4.3.0
     * Template URL: https://bootstrapmade.com/bethany-free-onepage-bootstrap-theme/
@@ -24,7 +24,7 @@
                 <!-- <a href="index.html"><img src="Bethany/assets/img/logo.png" alt="" class="img-fluid"></a>-->
             </div>
 
-            @include('user.partials.navbar')
+            @include('partials.navbar')
 
             </div><!-- End Header Container -->
         </div>
@@ -46,12 +46,12 @@
     </main><!-- End #main -->
 
     <!-- ======= Footer ======= -->
-    @include('user.partials.footer')
+    @include('partials.footer')
     <!-- End Footer -->
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-    @include('user.partials.scripts')
+    @include('partials.scripts')
 
 </body>
 
