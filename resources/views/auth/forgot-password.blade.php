@@ -1,4 +1,7 @@
-<x-guest-layout>
+<!DOCTYPE html>
+<html lang="en">
+    @include('admin.partials.head')
+<body>
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
@@ -33,4 +36,6 @@
             </div>
         </form>
     </x-auth-card>
-</x-guest-layout>
+    @include('admin.partials.scripts')
+</body>
+</html>

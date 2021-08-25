@@ -1,4 +1,7 @@
-<x-guest-layout>
+<!DOCTYPE html>
+<html lang="en">
+    @include('admin.partials.head')
+<body>
     <div class="main-wrapper">
         <div class="auth-wrapper d-flex no-block justify-content-center align-items-center position-relative"
             style="background:url({{ asset('assets/images/big/auth-bg.jpg') }}) no-repeat center center;">
@@ -45,4 +48,6 @@
             </div>
         </div>
     </div>
-</x-guest-layout>
+    @include('admin.partials.scripts')
+</body>
+</html>
