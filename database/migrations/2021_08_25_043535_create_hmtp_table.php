@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHmtpsTable extends Migration
+class CreateHmtpTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateHmtpsTable extends Migration
      */
     public function up()
     {
-        Schema::create('hmtps', function (Blueprint $table) {
+        Schema::create('hmtp', function (Blueprint $table) {
             $table->id();
             $table->text('deskripsi')->nullable();
             $table->text('visi')->nullable();
@@ -30,6 +30,6 @@ class CreateHmtpsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hmtps');
+        Schema::dropIfExists('hmtp');
     }
 }
