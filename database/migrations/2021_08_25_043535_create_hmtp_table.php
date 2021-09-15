@@ -15,7 +15,10 @@ class CreateHmtpsTable extends Migration
     {
         Schema::create('hmtps', function (Blueprint $table) {
             $table->id();
-            $table->
+            $table->text('deskripsi')->nullable();
+            $table->text('visi')->nullable();
+            $table->text('misi')->nullable();
+            $table->string('struktur_organisasi')->nullable();
             $table->timestamps();
         });
     }
