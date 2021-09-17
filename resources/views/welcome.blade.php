@@ -52,24 +52,21 @@
                     <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
                         <h2>Struktur Organisasi</h2>
                         {{-- <img src="{{ asset('assets/img/struktur-organisasi.png') }}" alt="" height="250"> --}}
-                        <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assum perenda sruen jonee trave</h3>
+                        <h3>{{$hmtp->struktur_organisasi}}</h3>
                     </div>
                     <div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-left" data-aos-delay="200">
                         <h3>Visi</h3>
                         <p>
-                            Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                            culpa qui officia deserunt mollit anim id est laborum
+                            {{$hmtp->visi}}
                         </p>
                         <h3>Misi</h3>
-                        <ul>
+                        {{-- <ul>
                             <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequa</li>
                             <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
                             <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in</li>
-                        </ul>
+                        </ul> --}}
                         <p class="fst-italic">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                            magna aliqua.
+                            {{$hmtp->misi}}
                         </p>
                     </div>
                 </div>

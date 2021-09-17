@@ -9,13 +9,13 @@ class HmtpController extends Controller
     public function index()
     {
         $hmtp = hmtp::get();
-        return view('admin.hmtp', compact('hmtp'))
+        return view('admin.hmtp.index', compact('hmtp'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     public function create()
     {
-        return view('admin.addhmtp');
+        return view('admin.hmtp.addhmtp');
     }
 
     public function store(Request $request)
@@ -29,13 +29,13 @@ class HmtpController extends Controller
                 'isi' => $request->isi,
                 'urutan' => $request->urutan,
             ]);
-        return redirect()->route('hmtpAdmin.index')
+        return redirect()->route('hmtpadmin.hmtp.index')
             ->with('success', 'hmtp Berhasil Ditambahkan');
     }
     public function show($id)
     {
         $hmtps = hmtp::where('id', $id)->first();
-        return view('hmtpAdmin.show', compact('hmtp'))
+        return view('hmtpadmin.hmtp.show', compact('hmtp'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -44,7 +44,7 @@ class HmtpController extends Controller
     {
         $hmtp = hmtp::find($id);
 
-        return view('admin.edithmtp', compact('hmtp'));
+        return view('admin.hmtp.edithmtp', compact('hmtp'));
     }
 
     public function update(Request $request, $id)
@@ -59,7 +59,7 @@ class HmtpController extends Controller
         $hmtp->save();
 
 
-        return redirect()->route('hmtpAdmin.index')
+        return redirect()->route('hmtpadmin.hmtp.index')
         ->with('edit', 'pengumuman Berhasil Diedit');
     }
 
@@ -67,7 +67,7 @@ class HmtpController extends Controller
     {
         hmtp::where('id', $id)->delete();
 
-        return redirect()->route('hmtpAdmin.index')
+        return redirect()->route('hmtpadmin.hmtp.index')
             ->with('delete', 'hmtp Berhasil Dihapus');
     }
 }
