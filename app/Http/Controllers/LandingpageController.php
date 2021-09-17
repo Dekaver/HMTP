@@ -15,7 +15,7 @@ class LandingpageController extends Controller
 {
     public function hmtp()
     {
-        $hmtp = hmtp::first();
+        $hmtp = hmtp::latest()->first();
         return view('welcome', compact('hmtp'));
     }
 }

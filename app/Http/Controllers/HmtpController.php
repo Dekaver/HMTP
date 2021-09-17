@@ -25,11 +25,12 @@ class HmtpController extends Controller
         //     'jawaban' => 'required',
         // ]);
             $hmtp = hmtp::create([
-                'nama_hmtp' => $request->nama_hmtp,
-                'isi' => $request->isi,
-                'urutan' => $request->urutan,
+                'deskripsi' => $request->deskripsi,
+                'visi' => $request->visi,
+                'misi' => $request->misi,
+                'struktur_organisasi' => $request->struktur_organisasi,
             ]);
-        return redirect()->route('hmtpadmin.hmtp.index')
+        return redirect()->route('hmtp.index')
             ->with('success', 'hmtp Berhasil Ditambahkan');
     }
     public function show($id)
