@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class calendar extends Model
 {
     use HasFactory;
+    protected $table = 'calender';
+    protected $fillable = [
+        'id', 'foto', 'deskripsi'
+    ];
+
+    protected $primaryKey = 'id';
+
 }
