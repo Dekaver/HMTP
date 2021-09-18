@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LandingpageController;
 use App\Http\Controllers\HmtpController;
+use App\Http\Controllers\PeriodeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,6 +24,7 @@ Route::middleware(['auth'])->group(function () {
         return view('admin.dashboard');
     })->middleware(['auth'])->name('dashboard');
     Route::resource('hmtp', HmtpController::class);
+    Route::resource('periode', PeriodeController::class);
 });
 
 require __DIR__.'/auth.php';

@@ -28,6 +28,10 @@
                                     class="hide-menu"> HMTP
                                 </span></a>
                         </li>
+                        <li class="sidebar-item"><a href="{{route('periode.index')}}" class="sidebar-link"><span
+                            class="hide-menu"> Periode
+                        </span></a>
+                </li>
                     </ul>
                 </li>
                 <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"

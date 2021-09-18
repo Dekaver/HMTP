@@ -8,9 +8,10 @@ class HmtpController extends Controller
 {
     public function index()
     {
-        $hmtp = hmtp::get();
+        $hmtp = hmtp::all();
         return view('admin.hmtp.index', compact('hmtp'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
+dd($hmtp);
     }
 
     public function create()
@@ -29,6 +30,7 @@ class HmtpController extends Controller
                 'visi' => $request->visi,
                 'misi' => $request->misi,
                 'struktur_organisasi' => $request->struktur_organisasi,
+                'id_periode' => $request->id_periode,
             ]);
         return redirect()->route('hmtp.index')
             ->with('success', 'hmtp Berhasil Ditambahkan');

@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Providers;
-
+use App\Models\Periode;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +24,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        View::share('periode', Periode::simplePaginate(4));
     }
 }
