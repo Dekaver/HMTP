@@ -11,7 +11,6 @@ class HmtpController extends Controller
         $hmtp = hmtp::all();
         return view('admin.hmtp.index', compact('hmtp'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
-dd($hmtp);
     }
 
     public function create()

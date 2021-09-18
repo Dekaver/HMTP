@@ -15,8 +15,8 @@ class hmtp extends Model
 
     protected $primaryKey = 'id';
 
-    
-    public function peiode()
+
+    public function periode()
     {
         return $this->belongsTo(Periode::class, 'id_periode', 'id');
     }

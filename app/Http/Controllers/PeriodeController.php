@@ -9,6 +9,7 @@ class PeriodeController extends Controller
     public function index()
     {
         $periode = periode::get();
+        
         return view('admin.periode.index', compact('periode'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }

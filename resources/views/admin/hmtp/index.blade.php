@@ -89,7 +89,7 @@
                                         @foreach ($hmtp as $item)
                                         <tr>
                                             <td style="text-align: center;">{{ $loop->iteration}}</td>
-                                            <td>{{$item->id_periode}}</td>
+                                            <td>{{$item->periode->tahun}}</td>
                                             <td>{{$item->deskripsi}}</td>
                                             <td>{{$item->visi}}</td>
                                             <td>{{$item->misi}}</td>
