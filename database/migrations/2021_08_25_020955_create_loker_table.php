@@ -19,6 +19,7 @@ class CreateLokerTable extends Migration
             $table->string('posisi')->nullable();
             $table->string('link')->nullable();
             $table->text('deskripsi')->nullable();
+            $table->enum('status', ['0', '1'])->default("0");
             $table->timestamps();
         });
     }

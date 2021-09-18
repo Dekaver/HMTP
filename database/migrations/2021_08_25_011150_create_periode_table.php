@@ -3,7 +3,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Periode extends Migration
+class CreatePeriodeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,7 +15,7 @@ class Periode extends Migration
         Schema::create('periode', function (Blueprint $table) {
             $table->id();
             $table->string('tahun');
-            $table->enum('jenis', ["ganjil", "genap"]);
+            $table->enum('semester', ["ganjil", "genap"]);
             $table->enum('status', ["0", "1"])->default("0");
             $table->timestamps();
         });

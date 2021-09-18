@@ -15,6 +15,10 @@ class CreateCalendarTable extends Migration
     {
         Schema::create('calendar', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("id_periode")
+                ->constrained("periode")
+                ->onDelete("cascade")
+                ->onUpdate("cascade");
             $table->string("foto");
             $table->text("deskripsi");
             $table->timestamps();

@@ -10,9 +10,14 @@ class hmtp extends Model
     use HasFactory;
     protected $table = 'hmtp';
     protected $fillable = [
-        'id', 'deskripsi', 'visi','misi','struktur_organisasi'
+        'id_periode', 'deskripsi', 'visi','misi','struktur_organisasi'
     ];
 
     protected $primaryKey = 'id';
 
+    
+    public function peiode()
+    {
+        return $this->belongsTo(Periode::class, 'id_periode', 'id');
+    }
 }

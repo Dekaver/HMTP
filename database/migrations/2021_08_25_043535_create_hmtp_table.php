@@ -15,6 +15,10 @@ class CreateHmtpTable extends Migration
     {
         Schema::create('hmtp', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("id_periode")
+                ->constrained("periode")
+                ->onDelete("cascade")
+                ->onUpdate("cascade");
             $table->text('deskripsi')->nullable();
             $table->text('visi')->nullable();
             $table->text('misi')->nullable();

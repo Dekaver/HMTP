@@ -15,6 +15,10 @@ class CreateJadwalTable extends Migration
     {
         Schema::create('jadwal', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("id_periode")
+                ->constrained("periode")
+                ->onDelete("cascade")
+                ->onUpdate("cascade");
             $table->text("deskripi");
             $table->string("foto");
             $table->timestamps();
