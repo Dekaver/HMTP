@@ -31,6 +31,15 @@
                         <li class="sidebar-item"><a href="{{route('periode.index')}}" class="sidebar-link"><span
                             class="hide-menu"> Periode
                         </span></a>
+                        <li class="sidebar-item"><a href="{{route('Lab.index')}}" class="sidebar-link"><span
+                            class="hide-menu"> Lab
+                        </span></a>
+                        <li class="sidebar-item"><a href="{{route('Loker.index')}}" class="sidebar-link"><span
+                            class="hide-menu"> Loker
+                        </span></a>
+                        <li class="sidebar-item"><a href="{{route('Perpustakaan.index')}}" class="sidebar-link"><span
+                            class="hide-menu"> Perpustakaan
+                        </span></a>
                 </li>
                     </ul>
                 </li>
