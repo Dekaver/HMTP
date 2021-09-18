@@ -11,11 +11,13 @@ use App\Models\hmtp;
 use App\Models\Perpustakaan;
 use Illuminate\Http\Request;
 
+use App\Models\Periode;
+
 class LandingpageController extends Controller
 {
     public function hmtp()
     {
-        $hmtp = hmtp::latest()->first();
+        $hmtp = hmtp::whereId_periode(Periode::whereStatus("1")->pluck("status")->first())->first();
         return view('welcome', compact('hmtp'));
     }
 }
