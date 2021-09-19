@@ -20,17 +20,20 @@ class HmtpController extends Controller
 
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'pertanyaan' => 'required',
-        //     'jawaban' => 'required',
-        // ]);
-            $hmtp = hmtp::create([
-                'deskripsi' => $request->deskripsi,
-                'visi' => $request->visi,
-                'misi' => $request->misi,
-                'struktur_organisasi' => $request->struktur_organisasi,
-                'id_periode' => $request->id_periode,
-            ]);
+        $request->validate([
+            'deskripsi' => 'required',
+            'id_periode' => 'required',
+            'struktur_organisasi' => 'required',
+            'visi' => 'required',
+            'misi' => 'required',
+        ]);
+        $hmtp = hmtp::create([
+            'deskripsi' => $request->deskripsi,
+            'visi' => $request->visi,
+            'misi' => $request->misi,
+            'struktur_organisasi' => $request->struktur_organisasi,
+            'id_periode' => $request->id_periode,
+        ]);
         return redirect()->route('hmtp.index')
             ->with('success', 'hmtp Berhasil Ditambahkan');
     }
@@ -46,30 +49,37 @@ class HmtpController extends Controller
     {
         $hmtp = hmtp::find($id);
 
-        return view('admin.hmtp.edithmtp', compact('hmtp'));
+        return $hmtp;
     }
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'deskripsi' => 'required',
+            'id_periode' => 'required',
+            'struktur_organisasi' => 'required',
+            'visi' => 'required',
+            'misi' => 'required',
+        ]);
 
-
-        $hmtp = hmtp::find($id);
-        $hmtp->nama_hmtp = $request->get('nama_hmtp');
-        $hmtp->isi = $request->get('isi');
-        $hmtp->urutan = $request->get('urutan');
+        $hmtp = hmtp::findOrFail($id);
+        $hmtp->deskripsi = $request->deskripsi;
+        $hmtp->visi = $request->visi;
+        $hmtp->misi = $request->misi;
+        $hmtp->struktur_organisasi = $request->struktur_organisasi;
+        $hmtp->id_periode = $request->id_periode;
 
         $hmtp->save();
 
-
-        return redirect()->route('hmtpadmin.hmtp.index')
+        return redirect()->route('hmtp.index')
         ->with('edit', 'pengumuman Berhasil Diedit');
     }
 
     public function destroy($id)
     {
-        hmtp::where('id', $id)->delete();
+        hmtp::findOrFail($id)->delete();
 
-        return redirect()->route('hmtpadmin.hmtp.index')
+        return redirect()->route('hmtp.index')
             ->with('delete', 'hmtp Berhasil Dihapus');
     }
 }
