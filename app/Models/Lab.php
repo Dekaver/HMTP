@@ -10,9 +10,13 @@ class Lab extends Model
     use HasFactory;
     protected $table = 'lab';
     protected $fillable = [
-        'id', 'deskripsi', 'kepala_lab', 'asisten_lab', 'kegiatan_lab'
+        'id_periode', 'deskripsi', 'kepala_lab', 'asisten_lab', 'kegiatan_lab'
     ];
 
     protected $primaryKey = 'id';
 
+    public function periode()
+    {
+        return $this->belongsTo(Periode::class, 'id_periode', 'id');
+    }
 }

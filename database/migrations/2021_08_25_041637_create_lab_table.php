@@ -18,7 +18,10 @@ class CreateLabTable extends Migration
             $table->text("deskripsi");
             $table->string("kepala_lab");
             $table->string("asisten_lab");
-            $table->string("kegiatan_lab");
+            $table->foreignId("id_periode")
+                ->constrained("periode")
+                ->onDelete("cascade")
+                ->onUpdate("cascade");
             $table->timestamps();
         });
     }
