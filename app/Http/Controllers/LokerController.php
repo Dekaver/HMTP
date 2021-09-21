@@ -46,18 +46,19 @@ class LokerController extends Controller
     {
         $Loker = Loker::find($id);
 
-        return view('admin.Loker.editLoker', compact('Loker'));
+        return $Loker;
     }
 
     public function update(Request $request, $id)
     {
 
 
-        $Loker = Loker::find($id);
-        $Loker->nama_Loker = $request->get('nama_Loker');
-        $Loker->isi = $request->get('isi');
-        $Loker->urutan = $request->get('urutan');
-
+        $Loker = Loker::findorfail($id);
+        $Loker->judul = $request->judul;
+        $Loker->posisi = $request->posisi;
+        $Loker->link = $request->link;
+        $Loker->deskripsi = $request->deskripsi;
+        $Loker->status = $request->status;
         $Loker->save();
 
 

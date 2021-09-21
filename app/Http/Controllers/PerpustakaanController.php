@@ -47,18 +47,20 @@ class PerpustakaanController extends Controller
     {
         $Perpustakaan = Perpustakaan::find($id);
 
-        return view('admin.Perpustakaan.editPerpustakaan', compact('Perpustakaan'));
+        return $Perpustakaan;
     }
 
     public function update(Request $request, $id)
     {
 
 
-        $Perpustakaan = Perpustakaan::find($id);
-        $Perpustakaan->nama_Perpustakaan = $request->get('nama_Perpustakaan');
-        $Perpustakaan->isi = $request->get('isi');
-        $Perpustakaan->urutan = $request->get('urutan');
-
+        $Perpustakaan = Perpustakaan::findOrFail($id);
+        $Perpustakaan->kategori = $request->kategori;
+        $Perpustakaan->judul = $request->judul;
+        $Perpustakaan->penulis = $request->penulis;
+        $Perpustakaan->penerbit = $request->penerbit;
+        $Perpustakaan->no_panggil = $request->no_panggil;
+        $Perpustakaan->ringkasan = $request->ringkasan;
         $Perpustakaan->save();
 
 

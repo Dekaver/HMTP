@@ -33,11 +33,6 @@
                                         <input name="judul" type="text" class="form-control">
                                     </div>
 
-                                    <h4 class="card-title">Posisi</h4>
-                                    <div class="form-group">
-                                        <input name="posisi" type="text" class="form-control">
-                                    </div>
-
                                     <h4 class="card-title">Penulis</h4>
                                     <div class="form-group">
                                         <input name="penulis" type="text" class="form-control">
@@ -50,12 +45,77 @@
 
                                     <h4 class="card-title">Nomer HP</h4>
                                     <div class="form-group">
-                                        <input name="no_panggil" type="text" class="form-control">
+                                        <input name="no_panggil" type="number" class="form-control">
                                     </div>
 
                                     <h4 class="card-title">Ringkasan</h4>
                                     <div class="form-group">
                                         <input name="ringkasan" type="text" class="form-control">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
+    <div class="modal fade" id="scrollable-modal-edit" tabindex="-1" role="dialog" aria-labelledby="scrollableModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <form method="post" id="editModalForm" action="">
+                    @csrf
+                    @method("PUT")
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="scrollableModalTitle">Ubah Data Alumni</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-sm-12 col-md-12 col-lg-12">
+                            <div class="card">
+                                <form action="{{route('Perpustakaan.store')}}" method="post">
+                                    @csrf
+                                <div class="card-body">
+                                    <h4 class="card-title">Kategori</h4>
+                                    <div class="form-group">
+                                        <select class="custom-select mr-sm-2" id="inp-kategori" name="kategori" id="inlineFormCustomSelect">
+                                            <option value="GEOTEK">GEOTEK</option>
+                                            <option value="Komik">Komik</option>
+                                        </select>
+                                    </div>
+
+                                    <h4 class="card-title">Judul</h4>
+                                    <div class="form-group">
+                                        <input name="judul" id="inp-judul" type="text" class="form-control">
+                                    </div>
+
+                                    <h4 class="card-title">Penulis</h4>
+                                    <div class="form-group">
+                                        <input name="penulis" id="inp-penulis" type="text" class="form-control">
+                                    </div>
+
+                                    <h4 class="card-title">Penerbit</h4>
+                                    <div class="form-group">
+                                        <input name="penerbit" id="inp-penerbit" type="text" class="form-control">
+                                    </div>
+
+                                    <h4 class="card-title">Nomer HP</h4>
+                                    <div class="form-group">
+                                        <input name="no_panggil" id="inp-no_panggil" type="number" class="form-control">
+                                    </div>
+
+                                    <h4 class="card-title">Ringkasan</h4>
+                                    <div class="form-group">
+                                        <input name="ringkasan" id="inp-ringkasan" type="text" class="form-control">
                                     </div>
                                 </div>
 
@@ -104,12 +164,14 @@
                                         <td>{{$item->no_panggil}}</td>
                                         <td>{{$item->ringkasan}}</td>
                                         <td style="text-align: center;">
-                                            {{-- <a href="{{route('Perpustakaan.edit',$item->id)}}" style="border-radius: 15px;" class="btn waves-effect waves-light btn-warning">
-                                            <i class="fas fa-edit"> EDIT</i>
-                                            </a> --}}
-                                            <a style="border-radius: 15px" href="{{route('Perpustakaan.edit',$item->id)}}" class="btn waves-effect waves-light btn-outline-primary pt-1 pb-1">
-                                                <i class="fas fa-edit"></i> Edit
-                                            </a>
+                                            <button type="button"
+                                            data-toggle="modal"
+                                            style="border-radius: 15px"
+                                            class="btn waves-effect waves-light btn-outline-primary pt-1 pb-1 editPerpustakaanButton"
+                                            data-target="#scrollable-modal-edit"
+                                            value="{{$item->id}}">
+                                            <i class="fas fa-edit"></i> Edit
+                                            </button>
                                             <form class="btn p-0" method="post" action="{{route('Perpustakaan.destroy',$item->id)}}">
                                                 @csrf
                                                 @method('DELETE')
@@ -141,7 +203,24 @@
         $(document).ready(function() {
             $('#myTable').DataTable();
         });
+
+        $(document).on("click", ".editPerpustakaanButton", function()
+        {
+            let id = $(this).val();
+            $.ajax({
+                method: "get",
+                url :  "Perpustakaan/"+id+"/edit",
+            }).done(function(response)
+            {
+                $("#inp-kategori").val(response.kategori);
+                $("#inp-judul").val(response.judul);
+                $("#inp-penulis").val(response.penulis);
+                $("#inp-penerbit").val(response.penerbit);
+                $("#inp-no_panggil").val(response.no_panggil);
+                $("#inp-ringkasan").val(response.ringkasan);
+                $("#editModalForm").attr("action", "/Perpustakaan/" + id)
+            });
+        });
     </script>
     @endpush
-
 </x-app-layout>

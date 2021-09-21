@@ -61,11 +61,13 @@
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
+
     <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="scrollableModalTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable" role="document">
             <div class="modal-content">
-                <form method="post" action="{{route('hmtp.store')}}">
+                <form method="post" id="editModalForm" action="{{route('hmtp.store')}}">
                     @csrf
+                    @method("PUT")
                     <div class="modal-header">
                         <h5 class="modal-title" id="scrollableModalTitle">Modal title</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -155,11 +157,11 @@
                                             {{-- <a href="{{route('hmtp.edit',$item->id)}}" style="border-radius: 15px;" class="btn waves-effect waves-light btn-warning">
                                                 <i class="fas fa-edit"> EDIT</i>
                                             </a> --}}
-                                            <button 
-                                                style="border-radius: 15px" 
+                                            <button
+                                                style="border-radius: 15px"
                                                 value="{{ $item->id}}"
                                                 class="btn waves-effect waves-light btn-outline-primary pt-1 pb-1 editHmtpButton"
-                                                data-toggle="modal" 
+                                                data-toggle="modal"
                                                 data-target="#editModal">
                                                     <i class="fas fa-edit"></i> Edit
                                             </button>

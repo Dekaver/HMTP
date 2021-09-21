@@ -80,7 +80,7 @@
 
                                 <h4 class="card-title">Semester</h4>
                                 <div class="form-group">
-                                    <select class="custom-select mr-sm-2" name="semester" id="inlineFormCustomSelect">
+                                    <select class="custom-select mr-sm-2" name="semester" id="inp-semester">
                                         <option selected="">Choose...</option>
                                         <option value="Genap">Genap</option>
                                         <option value="Ganjil">Ganjil</option>
@@ -89,7 +89,7 @@
 
                                 <h4 class="card-title">Status</h4>
                                 <div class="form-group">
-                                    <select class="custom-select mr-sm-2" name="status" id="inlineFormCustomSelect">
+                                    <select class="custom-select mr-sm-2" name="status" id="inp-status">
                                         <option selected="">Choose...</option>
                                         <option value="1">Aktif</option>
                                         <option value="0">Tidak Aktif</option>
@@ -140,13 +140,13 @@
                                             <td>{{$item->status}}</td>
 
                                             <td style="text-align: center;">
-                                            <button 
-                                                style="border-radius: 15px" 
+                                            <button
+                                                style="border-radius: 15px"
                                                 value="{{ $item->id }}"
                                                 class="btn waves-effect waves-light btn-outline-primary pt-1 pb-1 editPeriodeButton"
-                                                data-toggle="modal" 
+                                                data-toggle="modal"
                                                 data-target="#ModalEditForm">
-                                                <i class="fas fa-edit"></i>
+                                                <i class="fas fa-edit"></i> Edit
                                             </button>
                                             <form  class="btn p-0" method="post" action="{{route('periode.destroy',$item->id)}}">
                                                 @csrf
@@ -174,13 +174,13 @@
             </div>
         </div>
     </div>
-    
+
     @push('scripts')
         <script>
             $(document).ready(function() {
                 $('#myTable').DataTable();
             });
-    
+
             $(document).on("click", ".editPeriodeButton", function()
             {
                 let id = $(this).val();
@@ -191,8 +191,8 @@
                 {
                     console.log(response);
                     $("#inp-tahun").val(response.tahun);
-                    $("#inp-alamat").val(response.alamat);
-                    $("#inp-pekerjaan").val(response.pekerjaan);
+                    $("#inp-semester").val(response.semester);
+                    $("#inp-status").val(response.status);
                     $("#editModalForm").attr("action", "/periode/" + id)
                 });
             });

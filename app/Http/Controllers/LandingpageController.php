@@ -18,6 +18,8 @@ class LandingpageController extends Controller
     public function hmtp()
     {
         $hmtp = hmtp::whereId_periode(Periode::whereStatus("1")->pluck("status")->first())->first();
+// dd($hmtp);
         return view('welcome', compact('hmtp'));
+
     }
 }

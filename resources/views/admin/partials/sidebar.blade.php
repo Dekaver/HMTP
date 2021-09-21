@@ -14,7 +14,7 @@
                         aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
                             class="hide-menu">Forms </span></a>
                     <ul aria-expanded="false" class="collapse  first-level base-level-line">
-                        <li class="sidebar-item"><a href="{{route('hmtp.create')}}" class="sidebar-link"><span
+                        <li class="sidebar-item"><a href="#" class="sidebar-link"><span
                                     class="hide-menu"> HMTP
                                 </span></a>
                         </li>
@@ -39,6 +39,9 @@
                         </span></a>
                         <li class="sidebar-item"><a href="{{route('Perpustakaan.index')}}" class="sidebar-link"><span
                             class="hide-menu"> Perpustakaan
+                        </span></a>
+                        <li class="sidebar-item"><a href="{{route('alumni.index')}}" class="sidebar-link"><span
+                            class="hide-menu"> Alumni
                         </span></a>
                 </li>
                     </ul>

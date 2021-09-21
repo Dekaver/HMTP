@@ -120,19 +120,19 @@
                                         <td>{{$item->alamat}}</td>
                                         <td>{{$item->pekerjaan}}</td>
                                         <td style="text-align: center;">
-                                        <button type="button" 
-                                            data-toggle="modal" 
+                                        <button type="button"
+                                            data-toggle="modal"
                                             style="border-radius: 15px"
                                             class="btn waves-effect waves-light btn-outline-primary pt-1 pb-1 editAlumniButton"
                                             data-target="#scrollable-modal-edit"
                                             value="{{$item->id}}">
-                                            <i class="fas fa-edit"></i>
+                                            <i class="fas fa-edit"></i> Edit
                                         </button>
                                         <form  class="btn p-0" method="post" action="{{route('alumni.destroy',$item->id)}}">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" style="border-radius: 15px;" class="btn waves-effect waves-light btn-outline-secondary pt-1 pb-1">
-                                                <i class="far fa-trash-alt"></i> 
+                                                <i class="far fa-trash-alt"></i> Delete
                                             </button>
                                         </form>
                                         </td>

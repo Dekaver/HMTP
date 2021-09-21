@@ -28,7 +28,7 @@ class LabController extends Controller
                 'deskripsi' => $request->deskripsi,
                 'kepala_lab' => $request->kepala_lab,
                 'asisten_lab' => $request->asisten_lab,
-                'kegiatan_lab' => $request->kegiatan_lab,
+                'id_periode' => $request->id_periode,
             ]);
         return redirect()->route('Lab.index')
             ->with('success', 'Lab Berhasil Ditambahkan');
@@ -40,23 +40,22 @@ class LabController extends Controller
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
-
     public function edit($id)
     {
         $Lab = Lab::find($id);
 
-        return view('admin.Lab.editLab', compact('Lab'));
+        return $Lab;
     }
 
     public function update(Request $request, $id)
     {
 
 
-        $Lab = Lab::find($id);
-        $Lab->nama_Lab = $request->get('nama_Lab');
-        $Lab->isi = $request->get('isi');
-        $Lab->urutan = $request->get('urutan');
-
+        $Lab = Lab::findorfail($id);
+        $Lab->deskripsi = $request->deskripsi;
+        $Lab->kepala_lab = $request->kepala_lab;
+        $Lab->asisten_lab = $request->asisten_lab;
+        $Lab->id_periode = $request->id_periode;
         $Lab->save();
 
 
