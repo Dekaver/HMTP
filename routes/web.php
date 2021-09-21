@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AlumniController;
 use App\Http\Controllers\LandingpageController;
 use App\Http\Controllers\HmtpController;
 use App\Http\Controllers\PeriodeController;
-use App\Http\Controllers\AlumniController;
 use App\Http\Controllers\LabController;
 use App\Http\Controllers\LokerController;
 use App\Http\Controllers\PerpustakaanController;

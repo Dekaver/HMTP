@@ -20,9 +20,62 @@
                     <div class="col-sm-12 col-md-12 col-lg-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Tahun</h4>
+                                <h4 class="card-title">Tahun Periode</h4>
                                 <div class="form-group">
-                                    <input name="tahun" type="number" class="form-control">
+                                    <input name="tahun" type="text" class="form-control">
+                                </div>
+
+                                <h4 class="card-title">Semester</h4>
+                                <div class="form-group">
+                                    <select class="custom-select mr-sm-2" name="semester" id="inlineFormCustomSelect">
+                                        <option selected="">Choose...</option>
+                                        <option value="Genap">Genap</option>
+                                        <option value="Ganjil">Ganjil</option>
+                                    </select>
+                                </div>
+
+                                <h4 class="card-title">Status</h4>
+                                <div class="form-group">
+                                    <select class="custom-select mr-sm-2" name="status" id="inlineFormCustomSelect">
+                                        <option selected="">Choose...</option>
+                                        <option value="1">Aktif</option>
+                                        <option value="0">Tidak Aktif</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div class="modal fade" id="ModalEditForm" tabindex="-1" role="dialog" aria-labelledby="scrollableModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <form method="post" id="editModalForm" action="{{route('periode.store')}}">
+                    @csrf
+                    @method("PUT")
+                <div class="modal-header">
+                    <h5 class="modal-title" id="scrollableModalTitle">Edit Periode</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Tahun Periode</h4>
+                                <div class="form-group">
+                                    <input name="tahun" id="inp-tahun" type="text" class="form-control">
                                 </div>
 
                                 <h4 class="card-title">Semester</h4>
@@ -87,19 +140,20 @@
                                             <td>{{$item->status}}</td>
 
                                             <td style="text-align: center;">
-                                            {{-- <a href="{{route('periode.edit',$item->id)}}" style="border-radius: 15px;" class="btn waves-effect waves-light btn-warning">
-                                                <i class="fas fa-edit"> EDIT</i>
-                                            </a> --}}
-                                            <a style="border-radius: 15px" href="{{route('periode.edit',$item->id)}}"
-                                                class="btn waves-effect waves-light btn-outline-primary pt-1 pb-1">
-                                                <i class="fas fa-edit"></i> Edit
-                                            </a>
+                                            <button 
+                                                style="border-radius: 15px" 
+                                                value="{{ $item->id }}"
+                                                class="btn waves-effect waves-light btn-outline-primary pt-1 pb-1 editPeriodeButton"
+                                                data-toggle="modal" 
+                                                data-target="#ModalEditForm">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
                                             <form  class="btn p-0" method="post" action="{{route('periode.destroy',$item->id)}}">
                                                 @csrf
                                                 @method('DELETE')
-                                            <button type="submit" style="border-radius: 15px;" class="btn waves-effect waves-light btn-outline-secondary pt-1 pb-1">
-                                                <i class="far fa-trash-alt"></i> Delete
-                                            </button>
+                                                <button type="submit" style="border-radius: 15px;" class="btn waves-effect waves-light btn-outline-secondary pt-1 pb-1">
+                                                    <i class="far fa-trash-alt"></i> Delete
+                                                </button>
                                             </form>
                                             </td>
                                         </tr>
@@ -120,12 +174,28 @@
             </div>
         </div>
     </div>
+    
     @push('scripts')
         <script>
             $(document).ready(function() {
                 $('#myTable').DataTable();
             });
+    
+            $(document).on("click", ".editPeriodeButton", function()
+            {
+                let id = $(this).val();
+                $.ajax({
+                    method: "get",
+                    url :  "periode/"+id+"/edit",
+                }).done(function(response)
+                {
+                    console.log(response);
+                    $("#inp-tahun").val(response.tahun);
+                    $("#inp-alamat").val(response.alamat);
+                    $("#inp-pekerjaan").val(response.pekerjaan);
+                    $("#editModalForm").attr("action", "/periode/" + id)
+                });
+            });
         </script>
     @endpush
-
 </x-app-layout>
