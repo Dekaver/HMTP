@@ -9,20 +9,20 @@
             <!-- ============================================================== -->
             <div class="navbar-brand">
                 <!-- Logo icon -->
-                <a href="{{ route('dashboard') }}">
+                <a href="{{ route('/') }}">
                     <b class="logo-icon">
                         <!-- Dark Logo icon -->
-                        <img src="{{ asset('assets/images/logo-icon.png') }}" alt="homepage" class="dark-logo" />
+                        <img src="{{ asset('assets/img/HMTP.jpg') }}" alt="homepage" class="dark-logo" width="45px" />  HMTP Admin
                         <!-- Light Logo icon -->
-                        <img src="{{ asset('assets/images/logo-icon.png') }}" alt="homepage" class="light-logo" />
+                        {{-- <img src="{{ asset('assets/images/logo-icon.png') }}" alt="homepage" class="light-logo" /> --}}
                     </b>
                     <!--End Logo icon -->
                     <!-- Logo text -->
                     <span class="logo-text">
                         <!-- dark Logo text -->
-                        <img src="{{ asset('assets/images/logo-text.png') }}" alt="homepage" class="dark-logo" />
+                        {{-- <img src="{{ asset('assets/images/logo-text.png') }}" alt="homepage" class="dark-logo" />
                         <!-- Light Logo text -->
-                        <img src="{{ asset('assets/images/logo-light-text.png') }}" class="light-logo" alt="homepage" />
+                        <img src="{{ asset('assets/images/logo-light-text.png') }}" class="light-logo" alt="homepage" /> --}}
                     </span>
                 </a>
             </div>
@@ -174,7 +174,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
-                        <img src="{{ asset('assets/images/users/profile-pic.jpg') }}" alt="user" class="rounded-circle"
+                        <img src="{{ asset('assets/images/users/custom.png') }}" alt="user" class="rounded-circle"
                             width="40">
                         <span class="ml-2 d-none d-lg-inline-block"><span>Hello,</span> <span
                                 class="text-dark">{{auth()->user()->name}}</span> <i data-feather="chevron-down"
