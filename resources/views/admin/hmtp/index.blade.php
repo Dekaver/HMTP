@@ -4,8 +4,8 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
-    <div class="modal fade" id="scrollable-modal" tabindex="-1" role="dialog" aria-labelledby="scrollableModalTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal fade bd-example-modal-lg" id="scrollable-modal" tabindex="-1" role="dialog" aria-labelledby="scrollableModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
             <div class="modal-content">
                 <form method="post" action="{{route('hmtp.store')}}">
                     @csrf
@@ -62,8 +62,8 @@
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
-    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="scrollableModalTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal fade bd-example-modal-lg" id="editModal" tabindex="-1" role="dialog" aria-labelledby="scrollableModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
             <div class="modal-content">
                 <form method="post" id="editModalForm" action="{{route('hmtp.store')}}">
                     @csrf
@@ -91,7 +91,7 @@
 
                                     <h4 class="card-title">Misi</h4>
                                     <div class="form-group">
-                                        <input name="misi" id="inp-misi" type="text" class="form-control">
+                                        <textarea class="form-control" name="misi" id="inp-misi" cols="auto" rows="3"></textarea>
                                     </div>
 
                                     <h4 class="card-title">Struktur Organisasi</h4>
@@ -214,6 +214,8 @@
                     $("#editModalForm").attr("action", "/hmtp/" + id)
                 });
             });
+
+
         </script>
     @endpush
 

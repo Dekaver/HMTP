@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AlumniController;
 use App\Http\Controllers\LandingpageController;
 use App\Http\Controllers\HmtpController;
+use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\PeriodeController;
 use App\Http\Controllers\LabController;
 use App\Http\Controllers\LokerController;
@@ -21,13 +22,16 @@ use App\Http\Controllers\PerpustakaanController;
 
 
 
-Route::get('/', [LandingpageController::class, 'hmtp'])->name('/');
+Route::middleware(['trackuser'])->group(function (){
+    Route::get('/', [LandingpageController::class, 'hmtp'])->name('/');
+});
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth'])->prefix("admin")->group(function () {
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
     })->middleware(['auth'])->name('dashboard');
     Route::resource('hmtp', HmtpController::class);
+    Route::resource('kegiatan', KegiatanController::class);
     Route::resource('Lab', LabController::class);
     Route::resource('Loker', LokerController::class);
     Route::resource('periode', PeriodeController::class);
