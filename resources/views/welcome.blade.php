@@ -1,8 +1,8 @@
 @section('hero')
 <section id="hero" class="d-flex align-items-center">
     <div class="container text-center position-relative" data-aos="fade-in" data-aos-delay="200">
-        <h1>HIMPUNAN MAHASISWA PERTAMBANGAN</h1>
-        <h2>UNIVERSITAS MULAWARMAN</h2>
+        <h1 class="kuning-telur">HIMPUNAN MAHASISWA PERTAMBANGAN</h1>
+        <h2 class="kuning-telur"><ins>UNIVERSITAS MULAWARMAN</ins></h2>
         <a href="#about" class="btn-get-started scrollto">Get Started</a>
     </div>
 </section>
@@ -10,10 +10,10 @@
 
 <x-guest-layout>
         <!-- ======= Clients Section ======= -->
-        <section id="clients" class="clients">
+        <section id="clients" class="clients bg-kuning-telur">
             <div class="container">
 
-            <div class="row">
+            <div class="">
 
                 <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center" data-aos="zoom-in" data-aos-delay="100">
                 {{-- <img src="Bethany/assets/img/clients/client-1.png" class="img-fluid" alt=""> --}}
@@ -51,8 +51,8 @@
                 <div class="row content">
                     <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
                         <h2>Struktur Organisasi</h2>
-                        {{-- <img src="{{ asset('assets/img/struktur-organisasi.png') }}" alt="" height="250"> --}}
-                        <h3>{{$hmtp->struktur_organisasi}}</h3>
+                        <img src="{{ asset('storage/struktur-organisasi/'.$hmtp->struktur_organisasi) }}" alt="" width="400">
+                        {{-- <h3>{{}}</h3> --}}
                     </div>
                     <div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-left" data-aos-delay="200">
                         <h3>Visi</h3>
@@ -60,14 +60,12 @@
                             {{$hmtp->visi}}
                         </p>
                         <h3>Misi</h3>
-                        {{-- <ul>
+                        {{-- <ol>
                             <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequa</li>
                             <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
                             <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in</li>
-                        </ul> --}}
-                        <p class="fst-italic">
-                            {{$hmtp->misi}}
-                        </p>
+                        </ol> --}}
+                        {!! $hmtp->misi !!}
                     </div>
                 </div>
             </div>
@@ -76,27 +74,25 @@
         <!-- ======= Counts Section ======= -->
         <section id="counts" class="counts">
             <div class="container">
-
             <div class="row counters">
-
                 <div class="col-lg-3 col-6 text-center">
-                <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-                <p>Clients</p>
+                <span data-purecounter-start="0" data-purecounter-end="{{$trackuser->count()}}" data-purecounter-duration="1" class="purecounter"></span>
+                <p>Total Pengunjung</p>
                 </div>
 
                 <div class="col-lg-3 col-6 text-center">
-                <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-                <p>Projects</p>
+                <span data-purecounter-start="0" data-purecounter-end="{{$trackuser_currentmonth->count()}}" data-purecounter-duration="1" class="purecounter"></span>
+                <p>Pengunjung Bulan ini</p>
                 </div>
 
                 <div class="col-lg-3 col-6 text-center">
-                <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter"></span>
-                <p>Hours Of Support</p>
+                <span data-purecounter-start="0" data-purecounter-end="{{$trackuser_currentday->count()}}" data-purecounter-duration="1" class="purecounter"></span>
+                <p>Pengunjung Hari ini</p>
                 </div>
 
                 <div class="col-lg-3 col-6 text-center">
-                <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
-                <p>Hard Workers</p>
+                <span data-purecounter-start="0" id="clock" data-purecounter-end="24" data-purecounter-duration="1" class="purecounter"></span>
+                <p>Waktu Indonesia Tengah</p>
                 </div>
 
             </div>
@@ -613,4 +609,21 @@
 
             </div>
         </section><!-- End Contact Section -->
+
+    @push('script')
+    <script src="{{ asset('src/assets/libs/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ asset('src/assets/libs/moment/min/moment.min.js') }}"></script>
+    <script>
+        function displayTime() {
+            var time = moment().format('HH:mm:ss');
+            $('#clock').html(time);
+            setTimeout(displayTime, 1000);
+        }
+
+        $(document).ready(function() {
+            displayTime();
+        });
+    </script>
+        
+    @endpush
 </x-guest-layout>

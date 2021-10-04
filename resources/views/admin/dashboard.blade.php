@@ -24,8 +24,8 @@
             <div class="card-body">
                 <div class="d-flex d-lg-flex d-md-block align-items-center">
                     <div>
-                        <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium">{{$trackuser_currentmounth->count()}}</h2>
-                        <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Total Access This Mounth
+                        <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium">{{$trackuser_currentday->count()}}</h2>
+                        <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Total Access This Day
                         </h6>
                     </div>
                     <div class="ml-auto mt-md-3 mt-lg-0">
@@ -39,7 +39,7 @@
                 <div class="d-flex d-lg-flex d-md-block align-items-center">
                     <div>
                         <div class="d-inline-flex align-items-center">
-                            <h2 class="text-dark mb-1 font-weight-medium">{{$trackuser_currentmounth->count()}}</h2>
+                            <h2 class="text-dark mb-1 font-weight-medium">{{$trackuser_currentmonth->count()}}</h2>
                         </div>
                         <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Total Access This month</h6>
                     </div>

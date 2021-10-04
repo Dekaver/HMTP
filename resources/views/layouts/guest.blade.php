@@ -15,20 +15,8 @@
 
 <body>
     <!-- ======= Header ======= -->
-    <header id="header" class="fixed-top d-flex align-items-center">
-        <div class="container">
-            <div class="header-container d-flex align-items-center justify-content-between">
-            <div class="logo">
-                <h1 class="text-light"><a href="index.html"><span>HMTP</span></a></h1>
-                <!-- Uncomment below if you prefer to use an image logo -->
-                <!-- <a href="index.html"><img src="Bethany/assets/img/logo.png" alt="" class="img-fluid"></a>-->
-            </div>
-
-            @include('partials.navbar')
-
-            </div><!-- End Header Container -->
-        </div>
-    </header>
+    
+    @include('partials.navbar')
     <!-- End Header -->
 
     <!-- ======= Hero Section ======= -->

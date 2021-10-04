@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\hmtp;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class HmtpController extends Controller
 {
@@ -23,15 +24,21 @@ class HmtpController extends Controller
         $request->validate([
             'deskripsi' => 'required',
             'id_periode' => 'required',
-            'struktur_organisasi' => 'required',
+            'struktur_organisasi' => 'required|file|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'visi' => 'required',
             'misi' => 'required',
         ]);
+        //save file
+        $date = date("his");
+        $extension = $request->file('struktur_organisasi')->extension();
+        $file_name = "Struktur_organisasi_$date.$extension";
+        $path = $request->file('struktur_organisasi')->storeAs('public/struktur-organisasi', $file_name);
+        //end save file
         $hmtp = hmtp::create([
             'deskripsi' => $request->deskripsi,
             'visi' => $request->visi,
             'misi' => $request->misi,
-            'struktur_organisasi' => $request->struktur_organisasi,
+            'struktur_organisasi' => $file_name,
             'id_periode' => $request->id_periode,
         ]);
         return redirect()->route('hmtp.index')
@@ -40,8 +47,7 @@ class HmtpController extends Controller
     public function show($id)
     {
         $hmtps = hmtp::where('id', $id)->first();
-        return view('hmtpadmin.hmtp.show', compact('hmtp'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('hmtpadmin.hmtp.show', compact('hmtp'));
     }
 
 
@@ -57,16 +63,27 @@ class HmtpController extends Controller
         $request->validate([
             'deskripsi' => 'required',
             'id_periode' => 'required',
-            'struktur_organisasi' => 'required',
+            'struktur_organisasi' => 'required|file|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'visi' => 'required',
             'misi' => 'required',
         ]);
-
         $hmtp = hmtp::findOrFail($id);
+
+        if ($request->has("Struktur_organisasi")) {
+
+            Storage::delete("public/struktur-organisasi/$hmtp->struktur_organisasi");
+
+            $date = date("his");
+            $extension = $request->file('struktur_organisasi')->extension();
+            $file_name = "Struktur_organisasi_$date.$extension";
+            $path = $request->file('struktur_organisasi')->storeAs('public/struktur-organisasi', $file_name);
+            
+            $hmtp->struktur_organisasi = $file_name;
+        }
+
         $hmtp->deskripsi = $request->deskripsi;
         $hmtp->visi = $request->visi;
         $hmtp->misi = $request->misi;
-        $hmtp->struktur_organisasi = $request->struktur_organisasi;
         $hmtp->id_periode = $request->id_periode;
 
         $hmtp->save();
@@ -77,7 +94,9 @@ class HmtpController extends Controller
 
     public function destroy($id)
     {
-        hmtp::findOrFail($id)->delete();
+        $hmtp = hmtp::findOrFail($id);
+        Storage::delete("public/struktur-organisasi/$hmtp->struktur_organisasi");
+        $hmtp->delete();
 
         return redirect()->route('hmtp.index')
             ->with('delete', 'hmtp Berhasil Dihapus');

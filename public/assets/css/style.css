@@ -13,6 +13,13 @@ body {
   color: #444444;
 }
 
+.kuning-telur{
+  color: #ffdc41 !important;
+}
+.bg-kuning-telur{
+  background-color: #ffdc41 !important;
+}
+
 a {
   color: #ffdc41;
   text-decoration: none;
