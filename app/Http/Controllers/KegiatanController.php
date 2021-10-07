@@ -21,18 +21,23 @@ class kegiatanController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'deskripsi' => 'required',
             'id_periode' => 'required',
-            'struktur_organisasi' => 'required',
-            'visi' => 'required',
-            'misi' => 'required',
+            'nama' => 'required',
+            'foto' => 'required',
+            'kategori' => 'required',
         ]);
+
+        
+        $date = date("his");
+        $extension = $request->file('foto')->extension();
+        $file_name = "Kegiatan_$date.$extension";
+        $path = $request->file('foto')->storeAs('public/kegiatan', $file_name);
+
         $kegiatan = Kegiatan::create([
-            'deskripsi' => $request->deskripsi,
-            'visi' => $request->visi,
-            'misi' => $request->misi,
-            'struktur_organisasi' => $request->struktur_organisasi,
             'id_periode' => $request->id_periode,
+            'nama' => $request->nama,
+            'foto' => $file_name,
+            'kategori' => $request->kategori,
         ]);
         return redirect()->route('kegiatan.index')
             ->with('success', 'kegiatan Berhasil Ditambahkan');

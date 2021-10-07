@@ -18,16 +18,16 @@
                     <div class="card-body">
                         <h4 class="card-title">Data HMTP</h4>
                         <div class="table-responsive">
-                            <table id="myTable" class="table table-sm-td table-hover table-striped table-bordered no-wrap">
+                            <table id="myTable" class="table table-sm-td table-hover table-striped table-bordered">
                                 <thead class="thead-primary text-center">
                                     <tr>
-                                        <th>No.</th>
-                                        <th>Periode</th>
-                                        <th>Deskripsi</th>
-                                        <th>Visi</th>
-                                        <th>Misi</th>
-                                        <th>Struktur Organisasi</th>
-                                        <th>Action</th>
+                                        <th class="">No.</th>
+                                        <th class="col">Periode</th>
+                                        <th class="col">Deskripsi</th>
+                                        <th class="col">Visi</th>
+                                        <th class="col">Misi</th>
+                                        <th class="col">Struktur Organisasi</th>
+                                        <th class="col">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -35,9 +35,9 @@
                                     <tr>
                                         <td style="text-align: center;">{{ $loop->iteration}}</td>
                                         <td>{{$item->periode->tahun}}</td>
-                                        <td>{{$item->deskripsi}}</td>
-                                        <td>{{$item->visi}}</td>
-                                        <td>{{$item->misi}}</td>
+                                        <td>{{ substr($item->deskripsi, 0, 50)}}...</td>
+                                        <td>{{ substr($item->visi, 0, 50)}}...</td>
+                                        <td>{{ substr($item->misi, 0, 50)}}...</td>
                                         <td>{{$item->struktur_organisasi}}</td>
                                         <td style="text-align: center;">
                                         {{-- <a href="{{route('hmtp.edit',$item->id)}}" style="border-radius: 15px;" class="btn waves-effect waves-light btn-warning">
@@ -153,7 +153,7 @@
     
     <div class="modal fade bd-example-modal-lg" id="scrollable-modal-edit" tabindex="-1" role="dialog" aria-labelledby="scrollableModalTitleEdit" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-            <form method="post" class="w-100" action="{{route('hmtp.store')}}">
+            <form method="post" class="w-100" action="" id="editHmtp" enctype="multipart/form-data">
                 @csrf
                 @method("PUT")
                 <div class="modal-content">
@@ -170,7 +170,7 @@
                                 <div class="card-body">
                                     <h4 class="card-title">Deskripsi</h4>
                                     <div class="form-group">
-                                        <input name="deskripsi" id="inp- name" type="text" class="form-control">
+                                        <input name="deskripsi" id="inp-deskripsi" type="text" class="form-control">
                                     </div>
 
                                     <h4 class="card-title">Visi</h4>
@@ -184,17 +184,17 @@
                                     </div>
 
                                     <h4 class="card-title">Struktur Organisasi</h4>
-                                    <label class="block form-group cursor-pointer">
+                                    <label class="form-group cursor-pointer">
                                         <div class="w-100">
-                                          <img class="object-contain" height="100" src="{{asset('assets/img/upload-image.png')}}" id="preview">
+                                          <img class="object-contain" height="100" src="{{asset('assets/img/upload-image.png')}}" id="previewEdit">
                                         </div>
                                         <input 
                                           class="form-control"
                                           type="file" 
                                           aria-hidden="true"
-                                          name="foto"
+                                          name="struktur_organisasi"
                                           id="image"
-                                          onchange="document.getElementById('preview').src = window.URL.createObjectURL(this.files[0])">
+                                          onchange="document.getElementById('previewEdit').src = window.URL.createObjectURL(this.files[0])">
                                     </label>
 
                                     <h4 class="card-title">Periode</h4>
@@ -233,13 +233,13 @@
                     url :  "hmtp/"+id+"/edit",
                 }).done(function(response)
                 {
-                    console.log(response);
+                    console.log(id);
                     // $("#inp-tahun").val(response.tahun);
                     $("#inp-deskripsi").val(response.deskripsi);
                     $("#inp-visi").val(response.visi);
                     $("#inp-misi").val(response.misi);
                     $("#inp-struktur_organisasi").val(response.struktur_organisasi);
-                    $("#editModalForm").attr("action", "/hmtp/" + id)
+                    $("#editHmtp").attr("action", "/admin/hmtp/" + id)
                 });
             });
     

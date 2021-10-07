@@ -63,13 +63,13 @@ class HmtpController extends Controller
         $request->validate([
             'deskripsi' => 'required',
             'id_periode' => 'required',
-            'struktur_organisasi' => 'required|file|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'struktur_organisasi' => 'file|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'visi' => 'required',
             'misi' => 'required',
         ]);
         $hmtp = hmtp::findOrFail($id);
 
-        if ($request->has("Struktur_organisasi")) {
+        if ($request->has("struktur_organisasi")) {
 
             Storage::delete("public/struktur-organisasi/$hmtp->struktur_organisasi");
 

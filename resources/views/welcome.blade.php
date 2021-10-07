@@ -55,6 +55,7 @@
                         {{-- <h3>{{}}</h3> --}}
                     </div>
                     <div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-left" data-aos-delay="200">
+                        <p class="text-justify">{{$hmtp->deskripsi}}</p>
                         <h3>Visi</h3>
                         <p>
                             {{$hmtp->visi}}

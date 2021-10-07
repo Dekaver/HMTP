@@ -15,4 +15,14 @@ class Kegiatan extends Model
         "foto",
         "kategori",
     ];
+
+    /**
+     * Get the periode associated with the Kegiatan
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function periode()
+    {
+        return $this->belongsTo(Periode::class, 'id_periode');
+    }
 }
