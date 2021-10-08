@@ -22,12 +22,12 @@
                                 <thead class="thead-primary text-center">
                                     <tr>
                                         <th class="">No.</th>
-                                        <th class="col">Periode</th>
-                                        <th class="col">Deskripsi</th>
-                                        <th class="col">Visi</th>
-                                        <th class="col">Misi</th>
-                                        <th class="col">Struktur Organisasi</th>
-                                        <th class="col">Action</th>
+                                        <th class="">Periode</th>
+                                        <th class="col-2">Deskripsi</th>
+                                        <th class="col-2">Visi</th>
+                                        <th class="col-2">Misi</th>
+                                        <th class="col-2">Struktur Organisasi</th>
+                                        <th class="col-1">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -186,7 +186,7 @@
                                     <h4 class="card-title">Struktur Organisasi</h4>
                                     <label class="form-group cursor-pointer">
                                         <div class="w-100">
-                                          <img class="object-contain" height="100" src="{{asset('assets/img/upload-image.png')}}" id="previewEdit">
+                                          <img class="object-contain" height="100" src="" id="previewEdit">
                                         </div>
                                         <input 
                                           class="form-control"
@@ -220,6 +220,22 @@
     </div><!-- /.modal -->
     
     @push('scripts')
+    <script src="{{ asset('src/assets/libs/summernote/summernote.min.js') }}"></script>
+        <script>
+            $(document).ready(function() {
+                $('#inp-misi').summernote({
+                    tabsize: 2,
+                    height: 120,
+                    toolbar: [
+                        ['style', ['style']],
+                        ['font', ['bold', 'underline', 'clear']],
+                        ['color', ['color']],
+                        ['para', ['ul', 'ol', 'paragraph']],
+                        ['view', ['codeview', 'help']]
+                    ]
+                });
+            });
+        </script>
         <script>
             $(document).ready(function() {
                 $('#myTable').DataTable();
@@ -233,34 +249,16 @@
                     url :  "hmtp/"+id+"/edit",
                 }).done(function(response)
                 {
-                    console.log(id);
-                    // $("#inp-tahun").val(response.tahun);
+                    console.log(response);
                     $("#inp-deskripsi").val(response.deskripsi);
                     $("#inp-visi").val(response.visi);
-                    $("#inp-misi").val(response.misi);
+                    $("#inp-misi").summernote('code',response.misi);
                     $("#inp-struktur_organisasi").val(response.struktur_organisasi);
+                    $("#previewEdit").attr("src", "{{asset('storage/struktur-organisasi')}}/"+response.struktur_organisasi);
                     $("#editHmtp").attr("action", "/admin/hmtp/" + id)
                 });
             });
-    
-    
         </script>
-        <script src="{{ asset('src/assets/libs/summernote/summernote.min.js') }}"></script>
-        <script>
-            $(document).ready(function() {
-                $('.summernote').summernote({
-                    placeholder: '1. misi pertama',
-                    tabsize: 2,
-                    height: 120,
-                    toolbar: [
-                        ['style', ['style']],
-                        ['font', ['bold', 'underline', 'clear']],
-                        ['color', ['color']],
-                        ['para', ['ul', 'ol', 'paragraph']],
-                        ['view', ['codeview', 'help']]
-                    ]
-                });
-            });
-        </script>
+        
     @endpush
 </x-app-layout>

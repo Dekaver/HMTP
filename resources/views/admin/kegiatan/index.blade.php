@@ -205,22 +205,15 @@
                     url :  "kegiatan/"+id+"/edit",
                 }).done(function(response)
                 {
-                    console.log(response);
-                    // $("#inp-tahun").val(response.tahun);
+                    var src = "{{ asset('storage/kegiatan') }}/"+response.foto;
+                    console.log(src);
                     $("#inp-nama").val(response.nama);
                     $("#inp-kategori").val(response.kategori);
-                    $("#inp-foto").val(response.foto);
-                    $("#inp-img").attr("src",  );
-                    $("#editModalForm").attr("action", "/kegiatan/" + id)
+                    // $("#inp-foto").val(response.foto);
+                    $("#inp-img").attr("src", src);
+                    $("#editModalForm").attr("action", "/admin/kegiatan/" + id)
                 });
             });
-
-            inputFoto.onchange = evt => {
-                const [file] = inputFoto.files
-                if (file) {
-                    previewFoto.src = URL.createObjectURL(file)
-                }
-            }
         </script>
     @endpush
 

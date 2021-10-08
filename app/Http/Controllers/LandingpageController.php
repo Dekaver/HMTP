@@ -9,6 +9,7 @@ use App\Models\Loker;
 use App\Models\User;
 use App\Models\hmtp;
 use App\Models\Perpustakaan;
+use App\Models\Kegiatan;
 use Illuminate\Http\Request;
 
 use App\Models\Periode;
@@ -18,8 +19,11 @@ class LandingpageController extends Controller
     public function hmtp()
     {
         $hmtp = hmtp::whereId_periode(Periode::whereStatus("1")->pluck("status")->first())->first();
-// dd($hmtp);
-        return view('welcome', compact('hmtp'));
+
+        $kegiatan = Kegiatan::whereId_periode(Periode::whereStatus("1")->pluck("status")->first())->get();
+
+        $kategori = kegiatan::select(['kategori'])->groupBy("kategori")->selectRaw('count(*) as total, kategori')->get();
+        return view('welcome', compact('hmtp', 'kegiatan', 'kategori'));
 
     }
 }

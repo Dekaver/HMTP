@@ -63,7 +63,7 @@ class HmtpController extends Controller
         $request->validate([
             'deskripsi' => 'required',
             'id_periode' => 'required',
-            'struktur_organisasi' => 'file|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'struktur_organisasi' => 'file|mimes:jpg,png,jpeg,gif,svg,jfif|max:2048',
             'visi' => 'required',
             'misi' => 'required',
         ]);

@@ -60,24 +60,33 @@ class kegiatanController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'deskripsi' => 'required',
             'id_periode' => 'required',
-            'struktur_organisasi' => 'required',
-            'visi' => 'required',
-            'misi' => 'required',
+            'nama' => 'required',
+            'foto' => 'file|mimes:jpg,png,jpeg,gif,svg,jfif|max:2048',
+            'kategori' => 'required',
         ]);
 
         $kegiatan = Kegiatan::findOrFail($id);
-        $kegiatan->deskripsi = $request->deskripsi;
-        $kegiatan->visi = $request->visi;
-        $kegiatan->misi = $request->misi;
-        $kegiatan->struktur_organisasi = $request->struktur_organisasi;
-        $kegiatan->id_periode = $request->id_periode;
 
+        if ($request->has("foto")) {
+
+            Storage::delete("public/kegiatan/$kegiatan->struktur_organisasi");
+
+            $date = date("his");
+            $extension = $request->file('foto')->extension();
+            $file_name = "Kegiatan_$date.$extension";
+            $path = $request->file('foto')->storeAs('public/kegiatan', $file_name);
+            
+            $kegiatan->foto = $file_name;
+        }
+
+        $kegiatan->nama = $request->nama;
+        $kegiatan->kategori = $request->kategori;
+        $kegiatan->id_periode = $request->id_periode;
         $kegiatan->save();
 
         return redirect()->route('kegiatan.index')
-        ->with('edit', 'pengumuman Berhasil Diedit');
+        ->with('edit', 'Kegiatan Berhasil Diedit');
     }
 
     public function destroy($id)

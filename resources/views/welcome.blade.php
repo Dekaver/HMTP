@@ -102,46 +102,56 @@
         </section><!-- End Counts Section -->
 
         <!-- ======= Why Us Section ======= -->
-        <section id="why-us" class="why-us">
+        <section id="alumni" class="why-us">
             <div class="container">
 
             <div class="row">
                 <div class="col-lg-4 d-flex align-items-stretch" data-aos="fade-right">
                 <div class="content">
-                    <h3>Why Choose Bethany for your company website?</h3>
+                    <h3>Alumni</h3>
                     <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
                     Asperiores dolores sed et. Tenetur quia eos. Autem tempore quibusdam vel necessitatibus optio ad corporis.
                     </p>
                     <div class="text-center">
-                    <a href="#" class="more-btn">Learn More <i class="bx bx-chevron-right"></i></a>
+                        {{-- <a href="#" class="more-btn">Learn More <i class="bx bx-chevron-right"></i></a> --}}
                     </div>
                 </div>
                 </div>
                 <div class="col-lg-8 d-flex align-items-stretch">
                 <div class="icon-boxes d-flex flex-column justify-content-center">
                     <div class="row">
-                    <div class="col-xl-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="col-xl-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
                         <div class="icon-box mt-4 mt-xl-0">
-                        <i class="bx bx-receipt"></i>
-                        <h4>Corporis voluptates sit</h4>
-                        <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+                            <i class="bx bx-receipt"></i>
+                            <h4>Daftar Alumni</h4>
+                            <p>Cari Tau siapa saja Alumni dari Mahasiswa Teknik Pertambangan Universitas Mulawarman</p>
+                            <div class="d-flex justify-content-center">
+                                <div class="d-flex align-items-center">
+                                    <a href="#" class="btn btn-outline-warning d-flex align-items-center">More<i class="bx bx-chevron-right bx-sm m-0 p-1"></i></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-xl-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="col-xl-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
                         <div class="icon-box mt-4 mt-xl-0">
-                        <i class="bx bx-cube-alt"></i>
-                        <h4>Ullamco laboris ladore pan</h4>
-                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
+                            <i class="bx bx-cube-alt"></i>
+                            <h4>Lowongan Pekerjaan</h4>
+                            <p>Belum Punya pekerjaan bidang pertambangan, Ayo Cek Lowongan Pekerjaan Disini!</p>
+                            <div class="d-flex justify-content-center">
+                                <div class="d-flex align-items-center">
+                                    <a href="#" class="btn btn-outline-warning d-flex align-items-center">More<i class="bx bx-chevron-right bx-sm m-0 p-1"></i></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-xl-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="300">
+                    {{-- <div class="col-xl-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="300">
                         <div class="icon-box mt-4 mt-xl-0">
                         <i class="bx bx-images"></i>
                         <h4>Labore consequatur</h4>
                         <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
                         </div>
-                    </div>
+                    </div> --}}
                     </div>
                 </div><!-- End .content-->
                 </div>
@@ -169,30 +179,40 @@
 
             <div class="row">
                 <div class="col-lg-4">
-                <div class="section-title" data-aos="fade-right">
-                    <h2>Services</h2>
-                    <p>Magnam dolores commodi suscipit nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-                </div>
+                    <div class="section-title" data-aos="fade-right">
+                        <h2>Mahasiswa</h2>
+                        <p>Magnam dolores commodi suscipit nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+                    </div>
                 </div>
                 <div class="col-lg-8">
                 <div class="row">
                     <div class="col-md-6 d-flex align-items-stretch">
-                    <div class="icon-box" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="icon"><i class="bx bxl-dribbble"></i></div>
-                        <h4><a href="">Lorem Ipsum</a></h4>
-                        <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-                    </div>
+                        <div class="icon-box" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="icon"><i class="bx bx-file-find"></i></div>
+                            <h4><a href="">Jadwal Kuliah</a></h4>
+                            <p>lihat informasi jadwal kuliah program studi teknik pertambangan</p>
+                            <div class="d-flex justify-content-center">
+                                <div class="d-flex align-items-center">
+                                    <a href="#" class="btn btn-outline-warning d-flex align-items-center">More<i class="bx bx-chevron-right bx-sm m-0 p-1"></i></a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
-                    <div class="icon-box" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="icon"><i class="bx bx-file"></i></div>
-                        <h4><a href="">Sed ut perspiciatis</a></h4>
-                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
-                    </div>
+                        <div class="icon-box" data-aos="zoom-in" data-aos-delay="200">
+                            <div class="icon"><i class="bx bx-file"></i></div>
+                            <h4><a href="">kalender Akademik</a></h4>
+                            <p>lihat informasi jadwal kegiatan akademik di Universitas mulawarman</p>
+                            <div class="d-flex justify-content-center">
+                                <div class="d-flex align-items-center">
+                                    <a href="#" class="btn btn-outline-warning d-flex align-items-center">More<i class="bx bx-chevron-right bx-sm m-0 p-1"></i></a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="col-md-6 d-flex align-items-stretch mt-4">
+                    {{-- <div class="col-md-6 d-flex align-items-stretch mt-4">
                     <div class="icon-box" data-aos="zoom-in" data-aos-delay="300">
                         <div class="icon"><i class="bx bx-tachometer"></i></div>
                         <h4><a href="">Magni Dolores</a></h4>
@@ -206,7 +226,7 @@
                         <h4><a href="">Nemo Enim</a></h4>
                         <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
                     </div>
-                    </div>
+                    </div> --}}
 
                 </div>
                 </div>
@@ -228,140 +248,30 @@
                 <div class="col-lg-12 d-flex justify-content-center">
                 <ul id="portfolio-flters">
                     <li data-filter="*" class="filter-active">All</li>
-                    <li data-filter=".filter-app">App</li>
-                    <li data-filter=".filter-card">Card</li>
-                    <li data-filter=".filter-web">Web</li>
+                    @foreach ($kategori as $item)
+                        <li data-filter=".filter-{{$item->kategori}}">{{$item->kategori}}</li>
+                    @endforeach
                 </ul>
                 </div>
             </div>
 
             <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
 
-                <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                <div class="portfolio-wrap">
-                    <img src="Bethany/assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                    <h4>App 1</h4>
-                    <p>App</p>
-                    <div class="portfolio-links">
-                        <a href="Bethany/assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
-                        <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                @foreach ($kegiatan as $item)
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-{{$item->kategori}}">
+                        <div class="portfolio-wrap">
+                            <img src="{{ asset('storage/kegiatan/'.$item->foto) }}" class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                <h4>{{$item->nama}}</h4>
+                                {{-- <p>App</p> --}}
+                                <div class="portfolio-links">
+                                    <a href="{{ asset('storage/kegiatan/'.$item->foto) }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
+                                    {{-- <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a> --}}
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    </div>
-                </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                <div class="portfolio-wrap">
-                    <img src="Bethany/assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                    <h4>Web 3</h4>
-                    <p>Web</p>
-                    <div class="portfolio-links">
-                        <a href="Bethany/assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                        <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                    </div>
-                    </div>
-                </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                <div class="portfolio-wrap">
-                    <img src="Bethany/assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                    <h4>App 2</h4>
-                    <p>App</p>
-                    <div class="portfolio-links">
-                        <a href="Bethany/assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
-                        <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                    </div>
-                    </div>
-                </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                <div class="portfolio-wrap">
-                    <img src="Bethany/assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                    <h4>Card 2</h4>
-                    <p>Card</p>
-                    <div class="portfolio-links">
-                        <a href="Bethany/assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>
-                        <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                    </div>
-                    </div>
-                </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                <div class="portfolio-wrap">
-                    <img src="Bethany/assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                    <h4>Web 2</h4>
-                    <p>Web</p>
-                    <div class="portfolio-links">
-                        <a href="Bethany/assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a>
-                        <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                    </div>
-                    </div>
-                </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                <div class="portfolio-wrap">
-                    <img src="Bethany/assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                    <h4>App 3</h4>
-                    <p>App</p>
-                    <div class="portfolio-links">
-                        <a href="Bethany/assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
-                        <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                    </div>
-                    </div>
-                </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                <div class="portfolio-wrap">
-                    <img src="Bethany/assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                    <h4>Card 1</h4>
-                    <p>Card</p>
-                    <div class="portfolio-links">
-                        <a href="Bethany/assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>
-                        <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                    </div>
-                    </div>
-                </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                <div class="portfolio-wrap">
-                    <img src="Bethany/assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                    <h4>Card 3</h4>
-                    <p>Card</p>
-                    <div class="portfolio-links">
-                        <a href="Bethany/assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
-                        <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                    </div>
-                    </div>
-                </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                <div class="portfolio-wrap">
-                    <img src="Bethany/assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                    <h4>Web 3</h4>
-                    <p>Web</p>
-                    <div class="portfolio-links">
-                        <a href="Bethany/assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                        <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                    </div>
-                    </div>
-                </div>
-                </div>
+                @endforeach
 
             </div>
 
