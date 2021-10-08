@@ -33,12 +33,13 @@
             <div class="col-lg-2 col-md-6 footer-links">
                 <h4>Temukan Kami</h4>
                 <ul>
-                    <li><a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                    <li><a href="http://www.s1tambang.ft.unmul.ac.id/" class="twitter"><i class="bx bx-world"></i></a>
+                        <a href="https://www.facebook.com/hmtp.unmul.3" class="facebook"><i class="bx bxl-facebook"></i></a>
+                        <a href="https://www.instagram.com/hmtp_unmul/?hl=id" class="instagram"><i class="bx bxl-instagram"></i></a>
                     </li>
-                    <li><a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                    <li>
+                        {{-- <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a> --}}
+                        {{-- <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a> --}}
                     </li>
                 </ul>
             </div>
@@ -49,7 +50,7 @@
         </div>
     </div>
 
-    <div class="container d-md-flex py-4">
+    {{-- <div class="container d-md-flex py-4">
 
         <div class="me-md-auto text-center text-md-start">
         <div class="copyright">
@@ -70,5 +71,5 @@
         <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
         <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
         </div>
-    </div>
+    </div> --}}
 </footer>

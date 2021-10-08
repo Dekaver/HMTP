@@ -24,6 +24,9 @@ use App\Http\Controllers\PerpustakaanController;
 
 Route::middleware(['trackuser'])->group(function (){
     Route::get('/', [LandingpageController::class, 'hmtp'])->name('/');
+    Route::post('forms/contact', function (){
+        return "success";
+    })->name('/');
 });
 
 Route::middleware(['auth'])->prefix("admin")->group(function () {

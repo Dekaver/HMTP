@@ -1,4 +1,8 @@
 <!-- Vendor JS Files -->
+<script src="{{ asset('src/assets/libs/jquery/dist/jquery.min.js') }}"></script>
+<script src="{{ asset('src/assets/libs/popper.js/dist/umd/popper.min.js') }}"></script>
+<script src="{{ asset('src/assets/libs/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+
 <script src="{{ asset('assets/vendor/aos/aos.js')}} "></script>
 <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}} "></script>
 <script src="{{ asset('assets/vendor/glightbox/js/glightbox.min.js')}} "></script>

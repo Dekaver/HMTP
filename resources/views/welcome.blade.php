@@ -474,26 +474,11 @@
                 <div class="info mt-4">
                     <i class="bi bi-geo-alt"></i>
                     <h4>Location:</h4>
-                    <p>A108 Adam Street, New York, NY 535022</p>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6 mt-4">
-                    <div class="info">
-                        <i class="bi bi-envelope"></i>
-                        <h4>Email:</h4>
-                        <p>info@example.com</p>
-                    </div>
-                    </div>
-                    <div class="col-lg-6">
-                    <div class="info w-100 mt-4">
-                        <i class="bi bi-phone"></i>
-                        <h4>Call:</h4>
-                        <p>+1 5589 55488 55s</p>
-                    </div>
-                    </div>
+                    <p>Jl. Sambaliung, Sempaja Sel., Kec. Samarinda Utara, Kota Samarinda, Kalimantan Timur 75242, Indonesia</p>
                 </div>
 
-                <form action="forms/contact.php" method="post" role="form" class="php-email-form mt-4">
+                <form action="forms/contact" id="csForm" method="post" role="form" class="php-email-form mt-4">
+                    @csrf
                     <div class="row">
                     <div class="col-md-6 form-group">
                         <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
@@ -513,7 +498,7 @@
                     <div class="error-message"></div>
                     <div class="sent-message">Your message has been sent. Thank you!</div>
                     </div>
-                    <div class="text-center"><button type="submit">Send Message</button></div>
+                    <div class="text-center"><button type="submit" id="modalllll">Send Message</button></div>
                 </form>
                 </div>
             </div>
@@ -521,8 +506,32 @@
             </div>
         </section><!-- End Contact Section -->
 
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="alertdialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Are You Human?</h5>
+                
+                <span class="btn hideModal p-0"><i class="bx bx-x h3 p-0 text-danger"></i></span>
+            </div>
+            <div class="modal-body">
+                <p>Masukkan Kode Berikut "<span id="kodever"></span>"</p>
+                <div class="form-group">
+                    <label for="human" class="col-form-label">Recipient:</label>
+                    <input type="text" class="form-control" id="human" required>
+                    <small class="text-danger" id="noteHuman"></small>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary hideModal">Close</button>
+                <button type="button" id="submit-test" class="btn btn-primary">Send message</button>
+            </div>
+            </div>
+        </div>
+        </div>
     @push('script')
-    <script src="{{ asset('src/assets/libs/jquery/dist/jquery.min.js') }}"></script>
+    {{-- <script src="{{ asset('src/assets/libs/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ asset('src/assets/libs/popper.js/dist/popper.min.js') }}"></script> --}}
     <script src="{{ asset('src/assets/libs/moment/min/moment.min.js') }}"></script>
     <script>
         function displayTime() {
@@ -534,6 +543,27 @@
         $(document).ready(function() {
             displayTime();
         });
+        
+        $('#submit-test').click(function(event) {
+            event.preventDefault();
+            if( $('#human').val().toLowerCase() !== $("#kodever").html() ) {
+                $("#noteHuman").html("try again!");
+                $('#exampleModal').modal('hide');
+            } else {
+                $("#csForm").submit();
+            }
+        });
+        
+        $("#modalllll").click(function(){
+            let s = (Math.random() + 1).toString(36).substring(2);
+            $("#kodever").html(s);
+            $('#exampleModal').modal('show');
+        });
+
+        $(".hideModal").click(function(){
+            $('#exampleModal').modal('hide');
+        });
+        
     </script>
         
     @endpush
