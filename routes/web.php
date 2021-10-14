@@ -52,21 +52,21 @@ Route::get('/clear-cache', function() {
 
 Route::get('/clear-all-cache', function() {
     $exitCode = Artisan::call('cache:clear');
-    return '<h1>Cache facade value cleared</h1>';
+    echo '<h1>Cache facade value cleared</h1>';
     $exitCode = Artisan::call('optimize');
-    return '<h1>Reoptimized class loader</h1>';
+    echo '<h1>Reoptimized class loader</h1>';
     
     $exitCode = Artisan::call('route:cache');
-    return '<h1>Routes cached</h1>';
+    echo '<h1>Routes cached</h1>';
 
     $exitCode = Artisan::call('route:clear');
-    return '<h1>Route cache cleared</h1>';
+    echo '<h1>Route cache cleared</h1>';
 
     $exitCode = Artisan::call('view:clear');
-    return '<h1>View cache cleared</h1>';
+    echo '<h1>View cache cleared</h1>';
 
     $exitCode = Artisan::call('config:cache');
-    return '<h1>Clear Config cleared</h1>';
+    echo '<h1>Clear Config cleared</h1>';
 });
 
 //Reoptimized class loader:
