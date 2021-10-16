@@ -43,6 +43,11 @@ Route::middleware(['auth'])->prefix("admin")->group(function () {
     Route::resource('Perpustakaan', PerpustakaanController::class);
 });
 
+// Landingpage 
+Route::get('/alumni', [LandingpageController::class, 'alumni']);
+Route::get('/lowongan-kerja', [LandingpageController::class, 'loker']);
+
+
 require __DIR__.'/auth.php';
 
 //Clear Cache facade value:
