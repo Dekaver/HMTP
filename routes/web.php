@@ -34,6 +34,7 @@ Route::middleware(['auth'])->prefix("admin")->group(function () {
         return view('admin.dashboard');
     })->middleware(['auth'])->name('dashboard');
     Route::resource('hmtp', HmtpController::class);
+    Route::resource('berita', BeritaController::class);
     Route::resource('kegiatan', KegiatanController::class);
     Route::resource('Lab', LabController::class);
     Route::resource('Loker', LokerController::class);
