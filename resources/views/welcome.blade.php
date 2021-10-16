@@ -2,7 +2,7 @@
 <section id="hero" class="d-flex align-items-center">
     <div class="container text-center position-relative" data-aos="fade-in" data-aos-delay="200">
         <h1 class="kuning-telur">HIMPUNAN MAHASISWA PERTAMBANGAN</h1>
-        <h2 class="kuning-telur"><ins>UNIVERSITAS MULAWARMAN</ins></h2>
+        <h2 class="kuning-telur">UNIVERSITAS MULAWARMAN</h2>
         <a href="#about" class="btn-get-started scrollto">Get Started</a>
     </div>
 </section>
@@ -299,11 +299,11 @@
                             <div class="testimonial-item">
                             <p>
                                 <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                                {{$item->isi}}
                                 <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                             </p>
-                            <img src="Bethany/assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                            <h3>Saul Goodman</h3>
+                            <img src="{{asset('storage/berita/'.$item->foto)}}" class="testimonial-img" alt="">
+                            <h3>{{$item->judul}}</h3>
                             <h4>Ceo &amp; Founder</h4>
                             </div>
                         </div><!-- End testimonial item -->  
@@ -319,7 +319,7 @@
         </section><!-- End Testimonials Section -->
 
         <!-- ======= Team Section ======= -->
-        <section id="team" class="team">
+        {{-- <section id="team" class="team">
             <div class="container">
 
             <div class="row">
@@ -406,7 +406,8 @@
             </div>
 
             </div>
-        </section><!-- End Team Section -->
+        </section> --}}
+        <!-- End Team Section -->
 
         <!-- ======= Contact Section ======= -->
         <section id="contact" class="contact">
