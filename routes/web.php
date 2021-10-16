@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AlumniController;
+use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\LandingpageController;
 use App\Http\Controllers\HmtpController;
 use App\Http\Controllers\KegiatanController;

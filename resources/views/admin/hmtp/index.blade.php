@@ -223,7 +223,7 @@
     <script src="{{ asset('src/assets/libs/summernote/summernote.min.js') }}"></script>
         <script>
             $(document).ready(function() {
-                $('#inp-misi').summernote({
+                $('.summernote').summernote({
                     tabsize: 2,
                     height: 120,
                     toolbar: [
