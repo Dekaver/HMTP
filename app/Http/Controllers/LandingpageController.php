@@ -29,14 +29,14 @@ class LandingpageController extends Controller
     }
     public function alumni()
     {
-        $alumni = alumni::paginate('5');
+        $alumni = alumni::paginate('10');
 
         return view('front.alumni.index', compact('alumni'));
 
     }
     public function loker()
     {
-        $loker = loker::paginate('5');
+        $loker = loker::paginate('10');
 
         return view('front.loker.index', compact('loker'));
 
