@@ -1,5 +1,18 @@
 @push('css')
 <link href="{{ asset('src/assets/libs/summernote/summernote.min.css') }}" rel="stylesheet">
+
+<style>
+    .note-editor .note-toolbar{
+        background: #000;
+    }
+    .modal-lg{
+        max-width: 90%;
+    }
+
+    .note-editor.fullscreen .note-editing-area{
+        background-color: #fff;
+    }
+</style>
 @endpush
 
 <x-app-layout>
@@ -43,21 +56,24 @@
                                         {{-- <a href="{{route('hmtp.edit',$item->id)}}" style="border-radius: 15px;" class="btn waves-effect waves-light btn-warning">
                                             <i class="fas fa-edit"> EDIT</i>
                                         </a> --}}
-                                        <button
-                                            style="border-radius: 15px"
-                                            value="{{ $item->id}}"
-                                            class="btn waves-effect waves-light btn-outline-primary pt-1 pb-1 editHmtpButton"
-                                            data-toggle="modal"
-                                            data-target="#scrollable-modal-edit">
-                                                <i class="fas fa-edit"></i> Edit
-                                        </button>
-                                        <form  class="btn p-0" method="post" action="{{route('hmtp.destroy',$item->id)}}">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" style="border-radius: 15px;" class="btn waves-effect waves-light btn-outline-secondary pt-1 pb-1">
-                                                <i class="far fa-trash-alt"></i> Delete
+                                        <div class="row m-0">
+
+                                            <button
+                                                style="border-radius: 15px"
+                                                value="{{ $item->id}}"
+                                                class="btn waves-effect waves-light btn-outline-primary pt-1 pb-1 editHmtpButton"
+                                                data-toggle="modal"
+                                                data-target="#scrollable-modal-edit">
+                                                    <i class="fas fa-edit"></i>
                                             </button>
-                                        </form>
+                                            <form  class="btn p-0" method="post" action="{{route('hmtp.destroy',$item->id)}}">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" style="border-radius: 15px;" class="btn waves-effect waves-light btn-outline-danger pt-1 pb-1">
+                                                    <i class="far fa-trash-alt"></i>
+                                                </button>
+                                            </form>
+                                        </div>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -84,7 +100,7 @@
                 @csrf
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="scrollableModalTitle">Modal title</h5>
+                        <h5 class="modal-title" id="scrollableModalTitle">Tambah HMTP</h5>
                         <button type="button" class="close" data-dismiss="modal"
                             aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -113,17 +129,19 @@
                                     </div>
 
                                     <h4 class="card-title">Struktur Organisasi</h4>
-                                    <label class="block form-group cursor-pointer">
+                                    <label class="block form-group cursor-pointer w-100">
                                         <div class="w-100">
                                           <img class="object-contain" height="100" src="{{asset('assets/img/upload-image.png')}}" id="preview">
                                         </div>
-                                        <input 
-                                          class="form-control"
-                                          type="file" 
-                                          aria-hidden="true"
-                                          name="struktur_organisasi"
-                                          id="image"
-                                          onchange="document.getElementById('preview').src = window.URL.createObjectURL(this.files[0])">
+                                        <div class="input-group ">
+                                            <div class="custom-file">
+                                              <input type="file" name="struktur_organisasi" onchange="document.getElementById('preview').src = window.URL.createObjectURL(this.files[0])" class="custom-file-input" id="image">
+                                              <label class="custom-file-label" for="image">Choose file</label>
+                                            </div>
+                                            <div class="input-group-append">
+                                              <span class="input-group-text"></span>
+                                            </div>
+                                        </div>
                                         <X-validate-error-message name="struktur_organisasi"/>
                                     </label>
 
@@ -158,7 +176,7 @@
                 @method("PUT")
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="scrollableModalTitleEdit">Modal title</h5>
+                        <h5 class="modal-title" id="scrollableModalTitleEdit">Edit HMTP</h5>
                         <button type="button" class="close" data-dismiss="modal"
                             aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -184,17 +202,19 @@
                                     </div>
 
                                     <h4 class="card-title">Struktur Organisasi</h4>
-                                    <label class="form-group cursor-pointer">
+                                    <label class="form-group cursor-pointer w-100">
                                         <div class="w-100">
                                           <img class="object-contain" height="100" src="" id="previewEdit">
                                         </div>
-                                        <input 
-                                          class="form-control"
-                                          type="file" 
-                                          aria-hidden="true"
-                                          name="struktur_organisasi"
-                                          id="image"
-                                          onchange="document.getElementById('previewEdit').src = window.URL.createObjectURL(this.files[0])">
+                                        <div class="input-group w-100">
+                                            <div class="custom-file">
+                                              <input type="file" name="struktur_organisasi" onchange="document.getElementById('previewEdit').src = window.URL.createObjectURL(this.files[0])" class="custom-file-input" id="imageEdit">
+                                              <label class="custom-file-label" for="imageEdit">Choose file</label>
+                                            </div>
+                                            <div class="input-group-append">
+                                              <span class="input-group-text"></span>
+                                            </div>
+                                        </div>
                                     </label>
 
                                     <h4 class="card-title">Periode</h4>
@@ -231,7 +251,7 @@
                         ['font', ['bold', 'underline', 'clear']],
                         ['color', ['color']],
                         ['para', ['ul', 'ol', 'paragraph']],
-                        ['view', ['codeview', 'help']]
+                        ['view', ['fullscreen', 'codeview', 'help']]
                     ]
                 });
             });

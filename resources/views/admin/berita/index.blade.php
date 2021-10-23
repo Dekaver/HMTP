@@ -8,6 +8,10 @@
     .modal-lg{
         max-width: 90%;
     }
+
+    .note-editor.fullscreen .note-editing-area{
+        background-color: #fff;
+    }
 </style>
 @endpush
 
@@ -32,6 +36,7 @@
                                     <tr>
                                         <th class="">No.</th>
                                         <th class="">Judul</th>
+                                        <th class="">Foto</th>
                                         <th class="col-2">Isi</th>
                                         <th class="col-1">Action</th>
                                     </tr>
@@ -41,6 +46,7 @@
                                     <tr>
                                         <td style="text-align: center;">{{ $loop->iteration}}</td>
                                         <td>{{ substr($item->judul, 0, 50)}}...</td>
+                                        <td><a href="{{url('storage/berita/'.$item->foto)}}">{{$item->foto}}</a></td>
                                         <td>{{ substr($item->isi, 0, 50)}}...</td>
                                         <td style="text-align: center;">
                                             <button
@@ -49,13 +55,13 @@
                                                 class="btn waves-effect waves-light btn-outline-primary pt-1 pb-1 editBerita"
                                                 data-toggle="modal"
                                                 data-target="#scrollable-modal-edit">
-                                                    <i class="fas fa-edit"></i> Edit
+                                                    <i class="fas fa-edit"></i>
                                             </button>
                                             <form  class="btn p-0" method="post" action="{{route('berita.destroy',$item->id)}}">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" style="border-radius: 15px;" class="btn waves-effect waves-light btn-outline-secondary pt-1 pb-1">
-                                                    <i class="far fa-trash-alt"></i> Delete
+                                                    <i class="far fa-trash-alt"></i>
                                                 </button>
                                             </form>
                                         </td>
@@ -100,9 +106,26 @@
                                         <X-validate-error-message name="judul"/>
                                     </div>
 
+                                    <h4 class="card-title">Foto</h4>
+                                    <label class="block form-group cursor-pointer w-100">
+                                        <div class="w-100">
+                                          <img class="object-contain" height="100" src="{{asset('assets/img/upload-image.png')}}" id="preview">
+                                        </div>
+                                        <div class="input-group ">
+                                            <div class="custom-file">
+                                              <input type="file" name="foto" onchange="document.getElementById('preview').src = window.URL.createObjectURL(this.files[0])" class="custom-file-input" id="image">
+                                              <label class="custom-file-label" for="image">Choose file</label>
+                                            </div>
+                                            <div class="input-group-append">
+                                              <span class="input-group-text"></span>
+                                            </div>
+                                        </div>
+                                        <X-validate-error-message name="foto"/>
+                                    </label>
+
                                     <h4 class="card-title">Isi</h4>
                                     <div class="form-group">
-                                        <textarea name="isi" id="inp-isi" class="form-control summernote"></textarea>
+                                        <textarea name="isi" class="form-control summernote"></textarea>
                                         <X-validate-error-message name="isi"/>
                                     </div>
                                 </div>
@@ -141,9 +164,25 @@
                                         <input name="judul" id="inp-judul" type="text" class="form-control">
                                     </div>
 
+                                    <h4 class="card-title">Foto</h4>
+                                    <label class="block form-group cursor-pointer w-100">
+                                        <div class="w-100">
+                                          <img class="object-contain" height="100" src="{{asset('assets/img/upload-image.png')}}" id="previewEdit">
+                                        </div>
+                                        <div class="input-group ">
+                                            <div class="custom-file">
+                                              <input type="file" name="foto" onchange="document.getElementById('previewEdit').src = window.URL.createObjectURL(this.files[0])" class="custom-file-input" id="imageEdit">
+                                              <label class="custom-file-label" for="imageEdit">Choose file</label>
+                                            </div>
+                                            <div class="input-group-append">
+                                              <span class="input-group-text"></span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                        <X-validate-error-message name="foto"/>
                                     <h4 class="card-title">Isi</h4>
                                     <div class="form-group">
-                                        <textarea name="isi" id="ainp-isi" class="form-control summernote"></textarea>
+                                        <textarea name="isi" id="inp-isi" class="form-control summernote"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -185,8 +224,10 @@
                 }).done(function(response)
                 {
                     console.log(response);
-                    $("#inp-deskripsi").val(response.judul);
+                    $("#inp-judul").val(response.judul);
+                    $("#inp-foto").val(response.foto);
                     $("#inp-isi").summernote('code',response.isi);
+                    $("#previewEdit").attr("src", "{{asset('storage/berita')}}/"+response.foto);
                     $("#editBerita").attr("action", "/admin/berita/" + id)
                 });
             });

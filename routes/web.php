@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\AlumniController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\LandingpageController;
@@ -35,6 +36,7 @@ Route::middleware(['auth'])->prefix("admin")->group(function () {
         return view('admin.dashboard');
     })->middleware(['auth'])->name('dashboard');
     Route::resource('hmtp', HmtpController::class);
+    Route::resource('agenda', AgendaController::class);
     Route::resource('berita', BeritaController::class);
     Route::resource('kegiatan', KegiatanController::class);
     Route::resource('Lab', LabController::class);

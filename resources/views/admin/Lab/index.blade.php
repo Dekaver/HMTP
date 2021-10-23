@@ -137,7 +137,7 @@
                                         @foreach ($Lab as $item)
                                         <tr>
                                             <td style="text-align: center;">{{ $loop->iteration}}</td>
-                                            <td>{{$item->deskripsi}}</td>
+                                            <td>{{substr($item->deskripsi, 0, 50)}}...</td>
                                             <td>{{$item->kepala_lab}}</td>
                                             <td>{{$item->asisten_lab}}</td>
                                             <td>{{$item->periode->tahun}}</td>

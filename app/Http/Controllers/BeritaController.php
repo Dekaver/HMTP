@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Berita;
 
 class BeritaController extends Controller
@@ -15,40 +16,38 @@ class BeritaController extends Controller
 
     public function create()
     {
-        return view('admin.berita.addberita');
+        abort(404);
+        return view('admin.berita.index');
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'deskripsi' => 'required',
-            'id_periode' => 'required',
-            'struktur_organisasi' => 'required|file|mimes:jpg,png,jpeg,gif,svg|max:2048',
-            'visi' => 'required',
-            'misi' => 'required',
+            'judul' => 'required',
+            'foto' => 'required|file|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'isi' => 'required',
         ]);
         //save file
         $date = date("his");
-        $extension = $request->file('struktur_organisasi')->extension();
-        $file_name = "Struktur_organisasi_$date.$extension";
-        $path = $request->file('struktur_organisasi')->storeAs('public/struktur-organisasi', $file_name);
+        $extension = $request->file('foto')->extension();
+        $file_name = "foto_$date.$extension";
+        $path = $request->file('foto')->storeAs('public/berita', $file_name);
         //end save file
         $berita = Berita::create([
-            'deskripsi' => $request->deskripsi,
-            'visi' => $request->visi,
-            'misi' => $request->misi,
-            'struktur_organisasi' => $file_name,
-            'id_periode' => $request->id_periode,
+            'judul' => $request->judul,
+            'foto' => $file_name,
+            'isi' => $request->isi,
         ]);
         return redirect()->route('berita.index')
             ->with('success', 'berita Berhasil Ditambahkan');
     }
+
     public function show($id)
     {
-        $beritas = Berita::where('id', $id)->first();
+        abort(404);
+        $berita = Berita::where('id', $id)->first();
         return view('beritaadmin.berita.show', compact('berita'));
     }
-
 
     public function edit($id)
     {
@@ -60,30 +59,26 @@ class BeritaController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'deskripsi' => 'required',
-            'id_periode' => 'required',
-            'struktur_organisasi' => 'file|mimes:jpg,png,jpeg,gif,svg,jfif|max:2048',
-            'visi' => 'required',
-            'misi' => 'required',
+            'judul' => 'required',
+            'foto' => 'file|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'isi' => 'required',
         ]);
         $berita = Berita::findOrFail($id);
 
-        if ($request->has("struktur_organisasi")) {
+        if ($request->has("foto")) {
 
-            Storage::delete("public/struktur-organisasi/$berita->struktur_organisasi");
+            Storage::delete("public/berita/$berita->foto");
 
             $date = date("his");
-            $extension = $request->file('struktur_organisasi')->extension();
-            $file_name = "Struktur_organisasi_$date.$extension";
-            $path = $request->file('struktur_organisasi')->storeAs('public/struktur-organisasi', $file_name);
+            $extension = $request->file('foto')->extension();
+            $file_name = "foto_$date.$extension";
+            $path = $request->file('foto')->storeAs('public/berita', $file_name);
             
-            $berita->struktur_organisasi = $file_name;
+            $berita->foto = $file_name;
         }
 
-        $berita->deskripsi = $request->deskripsi;
-        $berita->visi = $request->visi;
-        $berita->misi = $request->misi;
-        $berita->id_periode = $request->id_periode;
+        $berita->judul = $request->judul;
+        $berita->isi = $request->isi;
 
         $berita->save();
 
@@ -94,7 +89,7 @@ class BeritaController extends Controller
     public function destroy($id)
     {
         $berita = Berita::findOrFail($id);
-        Storage::delete("public/struktur-organisasi/$berita->struktur_organisasi");
+        Storage::delete("public/berita/$berita->foto");
         $berita->delete();
 
         return redirect()->route('berita.index')

@@ -28,6 +28,7 @@ class LabController extends Controller
                 'deskripsi' => $request->deskripsi,
                 'kepala_lab' => $request->kepala_lab,
                 'asisten_lab' => $request->asisten_lab,
+                'kegiatan_lab' => "laboratorium",
                 'id_periode' => $request->id_periode,
             ]);
         return redirect()->route('Lab.index')
