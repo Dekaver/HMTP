@@ -13,4 +13,5 @@
 
 <!-- Template Main JS File -->
 <script src="{{ asset('assets/js/main.js')}} "></script>
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 @stack('script')

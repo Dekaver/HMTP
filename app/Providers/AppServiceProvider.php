@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 use App\Models\Periode;
+use Illuminate\Pagination\Paginator;
 use App\Models\TrackUser;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
@@ -33,5 +34,7 @@ class AppServiceProvider extends ServiceProvider
             return substr($value->date, 0,7) == date("Y-m");
         }));
         View::share('periode', Periode::simplePaginate(4));
+
+        Paginator::useBootstrap();
     }
 }
