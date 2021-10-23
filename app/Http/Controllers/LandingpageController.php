@@ -19,9 +19,9 @@ class LandingpageController extends Controller
 {
     public function hmtp()
     {
-        $hmtp = hmtp::whereId_periode(Periode::whereStatus("1")->pluck("status")->first())->first();
+        $hmtp = hmtp::whereId_periode(Periode::whereStatus("1")->pluck("id")->first())->first();
         $Berita = Berita::Paginate('5');
-        $kegiatan = Kegiatan::whereId_periode(Periode::whereStatus("1")->pluck("status")->first())->get();
+        $kegiatan = Kegiatan::whereId_periode(Periode::whereStatus("1")->pluck("id")->first())->get();
 
         $kategori = kegiatan::select(['kategori'])->groupBy("kategori")->selectRaw('count(*) as total, kategori')->get();
         return view('welcome', compact('hmtp', 'kegiatan', 'kategori','Berita'));

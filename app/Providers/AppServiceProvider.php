@@ -25,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
         // dd(TrackUser::all());
         View::share('trackuser', TrackUser::all());
         View::share('trackuser_currentday', TrackUser::where("date", date("Y-m-d") )->get() );

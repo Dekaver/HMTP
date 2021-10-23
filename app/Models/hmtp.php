@@ -10,7 +10,11 @@ class hmtp extends Model
     use HasFactory;
     protected $table = 'hmtp';
     protected $fillable = [
-        'id_periode', 'deskripsi', 'visi','misi','struktur_organisasi'
+        'id_periode', 
+        'deskripsi', 
+        'visi',
+        'misi',
+        'struktur_organisasi'
     ];
 
     protected $primaryKey = 'id';
