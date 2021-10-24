@@ -8,6 +8,23 @@
 </section>
 @endsection
 
+@push('css')
+    <style>
+        .custom.testimonial-img{
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-size:contain;
+            height: 200px;
+            border-radius: 30% !important;
+        }
+        .testimonials-slider .testimonial-item{
+            margin: 0px 15px 30px 15px;
+        }
+    </style>
+@endpush
+
+
 <x-guest-layout>
         <!-- ======= Clients Section ======= -->
         <section id="clients" class="clients bg-kuning-telur">
@@ -44,33 +61,95 @@
             </div>
         </section><!-- End Clients Section -->
 
-        <!-- ======= About Section ======= -->
-        <section id="about" class="about">
+        <!-- ======= Testimonials Section ======= -->
+        <section id="testimonials" class="testimonials section-bg">
             <div class="container">
 
-                <div class="row content">
-                    <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
-                        <h2>Struktur Organisasi</h2>
-                        <img src="{{ asset('storage/struktur-organisasi/'.$hmtp->struktur_organisasi) }}" alt="" width="400">
-                        {{-- <h3>{{}}</h3> --}}
+            <div class="row">
+                <h2>Berita dan Agenda</h2>
+                <p>Temukan Kabar Berita terbaru disini</p>
+                <div class="col-lg-3">
+                    <div class="section-title" data-aos="fade-right">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Recent Activity</h4>
+                                <div class="mt-4 activity">
+                                    <div class="d-flex align-items-start border-left-line pb-3">
+                                        <div>
+                                            <a href="javascript:void(0)" class="btn btn-info btn-circle mb-2 btn-item">
+                                                <i data-feather="shopping-cart"></i>
+                                            </a>
+                                        </div>
+                                        <div class="ml-3 mt-2">
+                                            <h5 class="text-dark font-weight-medium mb-2">New Product Sold!</h5>
+                                            <p class="font-14 mb-2 text-muted">John Musa just purchased <br> Cannon 5M
+                                                Camera.
+                                            </p>
+                                            <span class="font-weight-light font-14 text-muted">10 Minutes Ago</span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-start border-left-line pb-3">
+                                        <div>
+                                            <a href="javascript:void(0)"
+                                                class="btn btn-danger btn-circle mb-2 btn-item">
+                                                <i data-feather="message-square"></i>
+                                            </a>
+                                        </div>
+                                        <div class="ml-3 mt-2">
+                                            <h5 class="text-dark font-weight-medium mb-2">New Support Ticket</h5>
+                                            <p class="font-14 mb-2 text-muted">Richardson just create support <br>
+                                                ticket</p>
+                                            <span class="font-weight-light font-14 text-muted">25 Minutes Ago</span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-start border-left-line">
+                                        <div>
+                                            <a href="javascript:void(0)" class="btn btn-cyan btn-circle mb-2 btn-item">
+                                                <i data-feather="bell"></i>
+                                            </a>
+                                        </div>
+                                        <div class="ml-3 mt-2">
+                                            <h5 class="text-dark font-weight-medium mb-2">Notification Pending Order!
+                                            </h5>
+                                            <p class="font-14 mb-2 text-muted">One Pending order from Ryne <br> Doe</p>
+                                            <span class="font-weight-light font-14 mb-1 d-block text-muted">2 Hours
+                                                Ago</span>
+                                            <a href="javascript:void(0)" class="font-14 border-bottom pb-1 border-info">Load More</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-left" data-aos-delay="200">
-                        <p class="text-justify">{{$hmtp->deskripsi}}</p>
-                        <h3>Visi</h3>
-                        <p>
-                            {{$hmtp->visi}}
-                        </p>
-                        <h3>Misi</h3>
-                        {{-- <ol>
-                            <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequa</li>
-                            <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
-                            <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in</li>
-                        </ol> --}}
-                        {!! $hmtp->misi !!}
+                </div>
+                <div class="col-lg-9" data-aos="fade-up" data-aos-delay="100">
+
+                    <div class="testimonials-slider swiper-container" data-aos="fade-up" data-aos-delay="100">
+                        <div class="swiper-wrapper">
+    
+                        @foreach ($Berita as $item)
+                            <div class="swiper-slide">
+                                <div class="testimonial-item">
+                                    <p>
+                                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                            {{$item->judul}}
+                                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                    </p>
+                                    <div class="w-100 custom testimonial-img" style="background-image: url({{asset('storage/berita/'.$item->foto)}});"></div>
+                                    <h3></h3>
+                                    <h4>Post pada {{ $item->created_at->isoFormat('D MMMM Y') }}</h4>
+                                </div>
+                            </div><!-- End testimonial item -->  
+                        @endforeach
+    
+                        </div>
+                        <div class="swiper-pagination"></div>
                     </div>
                 </div>
             </div>
-        </section><!-- End About Section -->
+
+            </div>
+        </section><!-- End Testimonials Section -->
 
         <!-- ======= Counts Section ======= -->
         <section id="counts" class="counts">
@@ -100,6 +179,34 @@
 
             </div>
         </section><!-- End Counts Section -->
+        
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container">
+
+                <div class="row content">
+                    <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
+                        <h2>Struktur Organisasi</h2>
+                        <img src="{{ asset('storage/struktur-organisasi/'.$hmtp->struktur_organisasi) }}" alt="" width="400">
+                        {{-- <h3>{{}}</h3> --}}
+                    </div>
+                    <div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-left" data-aos-delay="200">
+                        <p class="text-justify">{{$hmtp->deskripsi}}</p>
+                        <h3>Visi</h3>
+                        <p>
+                            {{$hmtp->visi}}
+                        </p>
+                        <h3>Misi</h3>
+                        {{-- <ol>
+                            <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequa</li>
+                            <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
+                            <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in</li>
+                        </ol> --}}
+                        {!! $hmtp->misi !!}
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
 
         <!-- ======= Why Us Section ======= -->
         <section id="alumni" class="why-us">
@@ -278,45 +385,7 @@
             </div>
         </section><!-- End Portfolio Section -->
 
-        <!-- ======= Testimonials Section ======= -->
-        <section id="testimonials" class="testimonials section-bg">
-            <div class="container">
-
-            <div class="row">
-                <div class="col-lg-4">
-                <div class="section-title" data-aos="fade-right">
-                    <h2>Berita</h2>
-                    <p>Magnam dolores commodi suscipit uisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-                </div>
-                </div>
-                <div class="col-lg-8" data-aos="fade-up" data-aos-delay="100">
-
-                <div class="testimonials-slider swiper-container" data-aos="fade-up" data-aos-delay="100">
-                    <div class="swiper-wrapper">
-  
-                    @foreach ($Berita as $item)
-                        <div class="swiper-slide">
-                            <div class="testimonial-item">
-                            <p>
-                                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                {{$item->isi}}
-                                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                            </p>
-                            <img src="{{asset('storage/berita/'.$item->foto)}}" class="testimonial-img" alt="">
-                            <h3>{{$item->judul}}</h3>
-                            <h4>Ceo &amp; Founder</h4>
-                            </div>
-                        </div><!-- End testimonial item -->  
-                    @endforeach
-  
-                    </div>
-                    <div class="swiper-pagination"></div>
-                </div>
-                </div>
-            </div>
-
-            </div>
-        </section><!-- End Testimonials Section -->
+        
 
         <!-- ======= Team Section ======= -->
         {{-- <section id="team" class="team">
