@@ -29,7 +29,7 @@ class LandingpageController extends Controller
     }
     public function alumni()
     {
-        $alumni = alumni::paginate('10');
+        $alumni = alumni::paginate('5');
 
         return view('front.alumni.index', compact('alumni'));
 
@@ -40,5 +40,13 @@ class LandingpageController extends Controller
 
         return view('front.loker.index', compact('loker'));
 
+    }
+
+    public function berita($id)
+    {
+        $semuaberita = Berita::orderBy("created_at", "DESC")->paginate(2);
+        $berita = Berita::findOrFail($id);
+
+        return view("front.berita.index", compact("semuaberita", "berita"));
     }
 }

@@ -49,6 +49,7 @@ Route::middleware(['auth'])->prefix("admin")->group(function () {
 // Landingpage 
 Route::get('/alumni', [LandingpageController::class, 'alumni']);
 Route::get('/lowongan-kerja', [LandingpageController::class, 'loker']);
+Route::get('berita/{id}/show', [LandingpageController::class, 'berita']);
 
 
 require __DIR__.'/auth.php';

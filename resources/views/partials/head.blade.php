@@ -25,4 +25,10 @@
 <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
 
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.2/css/jquery.dataTables.css">
+
+<style>
+    #footer{
+        background-color: #ffdc41 !important;
+    }
+</style>
 @stack('css')
