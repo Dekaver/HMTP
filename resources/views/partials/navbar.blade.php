@@ -14,8 +14,8 @@
             <nav id="navbar">
                 <ul>
                 <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-                <li><a class="nav-link scrollto" href="#counts">ALUMNI</a></li>
-                <li><a class="nav-link scrollto" href="#services">MAHASISWA</a></li>
+                <li><a class="nav-link scrollto" href="#alumni">ALUMNI</a></li>
+                <li><a class="nav-link scrollto" href="#mahasiswa">MAHASISWA</a></li>
                 <li class="dropdown"><a href="#"><span>FASILITAS</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
                     <li><a href="#">FASILITAS LABORATORIUM</a></li>

@@ -3,7 +3,7 @@
     <div class="container text-center position-relative" data-aos="fade-in" data-aos-delay="200">
         <h1 class="kuning-telur">HIMPUNAN MAHASISWA PERTAMBANGAN</h1>
         <h2 class="kuning-telur">UNIVERSITAS MULAWARMAN</h2>
-        <a href="#about" class="btn-get-started scrollto">Get Started</a>
+        <a href="#testimonials" class="btn-get-started scrollto">Get Started</a>
     </div>
 </section>
 @endsection
@@ -67,63 +67,36 @@
 
             <div class="row">
                 <h2>Berita dan Agenda</h2>
-                <p>Temukan Kabar Berita terbaru disini</p>
+                <p>Temukan Kabar Berita dan Agenda terbaru disini</p>
                 <div class="col-lg-3">
-                    <div class="section-title" data-aos="fade-right">
-                        <div class="card">
+                    <div class="section-title why-us" data-aos="fade-right">
+                        <div class="content p-1">
                             <div class="card-body">
-                                <h4 class="card-title">Recent Activity</h4>
+                                <h4 class="card-title">Agenda</h4>
                                 <div class="mt-4 activity">
-                                    <div class="d-flex align-items-start border-left-line pb-3">
-                                        <div>
-                                            <a href="javascript:void(0)" class="btn btn-info btn-circle mb-2 btn-item">
-                                                <i data-feather="shopping-cart"></i>
-                                            </a>
+                                    @foreach ($agenda as $item)
+                                        <div class="d-flex align-items-start border-left-line pb-3">
+                                            <div>
+                                                <a  class="btn btn-info btn-circle mb-2 btn-item">
+                                                    <span class="bx bx-timer"></span>
+                                                </a>
+                                            </div>
+                                            <div class="ml-3 mt-2">
+                                                <h5 class="text-dark font-weight-medium mb-2">{{ $item->judul }}</h5>
+                                                <p class="font-14 mb-2 text-muted">{{ $item->tempat }} <br> 
+                                                    {{ substr($item->jam_mulai, 0,5). "-" .substr($item->jam_selesai, 0,5) }}
+                                                </p>
+                                                <span class="font-weight-light font-14 text-muted">{{ $item->tanggal->isoFormat("DD MMMM, Y") }}</span>
+                                            </div>
                                         </div>
-                                        <div class="ml-3 mt-2">
-                                            <h5 class="text-dark font-weight-medium mb-2">New Product Sold!</h5>
-                                            <p class="font-14 mb-2 text-muted">John Musa just purchased <br> Cannon 5M
-                                                Camera.
-                                            </p>
-                                            <span class="font-weight-light font-14 text-muted">10 Minutes Ago</span>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex align-items-start border-left-line pb-3">
-                                        <div>
-                                            <a href="javascript:void(0)"
-                                                class="btn btn-danger btn-circle mb-2 btn-item">
-                                                <i data-feather="message-square"></i>
-                                            </a>
-                                        </div>
-                                        <div class="ml-3 mt-2">
-                                            <h5 class="text-dark font-weight-medium mb-2">New Support Ticket</h5>
-                                            <p class="font-14 mb-2 text-muted">Richardson just create support <br>
-                                                ticket</p>
-                                            <span class="font-weight-light font-14 text-muted">25 Minutes Ago</span>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex align-items-start border-left-line">
-                                        <div>
-                                            <a href="javascript:void(0)" class="btn btn-cyan btn-circle mb-2 btn-item">
-                                                <i data-feather="bell"></i>
-                                            </a>
-                                        </div>
-                                        <div class="ml-3 mt-2">
-                                            <h5 class="text-dark font-weight-medium mb-2">Notification Pending Order!
-                                            </h5>
-                                            <p class="font-14 mb-2 text-muted">One Pending order from Ryne <br> Doe</p>
-                                            <span class="font-weight-light font-14 mb-1 d-block text-muted">2 Hours
-                                                Ago</span>
-                                            <a href="javascript:void(0)" class="font-14 border-bottom pb-1 border-info">Load More</a>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-9" data-aos="fade-up" data-aos-delay="100">
-
+                    <h4></h4>
                     <div class="testimonials-slider swiper-container" data-aos="fade-up" data-aos-delay="100">
                         <div class="swiper-wrapper">
     
@@ -281,7 +254,7 @@
         </section><!-- End Cta Section -->
 
         <!-- ======= Services Section ======= -->
-        <section id="services" class="services section-bg">
+        <section id="mahasiswa" class="services section-bg">
             <div class="container">
 
             <div class="row">

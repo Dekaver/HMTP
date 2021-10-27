@@ -23,6 +23,9 @@ th {
   background-color: #333;
   color: white;
 }
+#myTable_filter,#myTable_wrapper{
+    margin-bottom: 24px;
+}
 </style>
 @endpush
 <x-guest-layout>
@@ -63,11 +66,11 @@ th {
                 </div>
             </div> --}}
 
-            <div class="col-lg-12">
-                <div class="row">
+            {{-- <div class="col-lg-12">
+                <div class="row"> --}}
 
                     <table id="myTable" class="col-lg-12 mt-4" >
-                        <thead>
+                        <thead class="mt-5">
                           <tr>
                             <th>No</th>
                             <th>Nama</th>
@@ -87,18 +90,18 @@ th {
                         </tbody>
                       </table>  
 
-                </div>
-            </div>
-            <div class="col-lg-12 d-flex justify-content-center mt-5">
+                {{-- </div>
+            </div> --}}
+            {{-- <div class="col-lg-12 d-flex justify-content-center mt-5">
                 <div class="row align-item-center ">
                     {{$alumni->links()}}
                 </div>
-            </div>
+            </div> --}}
 
         </div>
     </section>
 
-    @push('scripts')
+    @push('script')
         <script>
             $(document).ready( function () {
             $('#myTable').DataTable();

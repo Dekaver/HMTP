@@ -42,14 +42,14 @@ Route::middleware(['auth'])->prefix("admin")->group(function () {
     Route::resource('Lab', LabController::class);
     Route::resource('Loker', LokerController::class);
     Route::resource('periode', PeriodeController::class);
-    Route::resource('alumni', AlumniController::class);
+    Route::resource('alumni', AlumniController::class)->except(["show"]);
     Route::resource('Perpustakaan', PerpustakaanController::class);
 });
 
 // Landingpage 
 Route::get('/alumni', [LandingpageController::class, 'alumni']);
 Route::get('/lowongan-kerja', [LandingpageController::class, 'loker']);
-Route::get('berita/{id}/show', [LandingpageController::class, 'berita']);
+Route::get('berita/{id}/show', [LandingpageController::class, 'berita'])->name("berita.show");
 
 
 require __DIR__.'/auth.php';

@@ -1,28 +1,7 @@
 @push('css')
     <style>
-        table {
-  font-family: Verdana;
-  font-size: 14px;
-  border-collapse: collapse;
-  width: 600px;
-}
 
-td, th {
-  padding: 10px;
-  text-align: left;
-  margin: 0;
-}
 
-tbody tr:nth-child(2n){
-  background-color: #eee;
-}
-
-th {
-  position: sticky;
-  top: 0;
-  background-color: #333;
-  color: white;
-}
 body, #team{
     background-color: var(--City-light);
 }
@@ -30,42 +9,53 @@ body, #team{
 .member{
     background-color: #fff;
 }
+
+.berita-foto{
+    background-repeat: no-repeat;
+    background-attachment: initial;
+    background-position: center;
+    background-size: cover;
+    height: 100px;
+    border-radius: 10% !important;
+}
+.card{
+    position: relative;
+    box-shadow: 0px 2px 15px rgb(0 0 0 / 10%);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+}
 </style>
 @endpush
 <x-guest-layout>
     <section id="team" class="team mt-5">
         <div class="container">
 
-            <div class="row">
+            <div class="card">
                 <div class="col-lg-12 text-center">
-                    <div class="mb-5" data-aos="fade-right">
+                    <div class="" data-aos="fade-right">
                         <h2>{{$berita->judul}}</h2>
                         <p>Admin|{{$berita->created_at->isoFormat("DD MMMM, Y")}}</p>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-3 ">
-                    <div class="card ">
+                <div class="col-lg-4 ">
+                    <div class="card bg-black">
                         <div class="card-body">
-
                             @foreach ($semuaberita as $item)
-                                <div class="col">
-                                    <div class="member" data-aos="zoom-in" data-aos-delay="400">
-                                        <div class="pic"><img src="Bethany/assets/img/team/team-4.jpg" class="img-fluid" alt=""></div>
-                                        <div class="member-info">
-                                            <h4>{{$item->judul}}</h4>
-                                            <span>{{$item->posisi}}</span>
-                                            <p>{{$item->deskripsi}}</p>
-                                            <div class="social">
-                                                <a href=""><i class="ri-twitter-fill"></i></a>
-                                                <a href=""><i class="ri-facebook-fill"></i></a>
-                                                <a href=""><i class="ri-instagram-fill"></i></a>
-                                                <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
-                                            </div>
+                                @if ($item != $berita)
+                                    <div class="row m-2">
+                                        <div class="col-9">
+                                            <h5><a href="{{route('berita.show', $item->id)}}">{{ $item->judul}}</a></h5>
+                                            <small><span>Post : </span>{{$item->created_at->isoFormat("DD MMMM, Y")}}</small>
+                                        </div>
+                                        <div class="col-3 berita-foto"  style="background-image: url({{url("storage/berita/$item->foto")}})">
+                                            
                                         </div>
                                     </div>
-                                </div>
+                                    <hr>
+                                @endif
                             @endforeach    
                             <div class="col-lg-12 d-flex justify-content-center mt-5 bg-white rounded-lg">
                                 <div class="row align-item-center ">
@@ -75,8 +65,8 @@ body, #team{
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-9">
-                    <div class="row member">
+                <div class="col-lg-8">
+                    <div class="member">
                             {!! $berita->isi !!}
                     </div>
                 </div>
