@@ -51,6 +51,9 @@ Route::get('/alumni', [LandingpageController::class, 'alumni']);
 Route::get('/lowongan-kerja', [LandingpageController::class, 'loker']);
 Route::get('berita/{id}/show', [LandingpageController::class, 'berita'])->name("berita.show");
 
+Route::get('/kalender-akademik', [LandingpageController::class, 'kalenderAkademik']);
+Route::get('/perpustakaan', [LandingpageController::class, 'perpustakaan']);
+Route::get('/jadwal-kuliah', [LandingpageController::class, 'jadwalKuliah']);
 
 require __DIR__.'/auth.php';
 

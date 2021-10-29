@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 use App\Models\Alumni;
 use App\Models\Agenda;
 use App\Models\Berita;
-use App\Models\calender;
+use App\Models\Kalender;
 use App\Models\Jadwal;
 use App\Models\hmtp;
 use App\Models\Kegiatan;
@@ -27,6 +27,7 @@ class LandingpageController extends Controller
         $kategori = kegiatan::select(['kategori'])->groupBy("kategori")->selectRaw('count(*) as total, kategori')->get();
         $agenda = Agenda::where("tanggal" , ">", Carbon::now()->format("Y-m-d"))->paginate(5);
         return view('welcome', compact('hmtp', 'kegiatan', 'kategori','Berita', "agenda"));
+        
 
     }
     public function alumni()
@@ -50,5 +51,29 @@ class LandingpageController extends Controller
         $berita = Berita::findOrFail($id);
 
         return view("front.berita.index", compact("semuaberita", "berita"));
+    }
+
+    public function kalenderAkademik()
+    {
+        $kalenderAkademik = Kalender::all();
+        $fotoJadwal = Kalender::first();
+        return view('front.kalenderAkademik.index', compact('kalenderAkademik','fotoJadwal'));
+
+    }
+
+    public function perpustakaan()
+    {
+        $perpustakaan = Perpustakaan::all();
+
+        return view('front.perpustakaan.index', compact('perpustakaan'));
+
+    }
+
+    public function jadwalKuliah()
+    {
+        $jadwalKuliah = Jadwal::all();
+        $fotoJadwal = Jadwal::first();
+        return view('front.jadwalKuliah.index', compact('jadwalKuliah','fotoJadwal'));
+
     }
 }

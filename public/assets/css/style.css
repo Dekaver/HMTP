@@ -14,7 +14,7 @@
   --kuning-telur: #ffdc41;
   --black: #000000;
   --radiant-yellow: #ff9f1a;
-  --City-light: #f1f2f6;
+  /* --City-light: #f1f2f6; */
 }
 
 body {
@@ -31,7 +31,7 @@ body {
 }
 
 a {
-  color: var(--kuning-telur);
+  color: var(--blue);
   text-decoration: none;
 }
 

@@ -269,11 +269,11 @@
                     <div class="col-md-6 d-flex align-items-stretch">
                         <div class="icon-box" data-aos="zoom-in" data-aos-delay="100">
                             <div class="icon"><i class="bx bx-file-find"></i></div>
-                            <h4><a href="">Jadwal Kuliah</a></h4>
+                            <h4><a href="#">Jadwal Kuliah</a></h4>
                             <p>lihat informasi jadwal kuliah program studi teknik pertambangan</p>
                             <div class="d-flex justify-content-center">
                                 <div class="d-flex align-items-center">
-                                    <a href="#" class="btn btn-outline-warning d-flex align-items-center">More<i class="bx bx-chevron-right bx-sm m-0 p-1"></i></a>
+                                    <a href="{{url('jadwal-kuliah')}}" class="btn btn-outline-warning d-flex align-items-center">More<i class="bx bx-chevron-right bx-sm m-0 p-1"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -282,11 +282,11 @@
                     <div class="col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
                         <div class="icon-box" data-aos="zoom-in" data-aos-delay="200">
                             <div class="icon"><i class="bx bx-file"></i></div>
-                            <h4><a href="">kalender Akademik</a></h4>
+                            <h4><a href="#">Kalender Akademik</a></h4>
                             <p>lihat informasi jadwal kegiatan akademik di Universitas mulawarman</p>
                             <div class="d-flex justify-content-center">
                                 <div class="d-flex align-items-center">
-                                    <a href="#" class="btn btn-outline-warning d-flex align-items-center">More<i class="bx bx-chevron-right bx-sm m-0 p-1"></i></a>
+                                    <a href="{{url('kalender-akademik')}}" class="btn btn-outline-warning d-flex align-items-center">More<i class="bx bx-chevron-right bx-sm m-0 p-1"></i></a>
                                 </div>
                             </div>
                         </div>
