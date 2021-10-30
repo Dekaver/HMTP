@@ -13,9 +13,9 @@
             </div>
             <nav id="navbar">
                 <ul>
-                <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-                <li><a class="nav-link scrollto" href="#alumni">ALUMNI</a></li>
-                <li><a class="nav-link scrollto" href="#mahasiswa">MAHASISWA</a></li>
+                <li><a class="nav-link scrollto active" href="{{url('/')}}">Home</a></li>
+                <li><a class="nav-link scrollto" href="{{url('/#alumni')}}">ALUMNI</a></li>
+                <li><a class="nav-link scrollto" href="{{url('/#mahasiswa')}}">MAHASISWA</a></li>
                 <li class="dropdown"><a href="#"><span>FASILITAS</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
                     <li><a href="{{url('laboratorium')}}">FASILITAS LABORATORIUM</a></li>
