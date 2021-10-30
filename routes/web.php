@@ -54,6 +54,15 @@ Route::get('berita/{id}/show', [LandingpageController::class, 'berita'])->name("
 Route::get('/kalender-akademik', [LandingpageController::class, 'kalenderAkademik']);
 Route::get('/perpustakaan', [LandingpageController::class, 'perpustakaan']);
 Route::get('/jadwal-kuliah', [LandingpageController::class, 'jadwalKuliah']);
+Route::get('/laboratorium', [LandingpageController::class, 'laboratorium']);
+Route::get('/kontak', function(){
+    return view('front.kontak.index');});
+
+// Route::get('/laboratorium', function(){
+//     return view('front.laboratorium.index');});
+    
+// Route::get('/perpustakaan', function(){
+//     return view('front.perpustakaan.index');});
 
 require __DIR__.'/auth.php';
 

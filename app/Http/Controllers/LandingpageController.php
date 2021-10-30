@@ -76,4 +76,12 @@ class LandingpageController extends Controller
         return view('front.jadwalKuliah.index', compact('jadwalKuliah','fotoJadwal'));
 
     }
+
+    public function laboratorium()
+    {
+        $laboratorium = Lab::all();
+
+        return view('front.laboratorium.index', compact('laboratorium'));
+
+    }
 }
