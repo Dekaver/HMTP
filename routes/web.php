@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\AlumniController;
 use App\Http\Controllers\BeritaController;
-use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\KalenderController;
 use App\Http\Controllers\LandingpageController;
 use App\Http\Controllers\HmtpController;
 use App\Http\Controllers\KegiatanController;
@@ -38,7 +38,7 @@ Route::middleware(['auth'])->prefix("admin")->group(function () {
     })->middleware(['auth'])->name('dashboard');
     Route::resource('hmtp', HmtpController::class);
     Route::resource('agenda', AgendaController::class);
-    Route::resource('calendar', CalendarController::class);
+    Route::resource('kalender', KalenderController::class);
     Route::resource('berita', BeritaController::class);
     Route::resource('kegiatan', KegiatanController::class);
     Route::resource('Lab', LabController::class);
