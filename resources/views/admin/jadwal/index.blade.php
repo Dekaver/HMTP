@@ -13,7 +13,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Data kalender</h4>
+                        <h4 class="card-title">Data jadwal</h4>
                         <div class="table-responsive">
                             <table id="myTable" class="table table-sm-td table-hover table-striped table-bordered">
                                 <thead class="thead-primary text-center">
@@ -26,24 +26,24 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($kalender as $item)
+                                    @foreach ($jadwal as $item)
                                     <tr>
                                         <td style="text-align: center;">{{ $loop->iteration}}</td>
                                         <td>{{$item->periode->tahun}}</td>
                                         <td>{{ substr($item->deskripsi, 0, 50)}}...</td>
-                                        <td><a href="{{ asset('storage/kalender/'.$item->foto)}}">{{ $item->foto }}</a></td>
+                                        <td><a href="{{ asset('storage/jadwal/'.$item->foto)}}">{{ $item->foto }}</a></td>
                                         <td style="text-align: center;">
                                             <div class="row m-0">
 
                                                 <button
                                                     style="border-radius: 15px"
                                                     value="{{ $item->id}}"
-                                                    class="btn waves-effect waves-light btn-outline-primary pt-1 pb-1 editkalenderButton"
+                                                    class="btn waves-effect waves-light btn-outline-primary pt-1 pb-1 editjadwalButton"
                                                     data-toggle="modal"
                                                     data-target="#scrollable-modal-edit">
                                                         <i class="fas fa-edit"></i>
                                                 </button>
-                                                <form  class="btn p-0" method="post" action="{{route('kalender.destroy',$item->id)}}">
+                                                <form  class="btn p-0" method="post" action="{{route('jadwal.destroy',$item->id)}}">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" style="border-radius: 15px;" class="btn waves-effect waves-light btn-outline-danger pt-1 pb-1">
@@ -65,11 +65,11 @@
 
     <div class="modal fade bd-example-modal-lg" id="scrollable-modal" tabindex="-1" role="dialog" aria-labelledby="scrollableModalTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-            <form method="post" class="w-100" action="{{route('kalender.store')}}" enctype="multipart/form-data">
+            <form method="post" class="w-100" action="{{route('jadwal.store')}}" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="scrollableModalTitle">Tambah kalender</h5>
+                        <h5 class="modal-title" id="scrollableModalTitle">Tambah jadwal</h5>
                         <button type="button" class="close" data-dismiss="modal"
                             aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -128,12 +128,12 @@
     
     <div class="modal fade bd-example-modal-lg" id="scrollable-modal-edit" tabindex="-1" role="dialog" aria-labelledby="scrollableModalTitleEdit" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-            <form method="post" class="w-100" action="" id="editkalender" enctype="multipart/form-data">
+            <form method="post" class="w-100" action="" id="editjadwal" enctype="multipart/form-data">
                 @csrf
                 @method("PUT")
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="scrollableModalTitleEdit">Edit kalender</h5>
+                        <h5 class="modal-title" id="scrollableModalTitleEdit">Edit jadwal</h5>
                         <button type="button" class="close" data-dismiss="modal"
                             aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -193,19 +193,19 @@
                 $('#myTable').DataTable();
             });
     
-            $(document).on("click", ".editkalenderButton", function()
+            $(document).on("click", ".editjadwalButton", function()
             {
                 let id = $(this).val();
                 $.ajax({
                     method: "get",
-                    url :  "kalender/"+id+"/edit",
+                    url :  "jadwal/"+id+"/edit",
                 }).done(function(response)
                 {
                     console.log(response);
                     $("#inp-deskripsi").val(response.deskripsi);
                     $("#inp-foto").val(response.foto);
-                    $("#previewEdit").attr("src", "{{asset('storage/kalender')}}/"+response.foto);
-                    $("#editkalender").attr("action", "/admin/kalender/" + id)
+                    $("#previewEdit").attr("src", "{{asset('storage/jadwal')}}/"+response.foto);
+                    $("#editjadwal").attr("action", "/admin/jadwal/" + id)
                 });
             });
         </script>

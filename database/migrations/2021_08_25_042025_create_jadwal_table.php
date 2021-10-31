@@ -19,7 +19,7 @@ class CreateJadwalTable extends Migration
                 ->constrained("periode")
                 ->onDelete("cascade")
                 ->onUpdate("cascade");
-            $table->text("deskripi");
+            $table->text("deskripsi");
             $table->string("foto");
             $table->timestamps();
         });
