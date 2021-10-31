@@ -20,4 +20,6 @@ class Agenda extends Model
 
     protected $primaryKey = 'id';
 
+    protected $dates = ["tanggal"];
+
 }

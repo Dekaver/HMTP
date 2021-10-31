@@ -3,7 +3,7 @@
     <div class="container text-center position-relative" data-aos="fade-in" data-aos-delay="200">
         <h1 class="kuning-telur">HIMPUNAN MAHASISWA PERTAMBANGAN</h1>
         <h2 class="kuning-telur">UNIVERSITAS MULAWARMAN</h2>
-        <a href="#about" class="btn-get-started scrollto">Get Started</a>
+        {{-- <a href="#testimonials" class="btn-get-started scrollto">Get Started</a> --}}
     </div>
 </section>
 @endsection
@@ -12,9 +12,9 @@
     <style>
         .custom.testimonial-img{
             background-repeat: no-repeat;
-            background-attachment: fixed;
+            background-attachment: initial;
             background-position: center;
-            background-size:contain;
+            background-size:cover;
             height: 200px;
             border-radius: 30% !important;
         }
@@ -67,63 +67,36 @@
 
             <div class="row">
                 <h2>Berita dan Agenda</h2>
-                <p>Temukan Kabar Berita terbaru disini</p>
+                <p>Temukan Kabar Berita dan Agenda terbaru disini</p>
                 <div class="col-lg-3">
-                    <div class="section-title" data-aos="fade-right">
-                        <div class="card">
+                    <div class="section-title why-us" data-aos="fade-right">
+                        <div class="content p-1">
                             <div class="card-body">
-                                <h4 class="card-title">Recent Activity</h4>
+                                <h4 class="card-title">Agenda</h4>
                                 <div class="mt-4 activity">
-                                    <div class="d-flex align-items-start border-left-line pb-3">
-                                        <div>
-                                            <a href="javascript:void(0)" class="btn btn-info btn-circle mb-2 btn-item">
-                                                <i data-feather="shopping-cart"></i>
-                                            </a>
+                                    @foreach ($agenda as $item)
+                                        <div class="d-flex align-items-start border-left-line pb-3">
+                                            <div>
+                                                <a  class="btn btn-info btn-circle mb-2 btn-item">
+                                                    <span class="bx bx-timer"></span>
+                                                </a>
+                                            </div>
+                                            <div class="ml-3 mt-2">
+                                                <h5 class="text-dark font-weight-medium mb-2">{{ $item->judul }}</h5>
+                                                <p class="font-14 mb-2 text-muted">{{ $item->tempat }} <br> 
+                                                    {{ substr($item->jam_mulai, 0,5). "-" .substr($item->jam_selesai, 0,5) }}
+                                                </p>
+                                                <span class="font-weight-light font-14 text-muted">{{ $item->tanggal->isoFormat("DD MMMM, Y") }}</span>
+                                            </div>
                                         </div>
-                                        <div class="ml-3 mt-2">
-                                            <h5 class="text-dark font-weight-medium mb-2">New Product Sold!</h5>
-                                            <p class="font-14 mb-2 text-muted">John Musa just purchased <br> Cannon 5M
-                                                Camera.
-                                            </p>
-                                            <span class="font-weight-light font-14 text-muted">10 Minutes Ago</span>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex align-items-start border-left-line pb-3">
-                                        <div>
-                                            <a href="javascript:void(0)"
-                                                class="btn btn-danger btn-circle mb-2 btn-item">
-                                                <i data-feather="message-square"></i>
-                                            </a>
-                                        </div>
-                                        <div class="ml-3 mt-2">
-                                            <h5 class="text-dark font-weight-medium mb-2">New Support Ticket</h5>
-                                            <p class="font-14 mb-2 text-muted">Richardson just create support <br>
-                                                ticket</p>
-                                            <span class="font-weight-light font-14 text-muted">25 Minutes Ago</span>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex align-items-start border-left-line">
-                                        <div>
-                                            <a href="javascript:void(0)" class="btn btn-cyan btn-circle mb-2 btn-item">
-                                                <i data-feather="bell"></i>
-                                            </a>
-                                        </div>
-                                        <div class="ml-3 mt-2">
-                                            <h5 class="text-dark font-weight-medium mb-2">Notification Pending Order!
-                                            </h5>
-                                            <p class="font-14 mb-2 text-muted">One Pending order from Ryne <br> Doe</p>
-                                            <span class="font-weight-light font-14 mb-1 d-block text-muted">2 Hours
-                                                Ago</span>
-                                            <a href="javascript:void(0)" class="font-14 border-bottom pb-1 border-info">Load More</a>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-9" data-aos="fade-up" data-aos-delay="100">
-
+                    <h4></h4>
                     <div class="testimonials-slider swiper-container" data-aos="fade-up" data-aos-delay="100">
                         <div class="swiper-wrapper">
     
@@ -136,7 +109,7 @@
                                         <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                                     </p>
                                     <div class="w-100 custom testimonial-img" style="background-image: url({{asset('storage/berita/'.$item->foto)}});"></div>
-                                    <h3></h3>
+                                    <h3><a href='{{url("berita/{$item->id}/show")}}'>Baca selengkapnya...</a></h3>
                                     <h4>Post pada {{ $item->created_at->isoFormat('D MMMM Y') }}</h4>
                                 </div>
                             </div><!-- End testimonial item -->  
@@ -281,7 +254,7 @@
         </section><!-- End Cta Section -->
 
         <!-- ======= Services Section ======= -->
-        <section id="services" class="services section-bg">
+        <section id="mahasiswa" class="services section-bg">
             <div class="container">
 
             <div class="row">
@@ -296,11 +269,11 @@
                     <div class="col-md-6 d-flex align-items-stretch">
                         <div class="icon-box" data-aos="zoom-in" data-aos-delay="100">
                             <div class="icon"><i class="bx bx-file-find"></i></div>
-                            <h4><a href="">Jadwal Kuliah</a></h4>
+                            <h4><a href="#">Jadwal Kuliah</a></h4>
                             <p>lihat informasi jadwal kuliah program studi teknik pertambangan</p>
                             <div class="d-flex justify-content-center">
                                 <div class="d-flex align-items-center">
-                                    <a href="#" class="btn btn-outline-warning d-flex align-items-center">More<i class="bx bx-chevron-right bx-sm m-0 p-1"></i></a>
+                                    <a href="{{url('jadwal-kuliah')}}" class="btn btn-outline-warning d-flex align-items-center">More<i class="bx bx-chevron-right bx-sm m-0 p-1"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -309,11 +282,11 @@
                     <div class="col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
                         <div class="icon-box" data-aos="zoom-in" data-aos-delay="200">
                             <div class="icon"><i class="bx bx-file"></i></div>
-                            <h4><a href="">kalender Akademik</a></h4>
+                            <h4><a href="#">Kalender Akademik</a></h4>
                             <p>lihat informasi jadwal kegiatan akademik di Universitas mulawarman</p>
                             <div class="d-flex justify-content-center">
                                 <div class="d-flex align-items-center">
-                                    <a href="#" class="btn btn-outline-warning d-flex align-items-center">More<i class="bx bx-chevron-right bx-sm m-0 p-1"></i></a>
+                                    <a href="{{url('kalender-akademik')}}" class="btn btn-outline-warning d-flex align-items-center">More<i class="bx bx-chevron-right bx-sm m-0 p-1"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -478,77 +451,7 @@
         </section> --}}
         <!-- End Team Section -->
 
-        <!-- ======= Contact Section ======= -->
-        <section id="contact" class="contact">
-            <div class="container">
-            <div class="row">
-                <div class="col-lg-4" data-aos="fade-right">
-                <div class="section-title">
-                    <h2>Contact</h2>
-                    <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-                </div>
-                </div>
-
-                <div class="col-lg-8" data-aos="fade-up" data-aos-delay="100">
-                <iframe style="border:0; width: 100%; height: 270px;" src="https://www.google.com/maps/embed?pb=!1m3!3m2!1m1!1s0x2df67f4cd30823c3%3A0x22ec6237d9bbdba1" frameborder="0" allowfullscreen></iframe>
-                <div class="info mt-4">
-                    <i class="bi bi-geo-alt"></i>
-                    <h4>Location:</h4>
-                    <p>Jl. Sambaliung, Sempaja Sel., Kec. Samarinda Utara, Kota Samarinda, Kalimantan Timur 75242, Indonesia</p>
-                </div>
-
-                <form action="forms/contact" id="csForm" method="post" role="form" class="php-email-form mt-4">
-                    @csrf
-                    <div class="row">
-                    <div class="col-md-6 form-group">
-                        <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
-                    </div>
-                    <div class="col-md-6 form-group mt-3 mt-md-0">
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
-                    </div>
-                    </div>
-                    <div class="form-group mt-3">
-                    <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
-                    </div>
-                    <div class="form-group mt-3">
-                    <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-                    </div>
-                    <div class="my-3">
-                    <div class="loading">Loading</div>
-                    <div class="error-message"></div>
-                    <div class="sent-message">Your message has been sent. Thank you!</div>
-                    </div>
-                    <div class="text-center"><button type="submit" id="modalllll">Send Message</button></div>
-                </form>
-                </div>
-            </div>
-
-            </div>
-        </section><!-- End Contact Section -->
-
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="alertdialog">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Are You Human?</h5>
-                
-                <span class="btn hideModal p-0"><i class="bx bx-x h3 p-0 text-danger"></i></span>
-            </div>
-            <div class="modal-body">
-                <p>Masukkan Kode Berikut "<span id="kodever"></span>"</p>
-                <div class="form-group">
-                    <label for="human" class="col-form-label">Recipient:</label>
-                    <input type="text" class="form-control" id="human" required>
-                    <small class="text-danger" id="noteHuman"></small>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary hideModal">Close</button>
-                <button type="button" id="submit-test" class="btn btn-primary">Send message</button>
-            </div>
-            </div>
-        </div>
-        </div>
+      
     @push('script')
     {{-- <script src="{{ asset('src/assets/libs/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ asset('src/assets/libs/popper.js/dist/popper.min.js') }}"></script> --}}

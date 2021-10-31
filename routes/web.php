@@ -44,14 +44,27 @@ Route::middleware(['auth'])->prefix("admin")->group(function () {
     Route::resource('Lab', LabController::class);
     Route::resource('Loker', LokerController::class);
     Route::resource('periode', PeriodeController::class);
-    Route::resource('alumni', AlumniController::class);
+    Route::resource('alumni', AlumniController::class)->except(["show"]);
     Route::resource('Perpustakaan', PerpustakaanController::class);
 });
 
 // Landingpage 
 Route::get('/alumni', [LandingpageController::class, 'alumni']);
 Route::get('/lowongan-kerja', [LandingpageController::class, 'loker']);
+Route::get('berita/{id}/show', [LandingpageController::class, 'berita'])->name("berita.show");
 
+Route::get('/kalender-akademik', [LandingpageController::class, 'kalenderAkademik']);
+Route::get('/perpustakaan', [LandingpageController::class, 'perpustakaan']);
+Route::get('/jadwal-kuliah', [LandingpageController::class, 'jadwalKuliah']);
+Route::get('/laboratorium', [LandingpageController::class, 'laboratorium']);
+Route::get('/kontak', function(){
+    return view('front.kontak.index');});
+
+// Route::get('/laboratorium', function(){
+//     return view('front.laboratorium.index');});
+    
+// Route::get('/perpustakaan', function(){
+//     return view('front.perpustakaan.index');});
 
 require __DIR__.'/auth.php';
 
