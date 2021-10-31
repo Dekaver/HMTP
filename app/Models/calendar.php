@@ -22,4 +22,6 @@ class Calendar extends Model
     {
         return $this->belongsTo(Periode::class, 'id_periode', 'id');
     }
+
+    
 }
