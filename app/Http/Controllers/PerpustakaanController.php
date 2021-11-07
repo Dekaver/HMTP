@@ -9,7 +9,9 @@ class PerpustakaanController extends Controller
     public function index()
     {
         $Perpustakaan = Perpustakaan::all();
-        return view('admin.Perpustakaan.index', compact('Perpustakaan'))
+        $kategori = Perpustakaan::select("kategori")->groupBy("kategori")->get();
+        // dd($kategori);
+        return view('admin.Perpustakaan.index', compact('Perpustakaan', 'kategori'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -20,18 +22,27 @@ class PerpustakaanController extends Controller
 
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'pertanyaan' => 'required',
-        //     'jawaban' => 'required',
-        // ]);
-            $Perpustakaan = Perpustakaan::create([
-                'kategori' => $request->kategori,
-                'judul' => $request->judul,
-                'penulis' => $request->penulis,
-                'penerbit' => $request->penerbit,
-                'no_panggil' => $request->no_panggil,
-                'ringkasan' => $request->ringkasan,
-            ]);
+        $request->validate([
+            'judul' => 'required',
+            'file' => 'required',
+        ]);
+
+        $file = $request->file("file")->show();
+        dd($file);
+        $date = date("his");
+        $extension = $request->file('file')->extension();
+        $file_name = "ebook_$date.$extension";
+        $path = $request->file('file')->storeAs('public/perpustakaan', $file_name);
+
+        $Perpustakaan = Perpustakaan::create([
+            'kategori' => $request->kategori,
+            'judul' => $request->judul,
+            'penulis' => $request->penulis,
+            'penerbit' => $request->penerbit,
+            'no_panggil' => $request->no_panggil,
+            'ringkasan' => $request->ringkasan,
+            'file' => $file_name,
+        ]);
         return redirect()->route('Perpustakaan.index')
             ->with('success', 'Perpustakaan Berhasil Ditambahkan');
     }

@@ -21,6 +21,8 @@ class CreatePerpustakaanTable extends Migration
             $table->string('penerbit')->nullable();
             $table->string('no_panggil')->nullable();
             $table->string('ringkasan')->nullable();
+            $table->string('file')->nullable();
+            $table->string('cover')->nullable();
             $table->timestamps();
         });
     }

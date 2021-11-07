@@ -7,59 +7,24 @@
                 <div class="col-lg-12 text-center">
                     <div class="mb-5" data-aos="fade-right">
                         <h2>PERPUSTAKAAN</h2>
-                        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem.</p>
+                        <p>Menyediakan berbagai Ebook</p>
                     </div>
                 </div>
             </div>
+            <div class="d-flex flex-wrap align-items-center">
 
-            {{-- <div class="col-lg-12">
-                <div class="row">
-
-                    @foreach ($alumni as $item)
-                    <div class="col-lg-3 mt-4">
-                        <div class="member" data-aos="zoom-in" data-aos-delay="400">
-                            <div class="pic"><img src="Bethany/assets/img/team/team-4.jpg" class="img-fluid" alt=""></div>
-                            <div class="member-info">
-                                <h4>{{$item->nama}}</h4>
-                                <span>{{$item->pekerjaan}}</span>
-                                <p>Dolorum tempora officiis odit laborum officiis et et accusamus</p>
-                                <div class="social">
-                                    <a href=""><i class="ri-twitter-fill"></i></a>
-                                    <a href=""><i class="ri-facebook-fill"></i></a>
-                                    <a href=""><i class="ri-instagram-fill"></i></a>
-                                    <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
-                                </div>
-                            </div>
+                <div class="col-12 col-md-4 p-1" >
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Judul</h3>
+                        </div>
+                        <div class="card-body">
+                            <img src="" height="100" width="100" alt="">
                         </div>
                     </div>
-                    @endforeach                    
-
                 </div>
-            </div> --}}
-
-            {{-- <div class="col-lg-12">
-                <div class="row"> --}}
-
-                    <table id="myTable" class="col-lg-12 mt-4" >
-                        <thead class="mt-5">
-                          <tr>
-                            <th>No</th>
-                            <th>Nama</th>
-                            <th>Pekerjaan</th>
-                            <th>Alamat</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($perpustakaan as $item)
-                                <tr>
-                                    <td>{{$loop->iteration}}</td>
-                                    <td>{{$item->nama}}</td>
-                                    <td>{{$item->pekerjaan}}</td>
-                                    <td>{{$item->alamat}}</td>
-                                </tr>                              
-                            @endforeach                  
-                        </tbody>
-                      </table>  
+                
+            </div>
 
         </div>
     </section>
