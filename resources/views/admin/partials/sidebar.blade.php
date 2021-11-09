@@ -6,80 +6,107 @@
             <ul id="sidebarnav">
                 <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{ route('dashboard') }}"
                         aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span
-                            class="hide-menu">Dashboard</span></a></li>
-
+                            class="hide-menu">Dashboard</span></a>
+                </li>
                 <li class="list-divider"></li>
+                <li class="sidebar-item"> 
+                    <a class="sidebar-link sidebar-link" href="{{route('hmtp.index')}}" aria-expanded="false">
+                        <i data-feather="sidebar" class="feather-icon"></i>
+                        <span class="hide-menu">HMTP</span>
+                    </a>
+                </li>
+               
+                <li class="sidebar-item"> 
+                    <a class="sidebar-link sidebar-link" href="{{route('alumni.index')}}" aria-expanded="false">
+                        <i data-feather="user" class="feather-icon"></i>
+                        <span class="hide-menu">Alumni</span>
+                    </a>
+                </li>
+                
+                
+                <li class="sidebar-item"> 
+                    <a class="sidebar-link sidebar-link" href="{{route('kegiatan.index')}}" aria-expanded="false">
+                        <i data-feather="airplay" class="feather-icon"></i>
+                        <span class="hide-menu">Kegiatan</span>
+                    </a>
+                </li>
+                
+                <li class="sidebar-item"> 
+                    <a class="sidebar-link sidebar-link" href="{{route('Loker.index')}}" aria-expanded="false">
+                        <i data-feather="award" class="feather-icon"></i>
+                        <span class="hide-menu">lowongan Pekerjaan</span>
+                    </a>
+                </li>
+                <li class="sidebar-item"> 
+                    <a class="sidebar-link sidebar-link" href="{{route('periode.index')}}" aria-expanded="false">
+                        <i data-feather="rotate-cw" class="feather-icon"></i>
+                        <span class="hide-menu">Periode</span>
+                    </a>
+                </li>
+                <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
+                        aria-expanded="false"><i data-feather="clock" class="feather-icon"></i><span
+                            class="hide-menu">Info</span></a>
+                    <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                        <li class="sidebar-item"> 
+                            <a class="sidebar-link sidebar-link" href="{{route('agenda.index')}}" aria-expanded="false">
+                                <i data-feather="watch" class="feather-icon"></i>
+                                <span class="hide-menu">Agenda</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item"> 
+                            <a class="sidebar-link sidebar-link" href="{{route('berita.index')}}" aria-expanded="false">
+                                <i data-feather="archive" class="feather-icon"></i>
+                                <span class="hide-menu">Berita</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
+                        aria-expanded="false"><i data-feather="menu" class="feather-icon"></i><span
+                            class="hide-menu">Jadwal</span></a>
+                    <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                        <li class="sidebar-item"> 
+                            <a class="sidebar-link sidebar-link" href="{{route('jadwal.index')}}" aria-expanded="false">
+                                <i data-feather="file-text" class="feather-icon"></i>
+                                <span class="hide-menu">Jadwal Kuliah</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item"> 
+                            <a class="sidebar-link sidebar-link" href="{{route('kalender.index')}}" aria-expanded="false">
+                                <i data-feather="calendar" class="feather-icon"></i>
+                                <span class="hide-menu">Kalender Akademik</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 {{-- <li class="nav-small-cap"><span class="hide-menu">Components</span></li> --}}
                 <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
-                        aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
-                            class="hide-menu">Forms </span></a>
-                    <ul aria-expanded="false" class="collapse  first-level base-level-line">
-                        <li class="sidebar-item"><a href="#" class="sidebar-link"><span
-                                    class="hide-menu"> HMTP
-                                </span></a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
                         aria-expanded="false"><i data-feather="grid" class="feather-icon"></i><span
-                            class="hide-menu">Master Data</span></a>
+                            class="hide-menu">Fasilitas</span></a>
                     <ul aria-expanded="false" class="collapse  first-level base-level-line">
-                        <li class="sidebar-item"><a href="{{route('hmtp.index')}}" class="sidebar-link"><span
-                                    class="hide-menu"> HMTP
-                                </span></a>
+                        <li class="sidebar-item"> 
+                            <a class="sidebar-link sidebar-link" href="{{route('Lab.index')}}" aria-expanded="false">
+                                <i data-feather="briefcase" class="feather-icon"></i>
+                                <span class="hide-menu">Lab</span>
+                            </a>
                         </li>
-                        <li class="sidebar-item"><a href="{{route('periode.index')}}" class="sidebar-link"><span
-                            class="hide-menu"> Periode
-                        </span></a>
-                        <li class="sidebar-item"><a href="{{route('Lab.index')}}" class="sidebar-link"><span
-                            class="hide-menu"> Lab
-                        </span></a>
-                        <li class="sidebar-item"><a href="{{route('Loker.index')}}" class="sidebar-link"><span
-                            class="hide-menu"> Loker
-                        </span></a>
-                        <li class="sidebar-item"><a href="{{route('Perpustakaan.index')}}" class="sidebar-link"><span
-                            class="hide-menu"> Perpustakaan
-                        </span></a>
-                        <li class="sidebar-item"><a href="{{route('alumni.index')}}" class="sidebar-link"><span
-                            class="hide-menu"> Alumni
-                        </span></a>
-                </li>
-                    </ul>
-                </li>
-                <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
-                        aria-expanded="false"><i data-feather="bar-chart" class="feather-icon"></i><span
-                            class="hide-menu">Charts </span></a>
-                    <ul aria-expanded="false" class="collapse  first-level base-level-line">
-                        <li class="sidebar-item"><a href="chart-morris.html" class="sidebar-link"><span
-                                    class="hide-menu"> Morris Chart
-                                </span></a>
+                        <li class="sidebar-item"> 
+                            <a class="sidebar-link sidebar-link" href="{{route('Perpustakaan.index')}}" aria-expanded="false">
+                                <i data-feather="book" class="feather-icon"></i>
+                                <span class="hide-menu">Perpustakaan</span>
+                            </a>
                         </li>
                     </ul>
                 </li>
-                <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
-                        aria-expanded="false"><i data-feather="box" class="feather-icon"></i><span
-                            class="hide-menu">UI Elements </span></a>
-                    <ul aria-expanded="false" class="collapse  first-level base-level-line">
-                        <li class="sidebar-item"><a href="ui-buttons.html" class="sidebar-link"><span
-                                    class="hide-menu"> Buttons
-                                </span></a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="ui-cards.html"
-                        aria-expanded="false"><i data-feather="sidebar" class="feather-icon"></i><span
-                            class="hide-menu">Cards
-                        </span></a>
-                </li>
+                
                 <li class="list-divider"></li>
-                <li class="nav-small-cap"><span class="hide-menu">Extra</span></li>
 
                 <li class="sidebar-item">
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <a type="submit" class="sidebar-link sidebar-link" onclick="event.preventDefault(); this.closest('form').submit();">
-                            <i data-feather="log-out"class="log-out"></i><span
-                            class="hide-menu">Logout</span>
+                            <i data-feather="log-out"class="log-out text-danger"></i><span
+                            class="hide-menu text-danger">Logout</span>
                         </a>
                     </form>
                 </li>

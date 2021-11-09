@@ -15,7 +15,7 @@ class CreatePerpustakaanTable extends Migration
     {
         Schema::create('perpustakaan', function (Blueprint $table) {
             $table->id();
-            $table->enum('kategori', ['Komik', 'GEOTEK'])->nullable();
+            $table->string('kategori')->nullable();
             $table->string('judul')->nullable();
             $table->string('penulis')->nullable();
             $table->string('penerbit')->nullable();

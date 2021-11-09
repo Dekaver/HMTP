@@ -1,4 +1,11 @@
 <x-app-layout>
+    @push('css')
+    <style>
+        .invalid-feedback{
+            display: block;
+        }
+    </style>
+    @endpush
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}
@@ -13,7 +20,6 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-
                     <div class="modal-body">
                         <div class="col-sm-12 col-md-12 col-lg-12">
                             <div class="card">
@@ -22,84 +28,84 @@
                                 <div class="card-body">
                                     <h4 class="card-title">Judul</h4>
                                     <div class="form-group">
-                                        <input name="inp-judul" type="text" class="form-control">
+                                        <input name="judul" type="text" class="form-control">
                                     </div>
-                                    <X-validate-error-message name="judul"/>
+                                    <x-validate-error-message name="judul"/>
                                     <div class="row">
                                         <div class="col-6">
                                             <h4 class="card-title">Penulis</h4>
                                             <div class="form-group">
-                                                <input name="inp-penulis" type="text" class="form-control">
+                                                <input name="penulis" type="text" class="form-control">
                                             </div>
-                                            <X-validate-error-message name="penulis"/>
+                                            <x-validate-error-message name="penulis"/>
                                         </div>
                                         <div class="col-6">
                                             <h4 class="card-title">Penerbit</h4>
                                             <div class="form-group">
-                                                <input name="inp-penerbit" type="text" class="form-control">
+                                                <input name="penerbit" type="text" class="form-control">
                                             </div>
-                                            <X-validate-error-message name="penerbit"/>
+                                            <x-validate-error-message name="penerbit"/>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-6">
+                                        <div class="col-12">
                                             <h4 class="card-title">Kategori</h4>
                                             <div class="form-group">
-                                                <input name="inp-kategori" type="text" class="form-control" list="listkategori">
-                                                <datalist id="listkategori">
+                                                <input name="kategori" type="text" class="form-control" list="listkategori">
+                                                <datalist id="listkategori">    
                                                     @foreach ($kategori as $item)
-                                                    <option value="{{$item}}"></option>
+                                                    <option value="{{$item->kategori}}"></option>
                                                     @endforeach
                                                 </datalist>
                                             </div>
-                                            <X-validate-error-message name="kategori"/>
+                                            <x-validate-error-message name="kategori"/>
                                         </div>
-                                        <div class="col-6">
-                                            <h4 class="card-title">Nomor Panggil</h4>
-                                            <div class="form-group">
-                                                <input name="inp-no_panggil" type="text" class="form-control">
-                                            </div>
-                                            <X-validate-error-message name="no_panggil"/>
-                                        </div>
+                                        
                                     </div>
 
 
                                     <h4 class="card-title">Ringkasan</h4>
                                     <div class="form-group">
-                                        <textarea name="inp-ringkasan" rows="3" class="form-control"></textarea>
-                                        <X-validate-error-message name="ringkasan"/>
+                                        <textarea name="ringkasan" rows="3" class="form-control"></textarea>
+                                        <x-validate-error-message name="ringkasan"/>
                                     </div>
-
-                                    <h4 class="card-title">Upload File</h4>
-                                    <div class="form-group">
-                                        <div class="input-group ">
-                                            <div class="custom-file">
-                                              <input name="inp-file" type="file" class="custom-file-input">
-                                              <label class="custom-file-label">Choose file</label>
-                                            </div>
-                                            <div class="input-group-append">
-                                              <span class="input-group-text"></span>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <h4 class="card-title">Upload File</h4>
+                                            <div class="form-group">
+                                                <div class="input-group ">
+                                                    <div class="custom-file">
+                                                      <input name="file" type="file" class="custom-file-input">
+                                                      <label class="custom-file-label">Choose file</label>
+                                                    </div>
+                                                    <div class="input-group-append">
+                                                      <span class="input-group-text"></span>
+                                                    </div>
+                                                </div>
+                                                <x-validate-error-message name="file"/>
                                             </div>
                                         </div>
-                                        <X-validate-error-message name="file"/>
+                                        <div class="col-6">
+                                            <h4 class="card-title">Cover</h4>
+                                            <label class="block form-group cursor-pointer w-100">
+                                                <div class="w-100">
+                                                    <img class="object-contain" height="100" src="{{asset('assets/img/upload-image.png')}}" id="preview">
+                                                </div>
+                                                <div class="input-group ">
+                                                    <div class="custom-file">
+                                                    <input name="cover" type="file" onchange="document.getElementById('preview').src = window.URL.createObjectURL(this.files[0])" class="custom-file-input" id="image">
+                                                    <label class="custom-file-label" for="image">Choose file</label>
+                                                    </div>
+                                                    <div class="input-group-append">
+                                                    <span class="input-group-text"></span>
+                                                    </div>
+                                                </div>
+                                                <x-validate-error-message name="cover"/>
+                                            </label>
+                                        </div>
                                     </div>
-
-                                    <h4 class="card-title">Cover</h4>
-                                    <label class="block form-group cursor-pointer w-100">
-                                        <div class="w-100">
-                                          <img class="object-contain" height="100" src="{{asset('assets/img/upload-image.png')}}" id="preview">
-                                        </div>
-                                        <div class="input-group ">
-                                            <div class="custom-file">
-                                              <input name="inp-cover" type="file" onchange="document.getElementById('preview').src = window.URL.createObjectURL(this.files[0])" class="custom-file-input" id="image">
-                                              <label class="custom-file-label" for="image">Choose file</label>
-                                            </div>
-                                            <div class="input-group-append">
-                                              <span class="input-group-text"></span>
-                                            </div>
-                                        </div>
-                                        <X-validate-error-message name="cover"/>
-                                    </label>
+                                    
+                                    
                                 </div>
 
                             </div>
@@ -115,8 +121,8 @@
     </div><!-- /.modal -->
 
 
-    <div class="modal fade" id="scrollable-modal-edit" tabindex="-1" role="dialog" aria-labelledby="scrollableModalTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal fade bd-example-modal-lg" id="scrollable-modal-edit" tabindex="-1" role="dialog" aria-labelledby="scrollableModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
             <div class="modal-content">
                 <form method="post" id="editModalForm" action="">
                     @csrf
@@ -135,66 +141,66 @@
                                     <div class="card-body">
                                         <h4 class="card-title">Judul</h4>
                                         <div class="form-group">
-                                            <input name="inp-judul" type="text" class="form-control">
+                                            <input name="judul" id="inp-judul" type="text" class="form-control">
                                         </div>
-                                        <X-validate-error-message name="judul"/>
+                                        <x-validate-error-message name="judul"/>
                                         <div class="row">
                                             <div class="col-6">
                                                 <h4 class="card-title">Penulis</h4>
                                                 <div class="form-group">
-                                                    <input name="penulis" type="text" class="form-control">
+                                                    <input name="penulis" id="inp-penulis" type="text" class="form-control">
                                                 </div>
-                                                <X-validate-error-message name="penulis"/>
+                                                <x-validate-error-message name="penulis"/>
                                             </div>
                                             <div class="col-6">
                                                 <h4 class="card-title">Penerbit</h4>
                                                 <div class="form-group">
-                                                    <input name="penerbit" type="text" class="form-control">
+                                                    <input name="penerbit" id="inp-penerbit" type="text" class="form-control">
                                                 </div>
-                                                <X-validate-error-message name="penerbit"/>
+                                                <x-validate-error-message name="penerbit"/>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-6">
                                                 <h4 class="card-title">Kategori</h4>
                                                 <div class="form-group">
-                                                    <input name="kategori" type="text" class="form-control" list="listkategori">
+                                                    <input name="kategori" id="inp-kategori" type="text" class="form-control" list="listkategori">
                                                     <datalist id="listkategori">
                                                         @foreach ($kategori as $item)
-                                                        <option value="{{$item}}"></option>
+                                                        <option value="{{$item->kategori}}"></option>
                                                         @endforeach
                                                     </datalist>
                                                 </div>
-                                                <X-validate-error-message name="kategori"/>
+                                                <x-validate-error-message name="kategori"/>
                                             </div>
                                             <div class="col-6">
                                                 <h4 class="card-title">Nomor Panggil</h4>
                                                 <div class="form-group">
-                                                    <input name="no_panggil" type="text" class="form-control">
+                                                    <input name="no_panggil" id="inp-no_panggil" type="text" class="form-control">
                                                 </div>
-                                                <X-validate-error-message name="no_panggil"/>
+                                                <x-validate-error-message name="no_panggil"/>
                                             </div>
                                         </div>
     
     
                                         <h4 class="card-title">Ringkasan</h4>
                                         <div class="form-group">
-                                            <textarea name="ringkasan" rows="3" class="form-control"></textarea>
-                                            <X-validate-error-message name="ringkasan"/>
+                                            <textarea name="ringkasan" id="inp-ringkasan" rows="3" class="form-control"></textarea>
+                                            <x-validate-error-message name="ringkasan"/>
                                         </div>
     
                                         <h4 class="card-title">Upload File</h4>
                                         <div class="form-group">
                                             <div class="input-group ">
                                                 <div class="custom-file">
-                                                  <input name="file" type="file" class="custom-file-input">
+                                                  <input name="file" id="inp-file" type="file" class="custom-file-input">
                                                   <label class="custom-file-label">Choose file</label>
                                                 </div>
                                                 <div class="input-group-append">
                                                   <span class="input-group-text"></span>
                                                 </div>
                                             </div>
-                                            <X-validate-error-message name="file"/>
+                                            <x-validate-error-message name="file"/>
                                         </div>
     
                                         <h4 class="card-title">Cover</h4>
@@ -204,14 +210,14 @@
                                             </div>
                                             <div class="input-group ">
                                                 <div class="custom-file">
-                                                  <input name="cover" type="file" onchange="document.getElementById('preview').src = window.URL.createObjectURL(this.files[0])" class="custom-file-input" id="image">
+                                                  <input name="cover" id="inp-cover" type="file" onchange="document.getElementById('preview').src = window.URL.createObjectURL(this.files[0])" class="custom-file-input" id="image">
                                                   <label class="custom-file-label" for="image">Choose file</label>
                                                 </div>
                                                 <div class="input-group-append">
                                                   <span class="input-group-text"></span>
                                                 </div>
                                             </div>
-                                            <X-validate-error-message name="cover"/>
+                                            <x-validate-error-message name="cover"/>
                                         </label>
                                     </div>
 
@@ -242,8 +248,8 @@
                                 <thead class="thead-primary text-center">
                                     <tr>
                                         <th>No.</th>
-                                        <th>Kategori</th>
                                         <th>Judul</th>
+                                        <th>Kategori</th>
                                         <th>Penulis</th>
                                         <th>Nomer HP</th>
                                         <th>Ringkasan</th>
@@ -254,8 +260,8 @@
                                     @foreach ($Perpustakaan as $item)
                                     <tr>
                                         <td style="text-align: center;">{{ $loop->iteration}}</td>
-                                        <td>{{$item->kategori}}</td>
                                         <td>{{$item->judul}}</td>
+                                        <td>{{$item->kategori}}</td>
                                         <td>{{$item->penulis}}</td>
                                         <td>{{$item->no_panggil}}</td>
                                         <td>{{$item->ringkasan}}</td>
@@ -281,10 +287,6 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        {{-- <th>ID</th>
-                                            <th>PERTANYAAN</th>
-                                            <th>JAWABAN</th>
-                                            <th>Action</th> --}}
                                     </tr>
                                 </tfoot>
                             </table>
