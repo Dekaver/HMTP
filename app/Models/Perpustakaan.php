@@ -10,7 +10,7 @@ class Perpustakaan extends Model
     use HasFactory;
     protected $table = 'perpustakaan';
     protected $fillable = [
-        'id', 'kategori', 'judul', 'penulis', 'penerbit', 'no_panggil', 'ringkasan'
+        'id', 'kategori', 'judul', 'penulis', 'penerbit', 'no_panggil', 'ringkasan', 'file', 'cover'
     ];
 
     protected $primaryKey = 'id';

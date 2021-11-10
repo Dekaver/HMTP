@@ -39,9 +39,9 @@ th {
                     </div>
                 </div>
             </div>
+            
 
-
-            <figure class="col-lg-12 text-center">
+            {{-- <figure class="col-lg-12 text-center">
                 <img src="{{asset('storage/struktur-organisasi/'.$fotoJadwal->foto)}}" alt="X Box One S">
             </figure>
 
@@ -69,7 +69,7 @@ th {
                                 </tr>                              
                             @endforeach                  
                         </tbody>
-                      </table>  
+                    </table>   --}}
 
 
 

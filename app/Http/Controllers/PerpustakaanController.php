@@ -9,7 +9,9 @@ class PerpustakaanController extends Controller
     public function index()
     {
         $Perpustakaan = Perpustakaan::all();
-        return view('admin.Perpustakaan.index', compact('Perpustakaan'))
+        $kategori = Perpustakaan::select("kategori")->groupBy("kategori")->get();
+        // dd($kategori);
+        return view('admin.Perpustakaan.index', compact('Perpustakaan', 'kategori'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -20,18 +22,34 @@ class PerpustakaanController extends Controller
 
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'pertanyaan' => 'required',
-        //     'jawaban' => 'required',
-        // ]);
-            $Perpustakaan = Perpustakaan::create([
-                'kategori' => $request->kategori,
-                'judul' => $request->judul,
-                'penulis' => $request->penulis,
-                'penerbit' => $request->penerbit,
-                'no_panggil' => $request->no_panggil,
-                'ringkasan' => $request->ringkasan,
-            ]);
+        $request->validate([
+            'judul' => 'required',
+            'file' => 'required',
+            'cover' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+        $date = date("dmy");
+        $no = Perpustakaan::orderBy("id", "DESC")->pluck('no_panggil')->first();
+        $no_baru = $no ? "1".substr("$no",12,3) : "1000";
+        $no_panggil = "HMTP-$date-".substr($no_baru+1, 1,3);
+        $date = date("his");
+        $extension = $request->file('file')->extension();
+        $file_name = "ebook_$date.$extension";
+        $request->file('file')->storeAs('public/perpustakaan/file', $file_name);
+
+        $extension = $request->file('cover')->extension();
+        $cover_name = "cover_ebook_$date.$extension";
+        $request->file('cover')->storeAs('public/perpustakaan/cover', $cover_name);
+
+        $Perpustakaan = Perpustakaan::create([
+            'kategori' => $request->kategori,
+            'judul' => $request->judul,
+            'penulis' => $request->penulis,
+            'penerbit' => $request->penerbit,
+            'no_panggil' => $no_panggil,
+            'ringkasan' => $request->ringkasan,
+            'file' => $file_name,
+            'cover' => $cover_name,
+        ]);
         return redirect()->route('Perpustakaan.index')
             ->with('success', 'Perpustakaan Berhasil Ditambahkan');
     }

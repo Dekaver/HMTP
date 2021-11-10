@@ -39,6 +39,7 @@ Route::middleware(['auth'])->prefix("admin")->group(function () {
     })->middleware(['auth'])->name('dashboard');
     Route::resource('hmtp', HmtpController::class);
     Route::resource('agenda', AgendaController::class);
+    Route::resource('alumni', AlumniController::class)->except(["show"]);
     Route::resource('berita', BeritaController::class);
     Route::resource('jadwal', JadwalController::class);
     Route::resource('kalender', KalenderController::class);
@@ -46,7 +47,6 @@ Route::middleware(['auth'])->prefix("admin")->group(function () {
     Route::resource('Lab', LabController::class);
     Route::resource('Loker', LokerController::class);
     Route::resource('periode', PeriodeController::class);
-    Route::resource('alumni', AlumniController::class)->except(["show"]);
     Route::resource('Perpustakaan', PerpustakaanController::class);
 });
 
@@ -59,6 +59,8 @@ Route::get('/kalender-akademik', [LandingpageController::class, 'kalenderAkademi
 Route::get('/perpustakaan', [LandingpageController::class, 'perpustakaan']);
 Route::get('/jadwal-kuliah', [LandingpageController::class, 'jadwalKuliah']);
 Route::get('/laboratorium', [LandingpageController::class, 'laboratorium']);
+Route::get('/getdata/{id}/buku/', [LandingpageController::class, 'getDataBuku']);
+Route::get('buku/{no}/baca', [LandingpageController::class, 'BacaBuku'])->name("buku.detail");
 Route::get('/kontak', function(){
     return view('front.kontak.index');});
 
