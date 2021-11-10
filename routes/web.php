@@ -59,6 +59,7 @@ Route::get('/kalender-akademik', [LandingpageController::class, 'kalenderAkademi
 Route::get('/perpustakaan', [LandingpageController::class, 'perpustakaan']);
 Route::get('/jadwal-kuliah', [LandingpageController::class, 'jadwalKuliah']);
 Route::get('/laboratorium', [LandingpageController::class, 'laboratorium']);
+Route::get('buku/{no}/detail', [LandingpageController::class, 'BacaBuku'])->name("buku.detail");
 Route::get('/kontak', function(){
     return view('front.kontak.index');});
 

@@ -84,4 +84,10 @@ class LandingpageController extends Controller
         return view('front.laboratorium.index', compact('laboratorium'));
 
     }
+
+    public function bacaBuku($no)
+    {
+        $buku = Perpustakaan::where("no_panggil", $no)->first();
+        dd($buku);
+    }
 }

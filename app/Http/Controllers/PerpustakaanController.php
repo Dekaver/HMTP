@@ -38,7 +38,7 @@ class PerpustakaanController extends Controller
 
         $extension = $request->file('cover')->extension();
         $cover_name = "cover_ebook_$date.$extension";
-        $request->file('cover')->storeAs('public/perpustakaan/cover', $file_name);
+        $request->file('cover')->storeAs('public/perpustakaan/cover', $cover_name);
 
         $Perpustakaan = Perpustakaan::create([
             'kategori' => $request->kategori,

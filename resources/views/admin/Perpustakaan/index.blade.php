@@ -13,9 +13,10 @@
     </x-slot>
     <div class="modal fade bd-example-modal-lg" id="scrollable-modal" tabindex="-1" role="dialog" aria-labelledby="scrollableModalTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+            <form class="w-100" action="{{route('Perpustakaan.store')}}" method="post" enctype="multipart/form-data">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="scrollableModalTitle">Modal title</h5>
+                    <h5 class="modal-title" id="scrollableModalTitle">Tambah Buku</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -23,7 +24,6 @@
                     <div class="modal-body">
                         <div class="col-sm-12 col-md-12 col-lg-12">
                             <div class="card">
-                                <form action="{{route('Perpustakaan.store')}}" method="post" enctype="multipart/form-data">
                                     @csrf
                                 <div class="card-body">
                                     <h4 class="card-title">Judul</h4>
@@ -47,8 +47,9 @@
                                             <x-validate-error-message name="penerbit"/>
                                         </div>
                                     </div>
+
                                     <div class="row">
-                                        <div class="col-12">
+                                        <div class="col-6">
                                             <h4 class="card-title">Kategori</h4>
                                             <div class="form-group">
                                                 <input name="kategori" type="text" class="form-control" list="listkategori">
@@ -60,16 +61,6 @@
                                             </div>
                                             <x-validate-error-message name="kategori"/>
                                         </div>
-                                        
-                                    </div>
-
-
-                                    <h4 class="card-title">Ringkasan</h4>
-                                    <div class="form-group">
-                                        <textarea name="ringkasan" rows="3" class="form-control"></textarea>
-                                        <x-validate-error-message name="ringkasan"/>
-                                    </div>
-                                    <div class="row">
                                         <div class="col-6">
                                             <h4 class="card-title">Upload File</h4>
                                             <div class="form-group">
@@ -85,24 +76,28 @@
                                                 <x-validate-error-message name="file"/>
                                             </div>
                                         </div>
-                                        <div class="col-6">
-                                            <h4 class="card-title">Cover</h4>
-                                            <label class="block form-group cursor-pointer w-100">
-                                                <div class="w-100">
-                                                    <img class="object-contain" height="100" src="{{asset('assets/img/upload-image.png')}}" id="preview">
-                                                </div>
-                                                <div class="input-group ">
-                                                    <div class="custom-file">
-                                                    <input name="cover" type="file" onchange="document.getElementById('preview').src = window.URL.createObjectURL(this.files[0])" class="custom-file-input" id="image">
-                                                    <label class="custom-file-label" for="image">Choose file</label>
-                                                    </div>
-                                                    <div class="input-group-append">
-                                                    <span class="input-group-text"></span>
-                                                    </div>
-                                                </div>
-                                                <x-validate-error-message name="cover"/>
-                                            </label>
+                                    </div>
+                                    <h4 class="card-title">Cover</h4>
+                                    <label class="block form-group cursor-pointer w-100">
+                                        <div class="w-100">
+                                            <img class="object-contain" height="100" src="{{asset('assets/img/upload-image.png')}}" id="preview">
                                         </div>
+                                        <div class="input-group ">
+                                            <div class="custom-file">
+                                            <input name="cover" type="file" onchange="document.getElementById('preview').src = window.URL.createObjectURL(this.files[0])" class="custom-file-input" id="image">
+                                            <label class="custom-file-label" for="image">Choose file</label>
+                                            </div>
+                                            <div class="input-group-append">
+                                            <span class="input-group-text"></span>
+                                            </div>
+                                        </div>
+                                        <x-validate-error-message name="cover"/>
+                                    </label>
+                                    
+                                    <h4 class="card-title">Ringkasan</h4>
+                                    <div class="form-group">
+                                        <textarea name="ringkasan" rows="3" class="form-control"></textarea>
+                                        <x-validate-error-message name="ringkasan"/>
                                     </div>
                                     
                                     
@@ -115,20 +110,20 @@
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Save changes</button>
                     </div>
-                </form>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+                </div>
+            </form>
+        </div>
+    </div>
 
 
     <div class="modal fade bd-example-modal-lg" id="scrollable-modal-edit" tabindex="-1" role="dialog" aria-labelledby="scrollableModalTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+            <form class="w-100" method="post" id="editModalForm" action="">
             <div class="modal-content">
-                <form method="post" id="editModalForm" action="">
                     @csrf
                     @method("PUT")
                     <div class="modal-header">
-                        <h5 class="modal-title" id="scrollableModalTitle">Ubah Data Alumni</h5>
+                        <h5 class="modal-title" id="scrollableModalTitle">Ubah Data Buku</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -136,7 +131,7 @@
                     <div class="modal-body">
                         <div class="col-sm-12 col-md-12 col-lg-12">
                             <div class="card">
-                                <form action="{{route('Perpustakaan.store')}}" method="post">
+                                
                                     @csrf
                                     <div class="card-body">
                                         <h4 class="card-title">Judul</h4>
@@ -174,35 +169,21 @@
                                                 <x-validate-error-message name="kategori"/>
                                             </div>
                                             <div class="col-6">
-                                                <h4 class="card-title">Nomor Panggil</h4>
+                                                <h4 class="card-title">Upload File</h4>
                                                 <div class="form-group">
-                                                    <input name="no_panggil" id="inp-no_panggil" type="text" class="form-control">
-                                                </div>
-                                                <x-validate-error-message name="no_panggil"/>
-                                            </div>
-                                        </div>
-    
-    
-                                        <h4 class="card-title">Ringkasan</h4>
-                                        <div class="form-group">
-                                            <textarea name="ringkasan" id="inp-ringkasan" rows="3" class="form-control"></textarea>
-                                            <x-validate-error-message name="ringkasan"/>
-                                        </div>
-    
-                                        <h4 class="card-title">Upload File</h4>
-                                        <div class="form-group">
-                                            <div class="input-group ">
-                                                <div class="custom-file">
-                                                  <input name="file" id="inp-file" type="file" class="custom-file-input">
-                                                  <label class="custom-file-label">Choose file</label>
-                                                </div>
-                                                <div class="input-group-append">
-                                                  <span class="input-group-text"></span>
+                                                    <div class="input-group ">
+                                                        <div class="custom-file">
+                                                          <input name="file" id="inp-file" type="file" class="custom-file-input">
+                                                          <label class="custom-file-label">Choose file</label>
+                                                        </div>
+                                                        <div class="input-group-append">
+                                                          <span class="input-group-text"></span>
+                                                        </div>
+                                                    </div>
+                                                    <x-validate-error-message name="file"/>
                                                 </div>
                                             </div>
-                                            <x-validate-error-message name="file"/>
                                         </div>
-    
                                         <h4 class="card-title">Cover</h4>
                                         <label class="block form-group cursor-pointer w-100">
                                             <div class="w-100">
@@ -219,6 +200,12 @@
                                             </div>
                                             <x-validate-error-message name="cover"/>
                                         </label>
+                                        
+                                        <h4 class="card-title">Ringkasan</h4>
+                                        <div class="form-group">
+                                            <textarea name="ringkasan" id="inp-ringkasan" rows="3" class="form-control"></textarea>
+                                            <x-validate-error-message name="ringkasan"/>
+                                        </div>
                                     </div>
 
                             </div>
@@ -228,10 +215,10 @@
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Save changes</button>
                     </div>
-                </form>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+                </div>
+            </form>
+        </div>
+    </div>
 
     <div class="container-fluid">
 
