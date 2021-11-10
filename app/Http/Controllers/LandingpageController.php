@@ -15,6 +15,7 @@ use App\Models\Perpustakaan;
 use App\Models\Periode;
 use App\Models\User;
 use \Carbon\Carbon;
+use DB;
 
 
 class LandingpageController extends Controller
@@ -64,9 +65,15 @@ class LandingpageController extends Controller
     public function perpustakaan()
     {
         $perpustakaan = Perpustakaan::all();
+        $kategori = Perpustakaan::select("kategori", Perpustakaan::raw("COUNT(kategori) as total"))->groupBy("kategori")->get();
 
-        return view('front.perpustakaan.index', compact('perpustakaan'));
+        return view('front.perpustakaan.index', compact('perpustakaan', 'kategori'));
+    }
 
+    public function getDataBuku($id)
+    {
+        $perpustakaan = Perpustakaan::findOrFail($id);
+        return $perpustakaan;
     }
 
     public function jadwalKuliah()
@@ -87,7 +94,9 @@ class LandingpageController extends Controller
 
     public function bacaBuku($no)
     {
+        $perpustakaan = Perpustakaan::orderBy("id", "DESC")->paginate(5);
         $buku = Perpustakaan::where("no_panggil", $no)->first();
-        dd($buku);
+        return view('front.perpustakaan.show', compact('buku', 'perpustakaan'));
+
     }
 }
