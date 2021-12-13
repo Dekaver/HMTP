@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\perpustakaan;
+use App\Models\Perpustakaan;
 use Illuminate\Http\Request;
 
 class PerpustakaanController extends Controller
@@ -70,9 +70,24 @@ class PerpustakaanController extends Controller
 
     public function update(Request $request, $id)
     {
-
-
+        $request->validate([
+            'judul' => 'required',
+            'cover' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
         $Perpustakaan = Perpustakaan::findOrFail($id);
+        if($request->filled('file')){
+            $date = date("his");
+            $extension = $request->file('file')->extension();
+            $file_name = "ebook_$date.$extension";
+            $request->file('file')->storeAs('public/perpustakaan/file', $file_name);
+            $Perpustakaan->file = $file_name;
+        }
+        if($request->filled('cover')){
+            $extension = $request->file('cover')->extension();
+            $cover_name = "cover_ebook_$date.$extension";
+            $request->file('cover')->storeAs('public/perpustakaan/cover', $cover_name);
+            $Perpustakaan->cover = $cover_name;
+        }
         $Perpustakaan->kategori = $request->kategori;
         $Perpustakaan->judul = $request->judul;
         $Perpustakaan->penulis = $request->penulis;

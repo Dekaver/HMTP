@@ -53,7 +53,7 @@ Route::middleware(['auth'])->prefix("admin")->group(function () {
 // Landingpage 
 Route::get('/alumni', [LandingpageController::class, 'alumni']);
 Route::get('/lowongan-kerja', [LandingpageController::class, 'loker']);
-Route::get('berita/{id}/show', [LandingpageController::class, 'berita'])->name("berita.show");
+Route::get('berita/{id}/show', [LandingpageController::class, 'berita'])->name("berita.lihat");
 
 Route::get('/kalender-akademik', [LandingpageController::class, 'kalenderAkademik']);
 Route::get('/perpustakaan', [LandingpageController::class, 'perpustakaan']);
@@ -61,6 +61,8 @@ Route::get('/jadwal-kuliah', [LandingpageController::class, 'jadwalKuliah']);
 Route::get('/laboratorium', [LandingpageController::class, 'laboratorium']);
 Route::get('/getdata/{id}/buku/', [LandingpageController::class, 'getDataBuku']);
 Route::get('buku/{no}/baca', [LandingpageController::class, 'BacaBuku'])->name("buku.detail");
+Route::post('perpustakaan/cari', [LandingpageController::class, 'cariBuku'])->name("cari.buku");
+Route::get('perpustakaan/{kategori}/kategori', [LandingpageController::class, 'cariKategoriBuku'])->name("kategori.buku");
 Route::get('/kontak', function(){
     return view('front.kontak.index');});
 

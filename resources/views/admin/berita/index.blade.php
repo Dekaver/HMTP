@@ -228,7 +228,7 @@
                     $("#inp-foto").val(response.foto);
                     $("#inp-isi").summernote('code',response.isi);
                     $("#previewEdit").attr("src", "{{asset('storage/berita')}}/"+response.foto);
-                    $("#editBerita").attr("action", "/admin/berita/" + id)
+                    $("#editBerita").attr("action", "{{url('')}}/admin/berita/" + id)
                 });
             });
         </script>

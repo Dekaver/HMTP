@@ -7,8 +7,8 @@
     </x-slot>
     <div class="modal fade bd-example-modal-lg" id="scrollable-modal" tabindex="-1" role="dialog" aria-labelledby="scrollableModalTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-            <div class="modal-content">
-                <form method="post" action="{{route('kegiatan.store')}}" enctype="multipart/form-data">
+            <form class="w-100" method="post" action="{{route('kegiatan.store')}}" enctype="multipart/form-data">
+                <div class="modal-content">
                     @csrf
                     <div class="modal-header">
                         <h3 class="modal-title" id="scrollableModalTitle">Tambah Kegiatan</h3>
@@ -17,7 +17,6 @@
                         </button>
                     </div>
                     <div class="modal-body">
-
                         <div class="col-sm-12 col-md-12 col-lg-12">
                             <h4 class="card-title">Nama</h4>
                             <div class="form-group">
@@ -26,7 +25,12 @@
 
                             <h4 class="card-title">Kategori</h4>
                             <div class="form-group">
-                                <input name="kategori" type="text" class="form-control">
+                                <input list="kategori" name="kategori" type="text" class="form-control">
+                                <datalist id="kategori">
+                                    @foreach($group as $key=>$item)
+                                        <option value="{{$key}}">
+                                    @endforeach
+                                </datalist>
                             </div>
 
                             <label class="block form-group w-100 cursor-pointer">
@@ -57,15 +61,15 @@
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Save changes</button>
                     </div>
-                </form>
-            </div><!-- /.modal-content -->
+                </div><!-- /.modal-content -->
+            </form>
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
-    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="scrollableModalTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable" role="document">
-            <div class="modal-content">
-                <form method="post" id="editModalForm" action="{{route('kegiatan.store')}}" enctype="multipart/form-data">
+    <div class="modal fade bd-example-modal-lg" id="editModal" tabindex="-1" role="dialog" aria-labelledby="scrollableModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+            <form class="w-100" method="post" id="editModalForm" action="{{route('kegiatan.store')}}" enctype="multipart/form-data">
+                <div class="modal-content">
                     @csrf
                     @method("PUT")
                     <div class="modal-header">
@@ -86,7 +90,7 @@
 
                                     <h4 class="card-title">Kategori</h4>
                                     <div class="form-group">
-                                        <input name="kategori" id="inp-kategori" type="text" class="form-control">
+                                        <input list="kategori" name="kategori" id="inp-kategori" type="text" class="form-control">
                                     </div>
 
                                     <label class="block form-group w-100 cursor-pointer">
@@ -119,8 +123,8 @@
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Save changes</button>
                     </div>
-                </form>
-            </div><!-- /.modal-content -->
+                </div><!-- /.modal-content -->
+            </form>
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
@@ -150,7 +154,7 @@
                                         @foreach ($kegiatan as $item)
                                         <tr>
                                             <td style="text-align: center;">{{ $loop->iteration}}</td>
-                                            <td>{{$item->periode->tahun}}</td>
+                                            <td>{{$item->periode->tahun}} - {{$item->periode->semester}}</td>
                                             <td>{{$item->nama}}</td>
                                             <td>{{$item->kategori}}</td>
                                             <td>{{$item->foto}}</td>
@@ -211,7 +215,7 @@
                     $("#inp-kategori").val(response.kategori);
                     // $("#inp-foto").val(response.foto);
                     $("#inp-img").attr("src", src);
-                    $("#editModalForm").attr("action", "/admin/kegiatan/" + id)
+                    $("#editModalForm").attr("action", "{{url('')}}/admin/kegiatan/" + id)
                 });
             });
         </script>

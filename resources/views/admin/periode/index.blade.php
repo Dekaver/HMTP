@@ -4,108 +4,108 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
-    <div class="modal fade" id="scrollable-modal" tabindex="-1" role="dialog" aria-labelledby="scrollableModalTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable" role="document">
-            <div class="modal-content">
-                <form method="post" action="{{route('periode.store')}}">
+    <div class="modal fade bd-example-modal-lg" id="scrollable-modal" tabindex="-1" role="dialog" aria-labelledby="scrollableModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+            <form class="w-100" method="post" action="{{route('periode.store')}}">
+                <div class="modal-content">
                     @csrf
-                <div class="modal-header">
-                    <h5 class="modal-title" id="scrollableModalTitle">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-
-                    <div class="col-sm-12 col-md-12 col-lg-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Tahun Periode</h4>
-                                <div class="form-group">
-                                    <input name="tahun" type="text" class="form-control">
-                                </div>
-
-                                <h4 class="card-title">Semester</h4>
-                                <div class="form-group">
-                                    <select class="custom-select mr-sm-2" name="semester" id="inlineFormCustomSelect">
-                                        <option selected="">Choose...</option>
-                                        <option value="Genap">Genap</option>
-                                        <option value="Ganjil">Ganjil</option>
-                                    </select>
-                                </div>
-
-                                <h4 class="card-title">Status</h4>
-                                <div class="form-group">
-                                    <select class="custom-select mr-sm-2" name="status" id="inlineFormCustomSelect">
-                                        <option selected="">Choose...</option>
-                                        <option value="1">Aktif</option>
-                                        <option value="0">Tidak Aktif</option>
-                                    </select>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="scrollableModalTitle">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+    
+                        <div class="col-sm-12 col-md-12 col-lg-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Tahun Periode</h4>
+                                    <div class="form-group">
+                                        <input name="tahun" type="text" class="form-control">
+                                    </div>
+    
+                                    <h4 class="card-title">Semester</h4>
+                                    <div class="form-group">
+                                        <select class="custom-select mr-sm-2" name="semester" id="inlineFormCustomSelect">
+                                            <option selected="">Choose...</option>
+                                            <option value="Genap">Genap</option>
+                                            <option value="Ganjil">Ganjil</option>
+                                        </select>
+                                    </div>
+    
+                                    <h4 class="card-title">Status</h4>
+                                    <div class="form-group">
+                                        <select class="custom-select mr-sm-2" name="status" id="inlineFormCustomSelect">
+                                            <option selected="">Choose...</option>
+                                            <option value="1">Aktif</option>
+                                            <option value="0">Tidak Aktif</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+    
                     </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
-                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div><!-- /.modal-content -->
             </form>
-            </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
-    <div class="modal fade" id="ModalEditForm" tabindex="-1" role="dialog" aria-labelledby="scrollableModalTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable" role="document">
-            <div class="modal-content">
-                <form method="post" id="editModalForm" action="{{route('periode.store')}}">
+    <div class="modal fade bd-example-modal-lg" id="ModalEditForm" tabindex="-1" role="dialog" aria-labelledby="scrollableModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+            <form class="w-100" method="post" id="editModalForm" action="{{route('periode.store')}}">
+                <div class="modal-content">
                     @csrf
                     @method("PUT")
-                <div class="modal-header">
-                    <h5 class="modal-title" id="scrollableModalTitle">Edit Periode</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-
-                    <div class="col-sm-12 col-md-12 col-lg-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Tahun Periode</h4>
-                                <div class="form-group">
-                                    <input name="tahun" id="inp-tahun" type="text" class="form-control">
-                                </div>
-
-                                <h4 class="card-title">Semester</h4>
-                                <div class="form-group">
-                                    <select class="custom-select mr-sm-2" name="semester" id="inp-semester">
-                                        <option selected="">Choose...</option>
-                                        <option value="Genap">Genap</option>
-                                        <option value="Ganjil">Ganjil</option>
-                                    </select>
-                                </div>
-
-                                <h4 class="card-title">Status</h4>
-                                <div class="form-group">
-                                    <select class="custom-select mr-sm-2" name="status" id="inp-status">
-                                        <option selected="">Choose...</option>
-                                        <option value="1">Aktif</option>
-                                        <option value="0">Tidak Aktif</option>
-                                    </select>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="scrollableModalTitle">Edit Periode</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+    
+                        <div class="col-sm-12 col-md-12 col-lg-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Tahun Periode</h4>
+                                    <div class="form-group">
+                                        <input name="tahun" id="inp-tahun" type="text" class="form-control">
+                                    </div>
+    
+                                    <h4 class="card-title">Semester</h4>
+                                    <div class="form-group">
+                                        <select class="custom-select mr-sm-2" name="semester" id="inp-semester">
+                                            <option selected="">Choose...</option>
+                                            <option value="Genap">Genap</option>
+                                            <option value="Ganjil">Ganjil</option>
+                                        </select>
+                                    </div>
+    
+                                    <h4 class="card-title">Status</h4>
+                                    <div class="form-group">
+                                        <select class="custom-select mr-sm-2" name="status" id="inp-status">
+                                            <option selected="">Choose...</option>
+                                            <option value="1">Aktif</option>
+                                            <option value="0">Tidak Aktif</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+    
                     </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
-                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div><!-- /.modal-content -->
             </form>
-            </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
@@ -193,7 +193,7 @@
                     $("#inp-tahun").val(response.tahun);
                     $("#inp-semester").val(response.semester);
                     $("#inp-status").val(response.status);
-                    $("#editModalForm").attr("action", "/periode/" + id)
+                    $("#editModalForm").attr("action", "{{url("")}}/admin/periode/" + id)
                 });
             });
         </script>

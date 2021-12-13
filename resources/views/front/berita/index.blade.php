@@ -126,46 +126,6 @@
                 </div>
             </div>
             <div class="row content-berita mt-2">
-                <div class="col-lg-4 ">
-                    <div class="card bg-black">
-                        <div class="card-body">
-                            <div class="bg-white card-header fw-bolder fs-3" style="margin-top: -1.6rem !important; color:#ff9f1a">
-                                Berita lainnya
-                            </div>
-                            @foreach ($semuaberita as $item)
-                                @if ($item != $berita)
-                                    <div class="row m-2">
-                                        <div class="col-3 berita-foto"
-                                            style="background-image: url({{ url("storage/berita/$item->foto") }})">
-                                        </div>
-                                        <div class="col-9 text-start">
-                                            <h5>{{ $item->judul }}</h5>
-                                            <small class="text-muted"><span>Post :
-                                                </span>{{ $item->created_at->isoFormat('DD MMMM, Y') }}</small>
-                                            <a href="{{ route('berita.show', $item->id) }}"><button class="btn btn-warning" style="border-radius: 1.5rem; font-size:0.9rem; color:white; background-color:#ff9f1a;">Selengkapnya>></button></a>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    {{-- <div>
-                                        <div class="card-body">
-                                            <h5 class="card-title fw-bold">Rapat Hokage 2</h5>
-                                            <h6 class="card-subtitle mb-2 text-muted">Posted - Selasa, 96-96-9999</h6>
-                                            <img style="width: 50%;"
-                                                    src="{{ asset('storage/berita/' . $item->foto) }}" alt="">
-                                            <a href="#" class="card-link btn btn-primary">Selengkapnya</a>
-                                        </div>
-                                        <hr>
-                                    </div> --}}
-                                @endif
-                            @endforeach
-                            <div class="col-lg-12 d-flex justify-content-center mt-5 bg-white rounded-lg">
-                                <div class="row align-item-center ">
-                                    {{ $semuaberita->links() }}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="col-lg-8">
                     <div class="shadow rounded berita-isi" style="overflow:hidden">
                         <div class="d-flex justify-content-center align-items-center mt-3">
@@ -186,9 +146,9 @@
                                     src="{{ asset('assets/img/publisher.png') }}" alt="">
                             </div>
                             <div class="col align-items-center" style="margin-left: -25px">
-                                <h5 class="mt-2 card-title fw-bold text-primary">Erza Bawu</h5>
+                                <h5 class="mt-2 card-title fw-bold text-primary">Admin</h5>
                                 <h6 class="card-subtitle mb-2 text-muted"><i
-                                        class="fas fa-location-arrow me-4"></i>Balikpapan
+                                        class="fas fa-location-arrow me-4"></i>HMTP-Unmul
                                 </h6>
                                 <h6 class="card-subtitle mb-2 text-muted"><i
                                         class="fas fa-calendar-day me-4"></i>{{ $berita->created_at->isoFormat('DD MMMM, Y') }}</h6>
@@ -198,6 +158,36 @@
                         <div id="content-news" class="content-news ps-3 pe-3" style="text-align: justify !important">
 
                             {!! $berita->isi !!}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 ">
+                    <div class="card bg-black">
+                        <div class="card-body">
+                            <div class="bg-white card-header fw-bolder fs-3" style="margin-top: -1.6rem !important; color:#ff9f1a">
+                                Berita lainnya
+                            </div>
+                            @foreach ($semuaberita as $item)
+                                @if ($item != $berita)
+                                    <div class="row m-2">
+                                        <div class="col-3 berita-foto"
+                                            style="background-image: url({{ url("storage/berita/$item->foto") }})">
+                                        </div>
+                                        <div class="col-9 text-start">
+                                            <h5>{{ $item->judul }}</h5>
+                                            <small class="text-muted"><span>Post :
+                                                </span>{{ $item->created_at->isoFormat('DD MMMM, Y') }}</small>
+                                            <a href="{{ route('berita.show', $item->id) }}"><button class="btn btn-warning" style="border-radius: 1.5rem; font-size:0.9rem; color:white; background-color:#ff9f1a;">Selengkapnya>></button></a>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                @endif
+                            @endforeach
+                            <div class="col-lg-12 d-flex justify-content-center mt-5 bg-white rounded-lg">
+                                <div class="row align-item-center ">
+                                    {{ $semuaberita->links() }}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

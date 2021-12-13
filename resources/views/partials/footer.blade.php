@@ -4,7 +4,7 @@
         <div class="row">
 
             <div class="col-lg-3 col-md-6 footer-contact">
-                <img src="{{asset('assets/img/HMTP.jpg')}}" style="max-height: 250px;max-width: 250px;vertical-align: middle;border: 0;">
+                <img src="{{asset('assets/img/HMTP.jpg')}}" style="max-height: 150px;max-width: 250px;vertical-align: middle;border: 0;">
                 {{-- <p>
                     A108 Adam Street <br>
                     New York, NY 535022<br>
@@ -15,7 +15,7 @@
             </div>
             <div class="col-lg-4 col-md-6 footer-newsletter">
                 <h4>Alamat : </h4>
-                <p>Jl. Kuaro, Gn. Kelua, Kec. Samarinda Ulu, Kabupaten Paser, Kalimantan Timur 75119</p>
+                <p>Jl. Sambaliung, Sempaja Sel., Kec. Samarinda Utara, Kota Samarinda, Kalimantan Timur 75242</p>
                 {{-- <form action="" method="post">
                     <input type="email" name="email"><input type="submit" value="Subscribe">
                 </form> --}}
@@ -38,8 +38,9 @@
                         <a href="https://www.instagram.com/hmtp_unmul/?hl=id" class="instagram"><i class="bx bxl-instagram"></i></a>
                     </li>
                     <li>
-                        {{-- <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a> --}}
-                        {{-- <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a> --}}
+                        <a href="https://twitter.com/hmtpunmul" class="twitter"><i class="bx bxl-twitter"></i></a>
+                        <a href="https://www.youtube.com/channel/UCKHzvfE0sybvK8an4EnMCeQ" class="instagram"><i class="bx bxl-youtube"></i></a>
+                        <a href="https://id.linkedin.com/in/hmtp-unmul-7022b678" class="linkedin"><i class="bx bxl-linkedin"></i></a>
                     </li>
                 </ul>
             </div>

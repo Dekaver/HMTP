@@ -21,10 +21,10 @@ class TrackUser
         $t = TUser::firstOrCreate([
             'ip' => $request->ip(),
             'user_agent' => $request->userAgent(),
-        ],[
             'date' => date("Y-m-d")
+        ],[
         ]);
-        $t->date = date("Y-m-d");
+        // $t->date = date("Y-m-d");
         $t->save();
 
         return $next($request);

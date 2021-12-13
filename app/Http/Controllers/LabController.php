@@ -22,12 +22,16 @@ class LabController extends Controller
     {
         $request->validate([
             'deskripsi' => 'required',
+            'nama' => 'required',
             'kepala_lab' => 'required',
             'asisten_lab' => 'required',
+            'kegiatan' => 'required',
             'id_periode' => 'required',
         ]);
         $Lab = Lab::create([
+            'nama' => $request->nama,
             'deskripsi' => $request->deskripsi,
+            'kegiatan' => $request->kegiatan,
             'kepala_lab' => $request->kepala_lab,
             'asisten_lab' => implode(";",$request->asisten_lab),
             'id_periode' => $request->id_periode,
@@ -54,12 +58,16 @@ class LabController extends Controller
         $request->validate([
             'deskripsi' => 'required',
             'kepala_lab' => 'required',
+            'nama' => 'required',
             'asisten_lab' => 'required',
             'id_periode' => 'required',
+            'kegiatan' => 'required',
         ]);
 
         $Lab = Lab::findorfail($id);
+        $Lab->nama = $request->nama;
         $Lab->deskripsi = $request->deskripsi;
+        $Lab->kegiatan = $request->kegiatan;
         $Lab->kepala_lab = $request->kepala_lab;
         $Lab->asisten_lab = implode(";",$request->asisten_lab);
         $Lab->id_periode = $request->id_periode;
@@ -67,7 +75,7 @@ class LabController extends Controller
 
 
         return redirect()->route('Lab.index')
-        ->with('edit', 'pengumuman Berhasil Diedit');
+        ->with('edit', 'Laboratorium Berhasil Diedit');
     }
 
     public function destroy($id)

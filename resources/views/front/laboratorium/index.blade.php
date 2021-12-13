@@ -1,64 +1,73 @@
-
 <x-guest-layout>
 
-    <section id="team" class="team mt-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="mb-5" data-aos="fade-right">
-                        <h2>LABORATORIUM</h2>
-                        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem.</p>
-                    </div>
-                </div>
-            </div>
+  <section id="team" class="team mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <div class="mb-5" data-aos="fade-right">
+            <h2>LABORATORIUM</h2>
+            <p>
+              Laboratorium ditambang merupakan wadah untuk para mahasiswa tambang dalam menunjang pendidikan maupun riset yang dimana di dalam nya di fasilitasi dengan alat-alat yang bisa membantu dan menunjang mahasiswa tambang dalam merekayasa teori-teori yang di dapat didalam kelas.
+            </p>
+          </div>
+        </div>
+      </div>
       <!-- ======= Portfolio Details Section ======= -->
+      @foreach($laboratorium as $lab)
       <section id="portfolio-details" class="portfolio-details">
         <div class="container">
-  
           <div class="row gy-4">
-  
             <div class="col-lg-8">
               <div class="portfolio-details-slider swiper-container">
                 <div class="swiper-wrapper align-items-center">
-  
+                  @foreach($lab->Kegiatan as $item)
                   <div class="swiper-slide">
-                    <img src="assets/img/portfolio/portfolio-details-1.jpg" alt="">
+                    <img src='{{ asset("storage/kegiatan/$item->foto") }}' alt="{{$item->nama}}">
                   </div>
-  
-                  <div class="swiper-slide">
-                    <img src="assets/img/portfolio/portfolio-details-2.jpg" alt="">
-                  </div>
-  
-                  <div class="swiper-slide">
-                    <img src="assets/img/portfolio/portfolio-details-3.jpg" alt="">
-                  </div>
-  
+                  @endforeach
+
                 </div>
                 <div class="swiper-pagination"></div>
               </div>
             </div>
-  
+
             <div class="col-lg-4">
               <div class="portfolio-info">
-                <h3>Project information</h3>
-                <ul>
-                  <li><strong>Category</strong>: Web design</li>
-                  <li><strong>Client</strong>: ASU Company</li>
-                  <li><strong>Project date</strong>: 01 March, 2020</li>
-                  <li><strong>Project URL</strong>: <a href="#">www.example.com</a></li>
-                </ul>
+                <h3>{{ $lab->nama ?? "-"}}</h3>
+                <table>
+                  <tr>
+                    <td><strong>Periode</strong></td>
+                    <td class="px-2">:</td>
+                    <td>{{ $lab->periode->tahun ?? "-"}}-{{ $lab->periode->semester ?? "-"}}</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Kepala Lab</strong></td>
+                    <td class="px-2">:</td>
+                    <td>{{ $lab->kepala_lab ?? "-"}}</td>
+                  </tr>
+                  <tr>
+                    <td class="align-top"><strong>Asisten Lab</strong></td>
+                    <td class="align-top px-2">:</td>
+                    <td>
+                      @foreach(explode(";", $lab->asisten_lab) as $value)
+                      {{$value}}<br>
+                      @endforeach
+                    </td>
+                  </tr>
+                </table>
               </div>
               <div class="portfolio-description">
-                <h2>This is an example of portfolio detail</h2>
+                <h2>Deskripsi</h2>
                 <p>
-                  Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt eius.
+                  {{$lab->deskripsi ?? "-"}}
                 </p>
               </div>
             </div>
-  
+
           </div>
-  
+
         </div>
-      </section><!-- End Portfolio Details Section -->
+      </section>
+      @endforeach
 
 </x-guest-layout>

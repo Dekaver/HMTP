@@ -20,9 +20,18 @@
                         <div class="col-sm-12 col-md-12 col-lg-12">
                             <div class="card">
                                 <div class="card-body">
+                                    <h4 class="card-title">Nama</h4>
+                                    <div class="form-group">
+                                        <input name="nama" type="text" class="form-control">
+                                    </div>
                                     <h4 class="card-title">Deskripsi</h4>
                                     <div class="form-group">
                                         <input name="deskripsi" type="text" class="form-control">
+                                    </div>
+                                    
+                                    <h4 class="card-title">Kegiatan</h4>
+                                    <div class="form-group">
+                                        <input name="kegiatan" type="text" class="form-control">
                                     </div>
                                     
                                     <h4 class="card-title">Kepala Lab</h4>
@@ -79,9 +88,19 @@
                         <div class="col-sm-12 col-md-12 col-lg-12">
                             <div class="card">
                                 <div class="card-body">
+                                    <h4 class="card-title">Nama</h4>
+                                    <div class="form-group">
+                                        <input name="nama" id="inp-nama" type="text" class="form-control">
+                                    </div>
+                                    
                                     <h4 class="card-title">Deskripsi</h4>
                                     <div class="form-group">
                                         <input name="deskripsi" id="inp-deskripsi" type="text" class="form-control">
+                                    </div>
+                                    
+                                    <h4 class="card-title">Kegiatan</h4>
+                                    <div class="form-group">
+                                        <input name="kegiatan" id="inp-kegiatan" type="text" class="form-control">
                                     </div>
 
                                     <h4 class="card-title">Kepala Lab</h4>
@@ -136,7 +155,9 @@
                                     <thead class="thead-primary text-center">
                                         <tr>
                                             <th>No.</th>
+                                            <th>Nama</th>
                                             <th>Deskripsi</th>
+                                            <th>Kegiatan</th>
                                             <th>Kepala Lab</th>
                                             <th>Asisten Lab</th>
                                             <th>Periode</th>
@@ -147,7 +168,9 @@
                                         @foreach ($Lab as $item)
                                         <tr>
                                             <td style="text-align: center;">{{ $loop->iteration}}</td>
+                                            <td>{{$item->nama}}</td>
                                             <td>{{substr($item->deskripsi, 0, 50)}}...</td>
+                                            <td>{{$item->kegiatan}}</td>
                                             <td>{{$item->kepala_lab}}</td>
                                             <td>{{$item->asisten_lab}}</td>
                                             <td>{{$item->periode->tahun}}</td>
@@ -197,7 +220,14 @@
 
             $(document).on("click", ".addAsistenbutton", function()
             {
-                addAsistenLab();
+                var elementToReplicate = $('.input-dynamis-add').first(),
+                clonedElement = elementToReplicate.clone();
+                clonedElement.find('input').val("");
+                clonedElement.find('button').removeClass('addAsistenbutton');
+                clonedElement.find('button').addClass('removeAsistenbutton');
+                clonedElement.find('button').empty();
+                clonedElement.find('button').html(`<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x feather-icon"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`);
+                $("#input-dynamis").append(clonedElement); 
             });
 
             $(document).on("click", ".removeAsistenbutton", function()
@@ -225,10 +255,12 @@
                     $.each(arrayasisten, function (i,v) {
                         addAsistenLab(v);
                     });
+                    $("#inp-nama").val(response.nama);
                     $("#inp-deskripsi").val(response.deskripsi);
+                    $("#inp-kegiatan").val(response.kegiatan);
                     $("#inp-kepala_lab").val(response.kepala_lab);
                     $("#inp-id_periode").val(response.id_periode);
-                    $("#editModalForm").attr("action", "/Lab/" + id)
+                    $("#editModalForm").attr("action", "{{url('')}}/admin/Lab/" + id)
                 });
             });
             

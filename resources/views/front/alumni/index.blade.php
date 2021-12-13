@@ -75,7 +75,7 @@ th {
                             <th>No</th>
                             <th>Nama</th>
                             <th>Pekerjaan</th>
-                            <th>Alamat</th>
+                            <!--<th>Alamat</th>-->
                           </tr>
                         </thead>
                         <tbody>
@@ -84,7 +84,7 @@ th {
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$item->nama}}</td>
                                     <td>{{$item->pekerjaan}}</td>
-                                    <td>{{$item->alamat}}</td>
+                                    <!--<td>{{$item->alamat}}</td>-->
                                 </tr>                              
                             @endforeach                  
                         </tbody>

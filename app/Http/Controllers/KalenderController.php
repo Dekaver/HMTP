@@ -29,7 +29,7 @@ class KalenderController extends Controller
         //save foto
         $date = date("his");
         $extension = $request->file('foto')->extension();
-        $file_name = "foto_$date.$extension";
+        $file_name = "file_$date.$extension";
         $path = $request->file('foto')->storeAs('public/kalender', $file_name);
         //end save foto
         $Kalender = Kalender::create([
@@ -64,13 +64,13 @@ class KalenderController extends Controller
         ]);
 
         $Kalender = Kalender::find($id);
-        if ($request->has("foto")) {
+        if ($request->filled("foto")) {
 
             Storage::delete("public/kalender/$Kalender->foto");
 
             $date = date("his");
             $extension = $request->file('foto')->extension();
-            $file_name = "foto_$date.$extension";
+            $file_name = "file_$date.$extension";
             $path = $request->file('foto')->storeAs('public/kalender', $file_name);
             
             $Kalender->foto = $file_name;

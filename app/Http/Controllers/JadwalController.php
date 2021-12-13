@@ -60,12 +60,12 @@ class JadwalController extends Controller
     {
         $request->validate([
             'deskripsi' => 'required',
-            'foto' => 'required',
+            'foto' => 'nullable|image',
             'id_periode' => 'required',
         ]);
 
         $jadwal = Jadwal::find($id);
-        if ($request->has("foto")) {
+        if ($request->filled("foto")) {
 
             Storage::delete("public/jadwal/$jadwal->foto");
 

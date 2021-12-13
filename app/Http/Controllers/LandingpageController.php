@@ -25,7 +25,7 @@ class LandingpageController extends Controller
         $hmtp = hmtp::whereId_periode(Periode::whereStatus("1")->pluck("id")->first())->first();
         $Berita = Berita::orderBy("created_at", "DESC")->Paginate('5');
         $kegiatan = Kegiatan::whereId_periode(Periode::whereStatus("1")->pluck("id")->first())->get();
-        $kategori = kegiatan::select(['kategori'])->groupBy("kategori")->selectRaw('count(*) as total, kategori')->get();
+        $kategori = kegiatan::whereId_periode(Periode::whereStatus("1")->pluck("id")->first())->select(['kategori'])->groupBy("kategori")->selectRaw('count(*) as total, kategori')->get();
         $agenda = Agenda::where("tanggal" , ">", Carbon::now()->format("Y-m-d"))->paginate(5);
         return view('welcome', compact('hmtp', 'kegiatan', 'kategori','Berita', "agenda"));
         
@@ -40,7 +40,7 @@ class LandingpageController extends Controller
     }
     public function loker()
     {
-        $loker = loker::paginate('10');
+        $loker = loker::where("status", '1')->paginate('8');
 
         return view('front.loker.index', compact('loker'));
 
@@ -56,9 +56,8 @@ class LandingpageController extends Controller
 
     public function kalenderAkademik()
     {
-        $kalenderAkademik = Kalender::all();
-        $fotoJadwal = Kalender::first();
-        return view('front.kalenderAkademik.index', compact('kalenderAkademik','fotoJadwal'));
+        $kalenderAkademik = Kalender::whereId_periode(Periode::whereStatus("1")->pluck("id")->first())->first();
+        return view('front.kalenderAkademik.index', compact('kalenderAkademik'));
 
     }
 
@@ -69,6 +68,31 @@ class LandingpageController extends Controller
 
         return view('front.perpustakaan.index', compact('perpustakaan', 'kategori'));
     }
+    
+    public function cariBuku(Request $request)
+    {
+        $request->validate([
+            'q' => 'required',
+        ]);
+        $perpustakaan = Perpustakaan::where("judul", "LIKE", "%$request->q%")
+            ->orWhere("judul", "LIKE", "%$request->q%")
+            ->orWhere("penerbit", "LIKE", "%$request->q%")
+            ->orWhere("penulis", "LIKE", "%$request->q%")
+            ->orWhere("no_panggil", "LIKE", "%$request->q%")
+            ->get();
+        $kategori = Perpustakaan::select("kategori", Perpustakaan::raw("COUNT(kategori) as total"))->groupBy("kategori")->get();
+        $q = $request->q;
+        return view('front.perpustakaan.index', compact('perpustakaan', 'kategori', 'q'));
+    }
+    
+    public function cariKategoriBuku($kategori)
+    {
+        $perpustakaan = Perpustakaan::where("kategori", "LIKE", "%$kategori%")->get();
+        $total = Perpustakaan::count();
+        $kategori = Perpustakaan::select("kategori", Perpustakaan::raw("COUNT(kategori) as total"))->groupBy("kategori")->get();
+        $k = $kategori;
+        return view('front.perpustakaan.index', compact('perpustakaan', 'kategori', 'k', 'total'));
+    }
 
     public function getDataBuku($id)
     {
@@ -78,16 +102,16 @@ class LandingpageController extends Controller
 
     public function jadwalKuliah()
     {
-        $jadwalKuliah = Jadwal::all();
-        $fotoJadwal = Jadwal::first();
-        return view('front.jadwalKuliah.index', compact('jadwalKuliah','fotoJadwal'));
+        $jadwalkuliah = Jadwal::whereId_periode(Periode::whereStatus("1")->pluck("id")->first())->first();
+        // $fotoJadwal = Jadwal::first();
+        return view('front.jadwalKuliah.index', compact('jadwalkuliah'));
 
     }
 
     public function laboratorium()
     {
-        $laboratorium = Lab::all();
-
+        $laboratorium = Lab::whereId_periode(Periode::whereStatus("1")->pluck("id")->first())->get();
+    
         return view('front.laboratorium.index', compact('laboratorium'));
 
     }

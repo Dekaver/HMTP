@@ -5,10 +5,10 @@
         </h2>
     </x-slot>
     <x-auth-validation-errors/>
-    <div class="modal fade" id="scrollable-modal" tabindex="-1" role="dialog" aria-labelledby="scrollableModalTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable" role="document">
-            <div class="modal-content">
-                <form method="post" action="{{route('agenda.store')}}">
+    <div class="modal fade bd-example-modal-lg" id="scrollable-modal" tabindex="-1" role="dialog" aria-labelledby="scrollableModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+            <form class="w-100" method="post" action="{{route('agenda.store')}}">
+                <div class="modal-content">
                     @csrf
                     <div class="modal-header">
                         <h5 class="modal-title" id="scrollableModalTitle">Tambah Agenda</h5>
@@ -54,15 +54,15 @@
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Save changes</button>
                     </div>
-                </form>
-            </div><!-- /.modal-content -->
+                </div><!-- /.modal-content -->
+            </form>
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
-    <div class="modal fade" id="scrollable-modal-edit" tabindex="-1" role="dialog" aria-labelledby="scrollableModalTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable" role="document">
-            <div class="modal-content">
-                <form method="post" id="editModalForm" action="">
+    <div class="modal fade bd-example-modal-lg" id="scrollable-modal-edit" tabindex="-1" role="dialog" aria-labelledby="scrollableModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+            <form class="w-100" method="post" id="editModalForm" action="">
+                <div class="modal-content">
                     @csrf
                     @method("PUT")
                     <div class="modal-header">
@@ -90,19 +90,19 @@
 
                                         <h4 class="card-title">Jam mulai</h4>
                                         <div class="form-group">
-                                            <input name="jam_mulai" id="inp-jam_mulai" type="text" class="form-control">
+                                            <input name="jam_mulai" id="inp-jam_mulai" type="time" class="form-control">
                                             <x-validate-error-message name="jam_mulai"/>
                                         </div>
 
                                         <h4 class="card-title">Jam selesai</h4>
                                         <div class="form-group">
-                                            <input name="jam_selesai" id="inp-jam_selesai" type="text" class="form-control">
+                                            <input name="jam_selesai" id="inp-jam_selesai" type="time" class="form-control">
                                             <x-validate-error-message name="jam_selesai"/>
                                         </div>
 
                                         <h4 class="card-title">Tanggal</h4>
                                         <div class="form-group">
-                                            <input name="tanggal" id="inp-tanggal" type="text" class="form-control">
+                                            <input name="tanggal" id="inp-tanggal" type="date" class="form-control">
                                             <x-validate-error-message name="tanggal"/>
                                         </div>
                                     </div>
@@ -115,8 +115,8 @@
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Save changes</button>
                     </div>
-                </form>
-            </div><!-- /.modal-content -->
+                </div><!-- /.modal-content -->
+            </form>
         </div><!-- /.modal-dialog -->
     </div><!-- /.mo-->
 
@@ -151,7 +151,7 @@
                                             <td>{{$item->tempat}}</td>
                                             <td>{{$item->jam_mulai}}</td>
                                             <td>{{$item->jam_selesai}}</td>
-                                            <td>{{$item->tanggal}}</td>
+                                            <td>{{$item->tanggal->isoFormat("D MMMM Y")}}</td>
                                             <td style="text-align: center;">
                                             {{-- <a href="{{route('agenda.edit',$item->id)}}" style="border-radius: 15px;" class="btn waves-effect waves-light btn-warning">
                                                 <i class="fas fa-edit"> EDIT</i>
@@ -205,10 +205,10 @@
                 {
                     $("#inp-judul").val(response.judul);
                     $("#inp-tempat").val(response.tempat);
-                    $("#inp-jam_mulai").val(response.jam_mulai);
-                    $("#inp-jam_selesai").val(response.jam_selesai);
-                    $("#inp-tanggal").val(response.tanggal);
-                    $("#editModalForm").attr("action", "/agenda/" + id)
+                    $("#inp-jam_mulai").val(response.jam_mulai.substring(0,5));
+                    $("#inp-jam_selesai").val(response.jam_selesai.substring(0,5));
+                    $("#inp-tanggal").val(response.tanggal.substring(0,10));
+                    $("#editModalForm").attr("action", "{{url('')}}/admin/agenda/" + id)
                 });
             });
         </script>

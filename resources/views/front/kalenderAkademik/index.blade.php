@@ -12,11 +12,7 @@
                 </div>
             </div>
 
-            <embed src="{{ asset('storage/kalender/M02_ProfesiAhliForensikTI.pdf') }}#toolbar=0" width="100%" height="1000" type="application/pdf">
-                {{-- <iframe src="{{ asset('storage/kalender/M02_Profesi Ahli Forensik TI.pdf') }}#toolbar=0" width="100%" height="500" type="application/pdf"></iframe> --}}
-            {{-- <figure class="col-lg-12 text-center"> --}}
-                {{-- <img src="{{asset('storage/struktur-organisasi/'.$fotoJadwal->foto)}}" alt="X Box One S"> --}}
-            {{-- </figure> --}}
+            <embed src='{{ asset("storage/kalender/$kalenderAkademik->foto") }}#toolbar=0' width="100%" height="1000" type="application/pdf">
 
 
 

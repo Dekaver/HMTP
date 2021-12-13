@@ -154,11 +154,11 @@ h1, h2, h3, h4, h5, h6 {
 /**
 * Desktop Navigation
 */
-#navbar {
+.navbar {
   padding: 20px;
 }
 
-#navbar ul {
+.navbar ul {
   margin: 0;
   padding: 0;
   display: flex;
@@ -166,11 +166,11 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
 }
 
-#navbar li {
+.navbar li {
   position: relative;
 }
 
-#navbar a, #navbar a:focus {
+.navbar a, .navbar a:focus {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -186,18 +186,18 @@ h1, h2, h3, h4, h5, h6 {
   transition: 0.3s;
 }
 
-#navbar a i, #navbar a:focus i {
+.navbar a i, .navbar a:focus i {
   font-size: 12px;
   line-height: 0;
   margin-left: 5px;
 }
 
-#navbar a:hover, #navbar .active, #navbar .active:focus, #navbar li:hover > a {
+.navbar a:hover, .navbar .active, .navbar .active:focus, .navbar li:hover > a {
   color: var(--white);
   background-color: var(--radiant-yellow);
 }
 
-#navbar .getstarted {
+.navbar .getstarted {
   background: var(--kuning-telur);
   padding: 10px 25px;
   margin-left: 30px;
@@ -206,7 +206,7 @@ h1, h2, h3, h4, h5, h6 {
   color: rgb(0, 0, 0);
 }
 
-#navbar .dropdown ul {
+.navbar .dropdown ul {
   display: block;
   position: absolute;
   left: 14px;
@@ -221,37 +221,37 @@ h1, h2, h3, h4, h5, h6 {
   transition: 0.3s;
 }
 
-#navbar .dropdown ul li {
+.navbar .dropdown ul li {
   min-width: 200px;
 }
 
-#navbar .dropdown ul a {
+.navbar .dropdown ul a {
   padding: 10px 20px;
   text-transform: none;
   font-weight: 500;
 }
 
-#navbar .dropdown ul a i {
+.navbar .dropdown ul a i {
   font-size: 12px;
 }
 
-#navbar .dropdown ul a:hover, #navbar .dropdown ul .active:hover, #navbar .dropdown ul li:hover > a {
+.navbar .dropdown ul a:hover, .navbar .dropdown ul .active:hover, .navbar .dropdown ul li:hover > a {
   color: #000000;
 }
 
-#navbar .dropdown:hover > ul {
+.navbar .dropdown:hover > ul {
   opacity: 1;
   top: 100%;
   visibility: visible;
 }
 
-#navbar .dropdown .dropdown ul {
+.navbar .dropdown .dropdown ul {
   top: 0;
   left: calc(100% - 30px);
   visibility: hidden;
 }
 
-#navbar .dropdown .dropdown:hover > ul {
+.navbar .dropdown .dropdown:hover > ul {
   opacity: 1;
   top: 0;
   left: 100%;
@@ -259,10 +259,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 1366px) {
-  #navbar .dropdown .dropdown ul {
+  .navbar .dropdown .dropdown ul {
     left: -90%;
   }
-  #navbar .dropdown .dropdown:hover > ul {
+  .navbar .dropdown .dropdown:hover > ul {
     left: -100%;
   }
 }
@@ -283,12 +283,12 @@ h1, h2, h3, h4, h5, h6 {
   .mobile-nav-toggle {
     display: block;
   }
-  #navbar ul {
+  .navbar ul {
     display: none;
   }
 }
 
-#navbar-mobile {
+.navbar-mobile {
   position: fixed;
   overflow: hidden;
   top: 0;
@@ -300,13 +300,13 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 999;
 }
 
-#navbar-mobile .mobile-nav-toggle {
+.navbar-mobile .mobile-nav-toggle {
   position: absolute;
   top: 15px;
   right: 15px;
 }
 
-#navbar-mobile ul {
+.navbar-mobile ul {
   display: block;
   position: absolute;
   top: 55px;
@@ -319,21 +319,21 @@ h1, h2, h3, h4, h5, h6 {
   transition: 0.3s;
 }
 
-#navbar-mobile a {
+.navbar-mobile a {
   padding: 10px 20px;
   font-size: 15px;
   color: #36343a;
 }
 
-#navbar-mobile a:hover, #navbar-mobile .active, #navbar-mobile li:hover > a {
+.navbar-mobile a:hover, .navbar-mobile .active, .navbar-mobile li:hover > a {
   color: var(--kuning-telur);
 }
 
-#navbar-mobile .getstarted {
+.navbar-mobile .getstarted {
   margin: 15px;
 }
 
-#navbar-mobile .dropdown ul {
+.navbar-mobile .dropdown ul {
   position: static;
   display: none;
   margin: 10px 20px;
@@ -345,23 +345,23 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
 }
 
-#navbar-mobile .dropdown ul li {
+.navbar-mobile .dropdown ul li {
   min-width: 200px;
 }
 
-#navbar-mobile .dropdown ul a {
+.navbar-mobile .dropdown ul a {
   padding: 10px 20px;
 }
 
-#navbar-mobile .dropdown ul a i {
+.navbar-mobile .dropdown ul a i {
   font-size: 12px;
 }
 
-#navbar-mobile .dropdown ul a:hover, #navbar-mobile .dropdown ul .active:hover, #navbar-mobile .dropdown ul li:hover > a {
+.navbar-mobile .dropdown ul a:hover, .navbar-mobile .dropdown ul .active:hover, .navbar-mobile .dropdown ul li:hover > a {
   color: var(--kuning-telur);
 }
 
-#navbar-mobile .dropdown > .dropdown-active {
+.navbar-mobile .dropdown > .dropdown-active {
   display: block;
 }
 
@@ -371,7 +371,7 @@ h1, h2, h3, h4, h5, h6 {
 #hero {
   width: 100%;
   height: 100vh;
-  background: url("../img/Teknik4.jpg") center center;
+  background: url("../img/login-background.jpg") center center;
   background-size: cover;
   position: relative;
 }
