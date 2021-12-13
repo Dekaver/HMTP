@@ -26,14 +26,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
-        // dd(TrackUser::all());
         View::share('trackuser', TrackUser::all());
+        View::share('week', TrackUser::select("date", TrackUser::raw("count(date) as total"))->where("date", ">=", date("Y-m-d", strtotime("-1 week")))->where("date", "<=", date("Y-m-d") )->groupBy("date")->get()->toArray());
         View::share('trackuser_currentday', TrackUser::where("date", date("Y-m-d") )->get() );
         View::share('trackuser_currentmonth', TrackUser::all()->filter(function ($value, $key){
             return substr($value->date, 0,7) == date("Y-m");
         }));
-        View::share('periode', Periode::simplePaginate(4));
+        
+        // View::share('periode', Periode::simplePaginate(4));
 
         Paginator::useBootstrap();
     }

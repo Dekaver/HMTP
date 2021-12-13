@@ -65,6 +65,7 @@
                     <div class="mb-5" data-aos="fade-right">
                         <h2>PERPUSTAKAAN</h2>
                         <p>Menyediakan berbagai Ebook</p>
+                       
                     </div>
                 </div>
             </div>
@@ -75,11 +76,17 @@
                             <h6>Buku Terbaru</h6>
                         </div>
                         <div class="card-body">
+                            @isset($q)
+                                <p >
+                                    Mencari dengan kata kunci <strong>"{{$q}}"</strong>. Ditemukan <span style="color:var(--kuning-telur);"> {{$perpustakaan->count()}}</span> 
+                                    <a href="{{url('perpustakaan')}}">Lihat Semua</a>
+                                </p>
+                            @endisset
                             <div class="d-flex flex-wrap align-items-center">
                                 @foreach ($perpustakaan as $buku)
                                     <div class="col-12 col-md-3 p-1" >
                                         <div class="d-flex flex-row align-items-end card card-hover img" onclick="modalShow('{{$buku->id}}')" style="background-image: url({{asset('storage/perpustakaan/cover/'.$buku->cover)}});">
-                                            <p class="text-center w-100"><small class="text-white" style="text-shadow: 1px 1px #000">{{$buku->judul}}</small></p>
+                                            <p style="background-color:#000;opacity:0.7;" class="text-center w-100"><small class="text-white">{{$buku->judul}}</small></p>
                                         </div>
                                     </div>
                                 @endforeach
@@ -94,10 +101,10 @@
                         </div>
                         <div class="card-body">
                             <div id="search">
-                                <form action="" method="post">
+                                <form action="{{route('cari.buku')}}" method="post">
                                     @csrf
                                     <div class="input-group mb-3">
-                                        <input type="text" class="form-control" name="query" placeholder="Search" aria-describedby="basic-addon2">
+                                        <input type="text" class="form-control" name="q" placeholder="Search" aria-describedby="basic-addon2">
                                         <div class="input-group-append">
                                           <i class="bx bx-search input-group-text search-button" id="basic-addon2" onclick="this.parentElement.parentElement.parentElement.submit()"></i>
                                         </div>
@@ -106,8 +113,15 @@
                             </div>
                             <div class="">
                                 <ul class="list-group">
+                                    @isset($k)
+                                    <li class="list-group-item d-flex justify-content-between align-items-center"
+                                        onclick='window.open("{{ url("perpustakaan") }}")'>
+                                        Semua
+                                      <span class="badge badge-primary">{{$total}}</span>
+                                    @endisset
                                     @foreach ($kategori as $item)
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center"
+                                        onclick='window.open("{{ route("kategori.buku", $item->kategori) }}", "__self")'>
                                         {{$item->kategori}}
                                       <span class="badge badge-primary">{{$item->total}}</span>
                                     </li>

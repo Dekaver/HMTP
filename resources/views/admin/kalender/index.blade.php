@@ -19,9 +19,9 @@
                                 <thead class="thead-primary text-center">
                                     <tr>
                                         <th class="">No.</th>
-                                        <th class="">Periode</th>
-                                        <th class="col-2">Deskripsi</th>
-                                        <th class="col-2">Foto</th>
+                                        <th class="col-2">Periode</th>
+                                        <th class="col">Deskripsi</th>
+                                        <th class="col-2">File</th>
                                         <th class="col-1">Aksi</th>
                                     </tr>
                                 </thead>
@@ -29,7 +29,7 @@
                                     @foreach ($kalender as $item)
                                     <tr>
                                         <td style="text-align: center;">{{ $loop->iteration}}</td>
-                                        <td>{{$item->periode->tahun}}</td>
+                                        <td>{{$item->periode->tahun}}-{{$item->periode->semester}}</td>
                                         <td>{{ substr($item->deskripsi, 0, 50)}}...</td>
                                         <td><a href="{{ asset('storage/kalender/'.$item->foto)}}">{{ $item->foto }}</a></td>
                                         <td style="text-align: center;">
@@ -85,14 +85,11 @@
                                         <X-validate-error-message name="deskripsi"/>
                                     </div>
 
-                                    <h4 class="card-title">Foto</h4>
+                                    <h4 class="card-title">File</h4>
                                     <label class="block form-group cursor-pointer w-100">
-                                        <div class="w-100">
-                                          <img class="object-contain" height="100" src="{{asset('assets/img/upload-image.png')}}" id="preview">
-                                        </div>
                                         <div class="input-group ">
                                             <div class="custom-file">
-                                              <input type="file" name="foto" onchange="document.getElementById('preview').src = window.URL.createObjectURL(this.files[0])" class="custom-file-input" id="image">
+                                              <input type="file" name="foto" class="custom-file-input" id="image">
                                               <label class="custom-file-label" for="image">Choose file</label>
                                             </div>
                                             <div class="input-group-append">
@@ -148,14 +145,11 @@
                                         <input name="deskripsi" id="inp-deskripsi" type="text" class="form-control">
                                     </div>
 
-                                    <h4 class="card-title">Foto</h4>
+                                    <h4 class="card-title">File</h4>
                                     <label class="form-group cursor-pointer w-100">
-                                        <div class="w-100">
-                                          <img class="object-contain" height="100" src="" id="previewEdit">
-                                        </div>
                                         <div class="input-group w-100">
                                             <div class="custom-file">
-                                              <input type="file" name="foto" onchange="document.getElementById('previewEdit').src = window.URL.createObjectURL(this.files[0])" class="custom-file-input" id="imageEdit">
+                                              <input type="file" name="foto" class="custom-file-input" id="imageEdit">
                                               <label class="custom-file-label" for="imageEdit">Choose file</label>
                                             </div>
                                             <div class="input-group-append">
@@ -203,9 +197,8 @@
                 {
                     console.log(response);
                     $("#inp-deskripsi").val(response.deskripsi);
-                    $("#inp-foto").val(response.foto);
                     $("#previewEdit").attr("src", "{{asset('storage/kalender')}}/"+response.foto);
-                    $("#editkalender").attr("action", "/admin/kalender/" + id)
+                    $("#editkalender").attr("action", "{{url('')}}/admin/kalender/" + id)
                 });
             });
         </script>

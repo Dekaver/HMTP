@@ -11,7 +11,7 @@
                     </a>
                 </h1>
             </div>
-            <nav id="navbar">
+            <nav id="navbar" class="navbar">
                 <ul>
                 <li><a class="nav-link scrollto active" href="{{url('/')}}">Home</a></li>
                 <li><a class="nav-link scrollto" href="{{url('/#alumni')}}">ALUMNI</a></li>

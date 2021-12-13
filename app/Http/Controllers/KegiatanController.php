@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Kegiatan;
+use App\Models\Lab;
 use Illuminate\Http\Request;
 
 class kegiatanController extends Controller
@@ -9,7 +10,17 @@ class kegiatanController extends Controller
     public function index()
     {
         $kegiatan = Kegiatan::all();
-        return view('admin.kegiatan.index', compact('kegiatan'))
+        $kategori = Kegiatan::select("kategori")->groupBy("kategori")->get();
+        $lab = Lab::select("kegiatan")->groupBy("kegiatan")->get();
+        $group = [];
+        foreach($kategori as $k =>$value){
+            $group["$value->kategori"] = $k;
+        }
+        foreach($lab as $k =>$value){
+            $group["$value->kegiatan"] = $k;
+        }
+        
+        return view('admin.kegiatan.index', compact('kegiatan', 'group'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 

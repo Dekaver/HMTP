@@ -4,10 +4,10 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
-    <div class="modal fade" id="scrollable-modal" tabindex="-1" role="dialog" aria-labelledby="scrollableModalTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable" role="document">
-            <div class="modal-content">
-                <form method="post" action="{{route('alumni.store')}}">
+    <div class="modal fade bd-example-modal-lg" id="scrollable-modal" tabindex="-1" role="dialog" aria-labelledby="scrollableModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+            <form class="w-100" method="post" action="{{route('alumni.store')}}">
+                <div class="modal-content">
                     @csrf
                     <div class="modal-header">
                         <h5 class="modal-title" id="scrollableModalTitle">Tambah Alumni</h5>
@@ -42,15 +42,15 @@
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Save changes</button>
                     </div>
-                </form>
-            </div><!-- /.modal-content -->
+                </div><!-- /.modal-content -->
+            </form>
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
-    <div class="modal fade" id="scrollable-modal-edit" tabindex="-1" role="dialog" aria-labelledby="scrollableModalTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable" role="document">
-            <div class="modal-content">
-                <form method="post" id="editModalForm" action="">
+    <div class="modal fade bd-example-modal-lg" id="scrollable-modal-edit" tabindex="-1" role="dialog" aria-labelledby="scrollableModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+            <form class="w-100" method="post" id="editModalForm" action="">
+                <div class="modal-content">
                     @csrf
                     @method("PUT")
                     <div class="modal-header">
@@ -86,8 +86,8 @@
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Save changes</button>
                     </div>
-                </form>
-            </div><!-- /.modal-content -->
+                </div><!-- /.modal-content -->
+            </form>
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
@@ -163,7 +163,7 @@
                     $("#inp-nama").val(response.nama);
                     $("#inp-alamat").val(response.alamat);
                     $("#inp-pekerjaan").val(response.pekerjaan);
-                    $("#editModalForm").attr("action", "/alumni/" + id)
+                    $("#editModalForm").attr("action", "{{url('')}}/admin/alumni/" + id)
                 });
             });
         </script>

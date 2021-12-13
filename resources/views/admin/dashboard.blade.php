@@ -86,7 +86,7 @@
                         </div>
                     </div>
                     <div class="pl-4 mb-5">
-                        <div class="stats ct-charts position-relative" style="height: 315px;"></div>
+                        <div class="myChart ct-charts position-relative" id="MyChart" style="height: 315px;"></div>
                     </div>
                     <ul class="list-inline text-center mt-4 mb-0">
                         <li class="list-inline-item text-muted font-italic">Earnings for this month</li>
@@ -151,7 +151,58 @@
     @push('scripts')
         <script src="{{ asset('src/assets/libs/moment/min/moment.min.js') }}"></script>
         <script>
+        var week = '{{ json_encode($week) }}';
+        var week_series = [];
+        var week_day = [];
+        week = week.replace(/&quot;/g, '"');
+        week = JSON.parse(week);
+        week.forEach( function(value){
+            week_series.push(value.total)
+            week_day.push(getDayName(value.date));
+        });
+        console.log(week_day);
+        var t=new Chartist.Line(".myChart",{
+                    labels:week_day,series:[week_series]
+                },
+                {
+                low:0,high:(Math.max(week_series) +10 ),showArea:!0,fullWidth:!0,plugins:[Chartist.plugins.tooltip()],axisY:
+                {
+                    onlyInteger:!0,scaleMinSpace:40,offset:20,labelInterpolationFnc:
+                    function(e)
+                    {
+                        return e/1
+                    }
+                    
+                }
+            });
+    
+            t.on("draw", function(e){
+                "area"===e.type&&e.element.attr(
+                    {
+                        x1:e.x1+.001
+                    }
+                )
+            }),
+            t.on("created",function(e){
+                e.svg.elem("defs").elem("linearGradient",
+                    {
+                        id:"gradient",x1:0,y1:1,x2:0,y2:0
+                    }
+                ).elem("stop",
+                    {
+                        offset:0,"stop-color":"rgba(255, 255, 255, 1)"
+                    }
+                ).parent().elem("stop",
+                    {
+                        offset:1,"stop-color":"rgba(80, 153, 255, 1)"
+                    }
+                )
+            }),
+            $(window).on("resize",function(){
+                    t.update()
+            })
             function displayTime() {
+                t.update()
                 var time = moment().format('HH:mm:ss');
                 $('#clock').html(time);
                 setTimeout(displayTime, 1000);
@@ -160,6 +211,13 @@
             $(document).ready(function() {
                 displayTime();
             });
+            
+            function getDayName(dateStr)
+            {
+                var date = new Date(dateStr);
+                return date.toLocaleDateString("in-ID", { weekday: 'short' });        
+            }
+            
         </script>
     @endpush
 </x-app-layout>

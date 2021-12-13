@@ -60,7 +60,7 @@ class AgendaController extends Controller
             'tempat' => 'required',
             'jam_mulai' => 'required|date_format:H:i',
             'jam_selesai' => 'required|date_format:H:i|after:jam_mulai',
-            'tanggal' => 'required|after:today',
+            'tanggal' => 'required',
         ]);
         $agenda = Agenda::findOrFail($id);
         $agenda->judul = $request->judul;

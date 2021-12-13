@@ -275,7 +275,7 @@
                     $("#inp-misi").summernote('code',response.misi);
                     $("#inp-struktur_organisasi").val(response.struktur_organisasi);
                     $("#previewEdit").attr("src", "{{asset('storage/struktur-organisasi')}}/"+response.struktur_organisasi);
-                    $("#editHmtp").attr("action", "/admin/hmtp/" + id)
+                    $("#editHmtp").attr("action", "{{url('')}}/admin/hmtp/" + id)
                 });
             });
         </script>

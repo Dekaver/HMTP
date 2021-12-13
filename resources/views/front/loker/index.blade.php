@@ -50,10 +50,7 @@ th {
                                 <span>{{$item->posisi}}</span>
                                 <p>{{$item->deskripsi}}</p>
                                 <div class="social">
-                                    <a href=""><i class="ri-twitter-fill"></i></a>
-                                    <a href=""><i class="ri-facebook-fill"></i></a>
-                                    <a href=""><i class="ri-instagram-fill"></i></a>
-                                    <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                                    <a href="{{$item->deskripsi}}"><i class="ri-arrow-right-circle-line"></i></a>
                                 </div>
                             </div>
                         </div>

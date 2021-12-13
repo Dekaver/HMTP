@@ -4,10 +4,10 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
-    <div class="modal fade" id="scrollable-modal" tabindex="-1" role="dialog" aria-labelledby="scrollableModalTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable" role="document">
-            <div class="modal-content">
-                <form method="post" action="{{route('Loker.store')}}">
+    <div class="modal fade bd-example-modal-lg" id="scrollable-modal" tabindex="-1" role="dialog" aria-labelledby="scrollableModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+            <form class="w-100" method="post" action="{{route('Loker.store')}}">
+                <div class="modal-content">
                     @csrf
                     <div class="modal-header">
                         <h5 class="modal-title" id="scrollableModalTitle">Modal title</h5>
@@ -56,15 +56,15 @@
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Save changes</button>
                     </div>
-                </form>
-            </div><!-- /.modal-content -->
+                </div><!-- /.modal-content -->
+            </form>
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
-    <div class="modal fade" id="scrollable-modal-edit" tabindex="-1" role="dialog" aria-labelledby="scrollableModalTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable" role="document">
-            <div class="modal-content">
-                <form method="post" id="editModalForm" action="">
+    <div class="modal fade bd-example-modal-lg" id="scrollable-modal-edit" tabindex="-1" role="dialog" aria-labelledby="scrollableModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+            <form class="w-100" method="post" id="editModalForm" action="">
+                <div class="modal-content">
                     @csrf
                     @method("PUT")
                     <div class="modal-header">
@@ -119,8 +119,8 @@
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Save changes</button>
                     </div>
-                </form>
-            </div><!-- /.modal-content -->
+                </div><!-- /.modal-content -->
+            </form>
         </div><!-- /.modal-dialog -->
     </div><!-- /.mo-->
 
@@ -155,24 +155,21 @@
                                             <td>{{$item->deskripsi}}</td>
                                             <td>{{$item->status}}</td>
                                             <td style="text-align: center;">
-                                            {{-- <a href="{{route('Loker.edit',$item->id)}}" style="border-radius: 15px;" class="btn waves-effect waves-light btn-warning">
-                                                <i class="fas fa-edit"> EDIT</i>
-                                            </a> --}}
-                                            <button type="button"
-                                            data-toggle="modal"
-                                            style="border-radius: 15px"
-                                            class="btn waves-effect waves-light btn-outline-primary pt-1 pb-1 editLokerButton"
-                                            data-target="#scrollable-modal-edit"
-                                            value="{{$item->id}}">
-                                            <i class="fas fa-edit"></i> Edit
-                                        </button>
-                                            <form  class="btn p-0" method="post" action="{{route('Loker.destroy',$item->id)}}">
-                                                @csrf
-                                                @method('DELETE')
-                                            <button type="submit" style="border-radius: 15px;" class="btn waves-effect waves-light btn-outline-secondary pt-1 pb-1">
-                                                <i class="far fa-trash-alt"></i> Delete
-                                            </button>
-                                            </form>
+                                                <button type="button"
+                                                    data-toggle="modal"
+                                                    style="border-radius: 15px"
+                                                    class="btn waves-effect waves-light btn-outline-primary pt-1 pb-1 editLokerButton"
+                                                    data-target="#scrollable-modal-edit"
+                                                    value="{{$item->id}}">
+                                                    <i class="fas fa-edit"></i> Edit
+                                                </button>
+                                                <form  class="btn p-0" method="post" action="{{route('Loker.destroy',$item->id)}}">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" style="border-radius: 15px;" class="btn waves-effect waves-light btn-outline-secondary pt-1 pb-1">
+                                                        <i class="far fa-trash-alt"></i> Delete
+                                                    </button>
+                                                </form>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -210,7 +207,7 @@
                     $("#inp-link").val(response.link);
                     $("#inp-deskripsi").val(response.deskripsi);
                     $("#inp-status").val(response.status);
-                    $("#editModalForm").attr("action", "/Loker/" + id)
+                    $("#editModalForm").attr("action", "{{url('')}}/admin/Loker/" + id)
                 });
             });
         </script>

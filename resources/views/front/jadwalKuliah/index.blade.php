@@ -35,43 +35,15 @@ th {
                 <div class="col-lg-12 text-center">
                     <div class="mb-5" data-aos="fade-right">
                         <h2>JADWAL KULIAH</h2>
-                        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem.</p>
+                        <p>{{$jadwalkuliah->deskripsi}}</p>
                     </div>
                 </div>
             </div>
             
 
-            {{-- <figure class="col-lg-12 text-center">
-                <img src="{{asset('storage/struktur-organisasi/'.$fotoJadwal->foto)}}" alt="X Box One S">
+            <figure class="col-lg-12 text-center border-1">
+                <img src="{{asset('storage/jadwal/'.$jadwalkuliah->foto)}}" width="100%" alt="Jadwal kuliah">
             </figure>
-
-
-                    <table id="myTable" class="col-lg-12 mt-4" >
-                        <thead class="mt-5">
-                          <tr>
-                            <th>No</th>
-                            <th>Deskripsi</th>
-                            <th>Semester</th>
-                            <th>Tahun</th>
-                            <th>File Jadwal</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($jadwalKuliah as $item)
-                                <tr>
-                                    <td>{{$loop->iteration}}</td>
-                                    <td>{{$item->deskripsi}}</td>
-                                    <td>{{$item->periode->semester}}</td>
-                                    <td>{{$item->periode->tahun}}</td>
-                                    <td>
-                                       <a href="{{asset('storage/struktur-organisasi/'.$item->foto)}}" download=""> Download </a>
-                                    </td>
-                                </tr>                              
-                            @endforeach                  
-                        </tbody>
-                    </table>   --}}
-
-
 
         </div>
     </section>

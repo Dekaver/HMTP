@@ -19,8 +19,8 @@
                                 <thead class="thead-primary text-center">
                                     <tr>
                                         <th class="">No.</th>
-                                        <th class="">Periode</th>
-                                        <th class="col-2">Deskripsi</th>
+                                        <th class="col-2">Periode</th>
+                                        <th class="col">Deskripsi</th>
                                         <th class="col-2">Foto</th>
                                         <th class="col-1">Aksi</th>
                                     </tr>
@@ -29,7 +29,7 @@
                                     @foreach ($jadwal as $item)
                                     <tr>
                                         <td style="text-align: center;">{{ $loop->iteration}}</td>
-                                        <td>{{$item->periode->tahun}}</td>
+                                        <td>{{$item->periode->tahun}}-{{$item->periode->semester}}</td>
                                         <td>{{ substr($item->deskripsi, 0, 50)}}...</td>
                                         <td><a href="{{ asset('storage/jadwal/'.$item->foto)}}">{{ $item->foto }}</a></td>
                                         <td style="text-align: center;">
@@ -205,7 +205,7 @@
                     $("#inp-deskripsi").val(response.deskripsi);
                     $("#inp-foto").val(response.foto);
                     $("#previewEdit").attr("src", "{{asset('storage/jadwal')}}/"+response.foto);
-                    $("#editjadwal").attr("action", "/admin/jadwal/" + id)
+                    $("#editjadwal").attr("action", "{{url('')}}/admin/jadwal/" + id)
                 });
             });
         </script>

@@ -14,13 +14,13 @@
     <div class="modal fade bd-example-modal-lg" id="scrollable-modal" tabindex="-1" role="dialog" aria-labelledby="scrollableModalTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
             <form class="w-100" action="{{route('Perpustakaan.store')}}" method="post" enctype="multipart/form-data">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="scrollableModalTitle">Tambah Buku</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="scrollableModalTitle">Tambah Buku</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
                     <div class="modal-body">
                         <div class="col-sm-12 col-md-12 col-lg-12">
                             <div class="card">
@@ -118,8 +118,8 @@
 
     <div class="modal fade bd-example-modal-lg" id="scrollable-modal-edit" tabindex="-1" role="dialog" aria-labelledby="scrollableModalTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-            <form class="w-100" method="post" id="editModalForm" action="">
-            <div class="modal-content">
+            <form class="w-100" method="post" id="editModalForm" action="{{url('perpustakaan')}}">
+                <div class="modal-content">
                     @csrf
                     @method("PUT")
                     <div class="modal-header">
@@ -254,12 +254,12 @@
                                         <td>{{$item->ringkasan}}</td>
                                         <td style="text-align: center;">
                                             <button type="button"
-                                            data-toggle="modal"
-                                            style="border-radius: 15px"
-                                            class="btn waves-effect waves-light btn-outline-primary pt-1 pb-1 editPerpustakaanButton"
-                                            data-target="#scrollable-modal-edit"
-                                            value="{{$item->id}}">
-                                            <i class="fas fa-edit"></i> Edit
+                                                data-toggle="modal"
+                                                style="border-radius: 15px"
+                                                class="btn waves-effect waves-light btn-outline-primary pt-1 pb-1 editPerpustakaanButton"
+                                                data-target="#scrollable-modal-edit"
+                                                value="{{$item->id}}">
+                                                <i class="fas fa-edit"></i> Edit
                                             </button>
                                             <form class="btn p-0" method="post" action="{{route('Perpustakaan.destroy',$item->id)}}">
                                                 @csrf
@@ -303,9 +303,7 @@
                 $("#inp-penerbit").val(response.penerbit);
                 $("#inp-no_panggil").val(response.no_panggil);
                 $("#inp-ringkasan").val(response.ringkasan);
-                $("#inp-cover").val(response.cover);
-                $("#inp-file").val(response.file);
-                $("#editModalForm").attr("action", "/Perpustakaan/" + id)
+                $("#editModalForm").prop("action", "{{url('')}}/admin/Perpustakaan/" + id);
             });
         });
     </script>

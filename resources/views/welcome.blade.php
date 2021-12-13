@@ -1,7 +1,7 @@
 @section('hero')
 <section id="hero" class="d-flex align-items-center">
     <div class="container text-center position-relative" data-aos="fade-in" data-aos-delay="200">
-        <h1 class="kuning-telur">HIMPUNAN MAHASISWA PERTAMBANGAN</h1>
+        <h1 class="kuning-telur">HIMPUNAN MAHASISWA TEKNIK PERTAMBANGAN</h1>
         <h2 class="kuning-telur">UNIVERSITAS MULAWARMAN</h2>
         {{-- <a href="#testimonials" class="btn-get-started scrollto">Get Started</a> --}}
     </div>
@@ -160,14 +160,14 @@
                 <div class="row content">
                     <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
                         <h2>Struktur Organisasi</h2>
-                        <img src="{{ asset('storage/struktur-organisasi/'.$hmtp->struktur_organisasi) }}" alt="" width="400">
+                        <img src="{{ asset('storage/struktur-organisasi/'.($hmtp->struktur_organisasi ?? '404.jpg')) }}" alt="" width="400">
                         {{-- <h3>{{}}</h3> --}}
                     </div>
                     <div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-left" data-aos-delay="200">
-                        <p class="text-justify">{{$hmtp->deskripsi}}</p>
+                        <p class="text-justify">{{$hmtp->deskripsi ?? ''}}</p>
                         <h3>Visi</h3>
                         <p>
-                            {{$hmtp->visi}}
+                            {{$hmtp->visi ?? '-'}}
                         </p>
                         <h3>Misi</h3>
                         {{-- <ol>
@@ -175,7 +175,7 @@
                             <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
                             <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in</li>
                         </ol> --}}
-                        {!! $hmtp->misi !!}
+                        {!! $hmtp->misi ?? '-' !!}
                     </div>
                 </div>
             </div>
@@ -190,8 +190,7 @@
                 <div class="content">
                     <h3>Alumni</h3>
                     <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
-                    Asperiores dolores sed et. Tenetur quia eos. Autem tempore quibusdam vel necessitatibus optio ad corporis.
+                    Seorang alumnus adalah lulusan sebuah sekolah, perguruan tinggi, atau universitas. Seorang alumnus bisa pula merupakan mantan anggota, karyawan, kontributor, atau tahanan, mantan siswa. Selain itu, seorang alumna adalah "lulusan wanita atau mantan siswi sebuah sekolah, perguruan tinggi, atau universitas"
                     </p>
                     <div class="text-center">
                         {{-- <a href="#" class="more-btn">Learn More <i class="bx bx-chevron-right"></i></a> --}}
@@ -244,11 +243,11 @@
         <section id="cta" class="cta">
             <div class="container">
 
-            <div class="text-center" data-aos="zoom-in">
-                <h3>Call To Action</h3>
-                <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <a class="cta-btn" href="#">Call To Action</a>
-            </div>
+            <!--<div class="text-center" data-aos="zoom-in">-->
+            <!--    <h3>Call To Action</h3>-->
+            <!--    <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>-->
+            <!--    <a class="cta-btn" href="#">Call To Action</a>-->
+            <!--</div>-->
 
             </div>
         </section><!-- End Cta Section -->
@@ -261,7 +260,9 @@
                 <div class="col-lg-4">
                     <div class="section-title" data-aos="fade-right">
                         <h2>Mahasiswa</h2>
-                        <p>Magnam dolores commodi suscipit nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+                        <p>
+                            Mahasiswa adalah sebutan bagi orang yang sedang menempuh pendidikan tinggi di sebuah perguruan tinggi yang terdiri dari sekolah tinggi, akademi, dan yang paling umum adalah Universitas
+                        </p>
                     </div>
                 </div>
                 <div class="col-lg-8">
@@ -321,7 +322,7 @@
 
             <div class="section-title" data-aos="fade-left">
                 <h2>Kegiatan</h2>
-                <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+                <!--<p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>-->
             </div>
 
             <div class="row" data-aos="fade-up" data-aos-delay="100">
@@ -345,7 +346,7 @@
                                 <h4>{{$item->nama}}</h4>
                                 {{-- <p>App</p> --}}
                                 <div class="portfolio-links">
-                                    <a href="{{ asset('storage/kegiatan/'.$item->foto) }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
+                                    <a href="{{ asset('storage/kegiatan/'.$item->foto) }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="{{$item->nama}}"><i class="bx bx-plus"></i></a>
                                     {{-- <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a> --}}
                                 </div>
                             </div>
