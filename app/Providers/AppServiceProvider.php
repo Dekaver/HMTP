@@ -33,7 +33,7 @@ class AppServiceProvider extends ServiceProvider
         View::share('trackuser_currentmonth', TrackUser::all()->filter(function ($value, $key){
             return substr($value->date, 0,7) == date("Y-m");
         }));
-        View::share('periode', Periode::simplePaginate(4));
+        View::share('periode', Periode::all());
 
         Paginator::useBootstrap();
     }
